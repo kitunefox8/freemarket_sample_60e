@@ -7,8 +7,10 @@
     width: 700px;
     margin: 0 auto;
     border: 1px solid;
+    border-color: $white2;
     box-sizing: border-box;
     // margin-top: 30px;
+    background-color: $white;
 
     &__top{
       padding: 12px;
