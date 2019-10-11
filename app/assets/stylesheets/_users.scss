@@ -1,109 +1,114 @@
-.new-session-main{
-  width: 700px;
-  margin: 0 auto;
-  border: 1px solid;
-  box-sizing: border-box;
-  // margin-top: 30px;
+.body{
+  background-color: $cream;
+  height: 100vh;
+  // height: 100%;
 
-  &__top{
-    padding: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    text-align:center;
-    border-bottom: 1px solid;
-    border-color: $white2;
-  }
-  &__body{
-    padding: 20px 15px 40px 15px;
+  .new-session-main{
+    width: 700px;
+    margin: 0 auto;
+    border: 1px solid;
     box-sizing: border-box;
+    // margin-top: 30px;
 
-    .link-button-mail{
-      height: 50px;
-      width: 350px;
-      background-color: $red;
-      border: 1px solid $red;
-      border-radius: 5px;
-      margin: 0 auto;
-      margin-bottom: 20px;
+    &__top{
+      padding: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align:center;
+      border-bottom: 1px solid;
+      border-color: $white2;
+    }
+    &__body{
+      padding: 20px 15px 40px 15px;
+      box-sizing: border-box;
 
-      .btn-mail{
-        display: flex;
-        text-decoration: none;
+      .link-button-mail{
+        height: 50px;
+        width: 350px;
+        background-color: $red;
+        border: 1px solid $red;
+        border-radius: 5px;
+        margin: 0 auto;
+        margin-bottom: 20px;
 
-        .icon{
-          color: $white;
-          line-height: 50px;
-          padding:0 15px;
-          font-size: 20px;
-          
-        }
-        .text{
-          color: $white;
-          line-height: 50px;
-          display: block;
-          margin: 0 auto;
+        .btn-mail{
+          display: flex;
+          text-decoration: none;
+
+          .icon{
+            color: $white;
+            line-height: 50px;
+            padding:0 15px;
+            font-size: 20px;
+            
+          }
+          .text{
+            color: $white;
+            line-height: 50px;
+            display: block;
+            margin: 0 auto;
+          }
         }
       }
-    }
-    .link-button-facebook{
-      height: 50px;
-      width: 350px;
-      background-color:$navy;
-      border: 1px solid navy;
-      border-radius: 5px;
-      margin: 0 auto;
-      margin-bottom: 20px;
+      .link-button-facebook{
+        height: 50px;
+        width: 350px;
+        background-color:$navy;
+        border: 1px solid navy;
+        border-radius: 5px;
+        margin: 0 auto;
+        margin-bottom: 20px;
 
-      .btn-mail{
-        display: flex;
-        text-decoration: none;
+        .btn-mail{
+          display: flex;
+          text-decoration: none;
 
-        .icon{
-          color: $white;
-          line-height: 50px;
-          padding:0 15px;
-          font-size: 26px;
-        }
-        .text{
-          color: $white;
-          line-height: 50px;
-          display: block;
-          margin: 0 auto;
-        }
-      }
-    }
-    .link-button-google{
-      height: 50px;
-      width: 350px;
-      border: 1px solid;
-      border-radius: 5px;
-      margin: 0 auto;
-      margin-bottom: 20px;
-      position: relative;
-
-      .btn-mail{
-        display: flex;
-        text-decoration: none;
-
-        .icon-google{
-          height: 30px;
-          width: 30px;
-          padding:0 15px;
-          position: absolute;
-          top: 10px;
-          left: 1px;
-
-        }
-        .text{
-          color: #000000;
-          line-height: 50px;
-          display: block;
-          margin: 0 auto;
+          .icon{
+            color: $white;
+            line-height: 50px;
+            padding:0 15px;
+            font-size: 26px;
+          }
+          .text{
+            color: $white;
+            line-height: 50px;
+            display: block;
+            margin: 0 auto;
+          }
         }
       }
+      .link-button-google{
+        height: 50px;
+        width: 350px;
+        border: 1px solid;
+        border-radius: 5px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        position: relative;
+
+        .btn-mail{
+          display: flex;
+          text-decoration: none;
+
+          .icon-google{
+            height: 30px;
+            width: 30px;
+            padding:0 15px;
+            position: absolute;
+            top: 10px;
+            left: 1px;
+
+          }
+          .text{
+            color: #000000;
+            line-height: 50px;
+            display: block;
+            margin: 0 auto;
+          }
+        }
+      }
+      
     }
-    
   }
 }
-
   
