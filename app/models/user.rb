@@ -10,4 +10,10 @@ class User < ApplicationRecord
   has_many :sns_credentials
   has_one :creditcard, dependent: :destory
   has_one :profile, dependent: :destory
+
+  email_check = /\A[^@\s]+@[^@\s]+\z/
+  validates :email,                 presence: true, uniqueness: { case_sensitive: false }, format{ with: email_check }
+  validates :password,              presence: true, length: {minimum: 7, maximum: 128}
+  validates :password_confirmation, presence: true, length: {minimum: 7, maximum: 128}
+  validates :nickname,              presence: true, length: {maximum: 20}
 end
