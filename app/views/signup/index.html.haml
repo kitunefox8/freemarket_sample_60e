@@ -1,0 +1,31 @@
+.body
+  .header
+    = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2296184308',class: 'header-logo'
+    
+  .new-session-main
+    .new-session-main__top
+      新規会員登録
+    .new-session-main__body
+      .link-button-mail
+        = link_to '#' ,class: 'btn-mail' do
+          .icon
+            = fa_icon 'envelope', class: 'icon-mail'
+          .text
+            メールアドレスで登録
+      .link-button-facebook
+        = link_to '#' ,class: 'btn-mail' do
+          .icon
+            = fa_icon 'facebook-square', class: 'icon-facebook'
+          .text
+            facebookで登録
+      .link-button-google
+        = link_to '#' ,class: 'btn-mail' do
+          .icon
+            -# = fa_icon 'google', class: 'icon-google'
+            = image_tag "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/b1/d4/24/b1d424eb-a4a3-e3b8-99f7-0f80598bab5a/logo_gsa_ios_color-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-6.png/246x0w.jpg", class: 'icon-google'
+          .text
+            Googleで登録する
+
+  = render 'footer'
+
+  
