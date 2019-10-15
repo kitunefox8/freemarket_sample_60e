@@ -36,10 +36,41 @@ class SignupController < ApplicationController
     session[:zipcode] = profile_params[:zipcode]
     session[:city] = profile_params[:city]
     session[:district] = profile_params[:district]
-    session[:builing] = profile_params[:buiding]
+    session[:buiding] = profile_params[:buiding]
 
     @user = User.new
     @creditcard = @user.build_creditcard
+  end
+
+  def create
+    @user = User.new(
+      nickname: session[:nickname], 
+      email: session[:email],
+      password: session[:password],
+      password_confirmation: session[:password_confirmation]
+    )
+    @profile = @user.build_profile(
+      first_name: session[:first_name],
+      last_name: session[:last_name],
+      first_kana: session[:first_kana],
+      last_kana: session[:last_kana],
+      birth_year: session[:birth_year],
+      birth_month: session[:birth_month],
+      birth_day: session[:birth_day],
+      zipcode: session[:zipcode],
+      city: session[:city],
+      district: session[:district],
+      buiding: session[:buiding]
+    )
+    creditcard = @user.build_creditcard(creditcard_params)
+
+    if @user.save
+      session[:id] = @user.id
+      sign_in User.find(session[:id])
+      redirect_to products_path
+    else
+      redirect_to signup_index_path
+    end
   end
 
   private
