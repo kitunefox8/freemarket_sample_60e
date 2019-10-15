@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "products#index"
   
-  resources :products, only: [:index] do
+  resources :products, only: [:index, :show, :new, :create] do
     collection do
       get 'buy'
-      get 'show'
-      get 'show2'
+      # get 'show'
+      # get 'show2'
     end
   end
   resources :users, only: [:index] do

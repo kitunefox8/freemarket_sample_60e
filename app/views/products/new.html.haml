@@ -1,0 +1,124 @@
+.single-container
+  %header.single-header
+    %h1
+      %img{alt: "mercari",width:  "180",height:"70", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2296184308"}
+  .single-main 
+  = form_for [@product] do |f|
+    %section.l-single-container#buy-item-container
+      .sell-container
+        .data-reactroot
+          .sell-container__inner
+            .sell-container__inner__header 商品の情報を入力
+            .sell-form
+              .image-form
+                .image-form__upload-box--header 出品画像 
+                %span.image-form__upload-box--header__require 必須
+                %p 最大10枚までアップロード出来ます。
+              .sell-dropbox-container-clearfix
+                .sell-dropbox-container-clearfix__items
+                .sell-upload-drop-box 
+                  %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
+      .sell-content
+        .form-group
+          .image-form__upload-box--header 商品名
+          %label
+            %span.image-form__upload-box--header__require　必須
+          %div
+            
+            = f.text_field :name, placeholder: "商品名（必須 40文字まで)", type: "string", class: "image-form__upload-box--header__default" 
+
+        .form-group
+          .image-form__upload-box--header 商品名
+          %span.image-form__upload-box--header__require 必須
+          = f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", type: "text", rows: "5", class: "textarea-default"
+      .sell-content.clearfix
+        %h3.sell-sub-head 商品の詳細
+        .sell-cotent__form-box
+          .form-group
+            .image-form__upload-box--header カテゴリー
+            %span.image-form__upload-box--header__require 必須
+            %div
+            = f.fields_for :category do |c|
+              .select-wrap
+                = c.select :name,[["---",""],["レディース","1"],["メンズ","2"],["ベビー・キッズ","3"],["インテリア・住まい・小物","4"],["本・音楽・ゲーム","5"],["おもちゃ・ホビー・グッズ","1328"],["コスメ・香水・美容","6"],["家電・スマホ・カメラ","7"],["ハンドメイド","9"],["チケット","1027"],["自動車・オートバイ","1318"],["その他","10"]], {}, class: "select-default"
+              %i.icon-arrow-bottom
+
+          .form-group.form-suggest-container
+            %label
+              ブランド
+              %span.form-arbitrary 任意
+            %div
+            = f.fields_for :brand do |b|
+              .select-wrap
+                = b.text_field :name, placeholder: "例）シャネル", type: "string", class: "select-default"
+              %div
+                %ul.sell-brand-suggest.form-suggest-list
+
+          .form-gorup
+            .image-form__upload-box--header  カテゴリー
+            %span.image-form__upload-box--header__require 必須
+            %div
+            = f.fields_for :status do |s|
+              .select-wrap
+                = s.select :name, [["---",""],["新品・未使用","1"],["未使用に近い","2"],["目立った傷、汚れ無し","3"],["やや傷、汚れあり","4"],["傷汚れあり","5"],["全体的に状態が悪い","1328"]], {}, class: "select-default"
+                %i.icon-arrow-bottom
+      .sell-content.clearfix
+        %h3.sell-sub-head  配達について    
+        %a.form-question{href: "/jp/help_center/article/68/", target: "_blank"} 
+        .sell-cotent__form-box
+          .form-group
+            .image-form__upload-box--header 配送料の負担
+            %span.image-form__upload-box--header__require 必須
+            %div
+              .select-wrap
+                = f.select :delivery_fee, [["---",""],["送料込み（出品者負担）","1"],["着払い（購入者負担）","2"]], {}, class: "select-default"
+          .form-group
+            .image-form__upload-box--header 発送元の地域
+            %span.image-form__upload-box--header__require 必須
+            %div
+              .select-wrap
+                = f.select :shipping_area, [["---",""],["北海道","1"],["青森県","2"],["岩手県","3"],["宮城県","4"],["秋田県","5"],["山形県","6"],["福島県","7"],["茨城県","8"],["栃木県","9"],["群馬県","10"],["埼玉県","11"],["千葉県","12"],["東京都","13"],["神奈川県","14"],["新潟県","15"],["富山県","16"],["石川県","17"],["福井県","18"],["山梨県","19"],["長野県","20"],["岐阜県","21"],["静岡県","22"],["愛知県","23"],["三重県","24"],["滋賀県","25"],["京都府","26"],["大阪府","27"],["兵庫県","28"],["奈良県","29"],["和歌山県","30"],["鳥取県","31"],["島根県","32"],["広島県","33"],["岡山県","34"],["山口県","35"],["徳島県","36"],["香川県","37"],["愛媛県","38"],["高知県","39"],["福岡県","40"],["佐賀県","41"],["長崎県","42"],["熊本県","43"],["大分県","44"],["宮崎県","45"],["鹿児島県","46"],["沖縄県","47"],["未定","48"]], {}, class: "select-default"
+          .form-group
+            .image-form__upload-box--header 発送までの日数
+            %span.image-form__upload-box--header__require 必須
+            %div
+              .select-wrap
+                = f.select :shipping_days, [["---",""],["1〜2日で発送","1"],["2〜3日で発送","2"],["4〜7日で発送","3"]], {}, class: "select-default"
+      .sell-content.clearfix
+        %h3.sell-sub-head  販売価格(300〜9,999,999)    
+        %a.form-question{:href => "/jp/help_center/article/68/", :target => "_blank"} 
+        .sellform-box
+          %ul.sell-price
+            %li.formguroup
+              .clearfix
+                %label.l-left 価格
+                %span.image-form__upload-box--header__require 必須
+                .l-right-sell-price-input ¥
+                = f.text_field :price, class: "input-default", placeholder: "例）300"
+            .clearfix2
+              .l-left 手数料(10%)
+              
+            .clearfix-bold
+              .l-left 販売手数料
+              
+      .modal{:role => "dialog", :tabindex => "-1"}
+        .model-inner
+      .sellcontent-box
+        %div
+          .sellcontent-box__text
+            禁止されている出品、行為を必ずご確認ください。またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
+        %div
+          = f.submit class: "btn-default", value: "出品"
+          %a.btn-defau-gray もどる
+    .overlay 
+    .single-footer
+      %nav
+        %ul.clearfix
+          %li
+            %a{:href => "https://www.mercari.com/jp/privacy/"} プライバシーポリシー
+            %a{:href => "https://www.mercari.com/jp/tos/"} メルカリ利用規約
+            %a{:href => "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
+      %a.single-footer-logo{href: "https://www.mercari.com/jp/"}
+        %img{:alt => "mercari", :height => "65", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2296184308", :width => "80"}/
+      %p
+        %small © 2019 Mercari

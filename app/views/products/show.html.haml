@@ -1,180 +1,426 @@
-.single-container
-  %header.single-header
-    %h1
-      %img{alt: "mercari",width:  "180",height:"70", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2296184308"}
-  .single-main 
-    %section.l-single-container#buy-item-container
-      .sell-container
-        .data-reactroot
-          .sell-container__inner
-            .sell-container__inner__header 商品の情報を入力
-            .sell-form
-              .image-form
-                .image-form__upload-box--header 出品画像 
-                %span.image-form__upload-box--header__require 必須
-                %p 最大10枚までアップロード出来ます。
-              .sell-dropbox-container-clearfix
-                .sell-dropbox-container-clearfix__items
-                .sell-upload-drop-box 
-                  %input.sell-upload-drop-file{:multiple => "multiple", :name => "image1", :style => "display: none;", :type => "file"}/
-                  %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
-      .sell-content
-        .form-group
-          .image-form__upload-box--header 商品名
-          %span.image-form__upload-box--header__require 必須
-          %input.image-form__upload-box--header__default{placeholder: "商品名（必須 40文字まで)", value: ""}/
-        .form-group
-          .image-form__upload-box--header 商品名
-          %span.image-form__upload-box--header__require 必須
-          %textarea.textarea-default{:placeholder => "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", :rows => "5"}
-      .sell-content-clearfix
-        %h3.sell-sub-head 商品の詳細
-        .sell-cotent__form-box
-          .form-group
-            .image-form__upload-box--header カテゴリー
-            %span.image-form__upload-box--header__require 必須
-            %div
-              .select-wrap
-                %select.select-default
-                  %option{value: ""} ---
-                  %option{value: "1"} レディース
-                  %option{value: "2"} メンズ
-                  %option{value: "3"} ベビー・キッズ
-                  %option{value: "4"} インテリア・住まい・小物
-                  %option{value: "5"} 本・音楽・ゲーム
-                  %option{value: "1328"} おもちゃ・ホビー・グッズ
-                  %option{value: "6"} コスメ・香水・美容
-                  %option{value: "7"} 家電・スマホ・カメラ
-                  %option{value: "9"} ハンドメイド
-                  %option{value: "1027"} チケット
-                  %option{value: "1318"} 自動車・オートバイ
-                  %option{value: "10"} その他
-                %i.icon-arrow-bottom
-          .form-gorup
-            .image-form__upload-box--header  カテゴリー
-            %span.image-form__upload-box--header__require 必須
-            %div
-              .select-wrap
-                %select.select-default
-                  %option{value: ""} ---
-                  %option{value: "1"} 新品・未使用
-                  %option{value: "2"} 未使用に近い
-                  %option{value: "3"} 目立った傷、汚れ無し
-                  %option{value: "4"} やや傷、汚れあり
-                  %option{value: "5"} 傷汚れあり
-                  %option{value: "1328"} 全体的に状態が悪い
-                %i.icon-arrow-bottom
-      .sell-content-clearfix
-        %h3.sell-sub-head  配達について    
-        %a.form-question{:href => "/jp/help_center/article/68/", :target => "_blank"} 
-        .sell-cotent__form-box
-          .form-group
-            .image-form__upload-box--header 配送料の負担
-            %span.image-form__upload-box--header__require 必須
-            %div
-              .select-wrap
-                %select.select-default
-                  %option{value: ""} ---
-                  %option{value: "1"} 送料込み（出品者負担）
-                  %option{value: "2"} 着払い（購入者負担）
-          .form-group
-            .image-form__upload-box--header 発送元の地域
-            %span.image-form__upload-box--header__require 必須
-            %div
-              .select-wrap
-                %select.select-default
-                  %option{value: ""} ---
-                  %option{value: "1"} 北海道
-                  %option{value: "2"} 青森県
-                  %option{value: "0"} 岩手県
-                  %option{value: "3"} 宮城県
-                  %option{value: "4"} 秋田県
-                  %option{value: "5"} 山形県
-                  %option{value: "6"} 福島県
-                  %option{value: "7"} 茨城県
-                  %option{value: "8"} 栃木県
-                  %option{value: "9"} 群馬県
-                  %option{value: "10"} 埼玉県
-                  %option{value: "11"} 千葉県
-                  %option{value: "12"} 東京都
-                  %option{value: "13"} 神奈川県
-                  %option{value: "14"} 新潟県
-                  %option{value: "15"} 富山県
-                  %option{value: "16"} 石川県
-                  %option{value: "17"} 福井県
-                  %option{value: "18"} 山梨県
-                  %option{value: "19"} 長野県
-                  %option{value: "20"} 岐阜県
-                  %option{value: "21"} 静岡県
-                  %option{value: "22"} 愛知県
-                  %option{value: "23"} 三重県
-                  %option{value: "24"} 滋賀県
-                  %option{value: "25"} 京都府
-                  %option{value: "26"} 大阪府
-                  %option{value: "27"} 兵庫県
-                  %option{value: "28"} 奈良県
-                  %option{value: "29"} 和歌山県
-                  %option{value: "30"} 鳥取県
-                  %option{value: "31"} 島根県
-                  %option{value: "32"} 広島県
-                  %option{value: "33"} 岡山県
-                  %option{value: "34"} 山口県
-                  %option{value: "35"} 徳島県
-                  %option{value: "36"} 香川県
-                  %option{value: "37"} 愛媛県
-                  %option{value: "38"} 高知県
-                  %option{value: "39"} 福岡県
-                  %option{value: "40"} 佐賀県
-                  %option{value: "41"} 長崎県
-                  %option{value: "42"} 熊本県
-                  %option{value: "43"} 大分県
-                  %option{value: "44"} 宮崎県
-                  %option{value: "45"} 鹿児島県
-                  %option{value: "46"} 沖縄県
-                  %option{value: "47"} 未定
-          .form-group
-            .image-form__upload-box--header 発送までの日数
-            %span.image-form__upload-box--header__require 必須
-            %div
-              .select-wrap
-                %select.select-default
-                  %option{:value => ""} ---
-                  %option{:value => "1"} 1〜2日で発送
-                  %option{:value => "2"} 2〜3日で発送
-                  %option{:value => "0"} 4〜7日で発送
-      .sell-content-clearfix
-        %h3.sell-sub-head  販売価格(300〜9,999,999)    
-        %a.form-question{:href => "/jp/help_center/article/68/", :target => "_blank"} 
-        .sellform-box
-          %ul.sell-price
-            %li.formguroup
-              .clearfix
-                %label.l-left 価格
-                %span.image-form__upload-box--header__require 必須
-                .l-right-sell-price-input ¥
-                %input.input-default{:placeholder => "例）300", :value => ""}/
-            .clearfix2
-              .l-left 手数料(10%)
-              
-            .clearfix-bold
-              .l-left 販売手数料
-              
-      .modal{:role => "dialog", :tabindex => "-1"}
-        .model-inner
-      .sellcontent-box  
-        %div
-          .sellcontent-box__text 禁止されている出品、行為を必ずご確認ください。またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
-        %button.btn-default{:type => "submit"} 出品する
-        %a.btn-defau-gray もどる
-    .overlay 
-    .single-footer
-      %nav
-        %ul.clearfix
-          %li
-            %a{:href => "https://www.mercari.com/jp/privacy/"} プライバシーポリシー
-            %a{:href => "https://www.mercari.com/jp/tos/"} メルカリ利用規約
-            %a{:href => "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
-      %a.single-footer-logo{href: "https://www.mercari.com/jp/"}
-        %img{:alt => "mercari", :height => "65", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2296184308", :width => "80"}/
-      %p
-        %small © 2019 Mercari
+.wrapper#__next
+  -# ここからヘッダーです
+  %header
+    .mercari__head
+      .mercari__head__top
+        .mercari__head__logo
+          %a.mercari__head__logo-image
+            =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari__head__logo-image", size: "134x36"
+        %form.search__form{}
+          %input{type: "search", class: "search__form__input"}
+          %button.search-button
+            %svg.sc-jDwBTQ.sc-kgAjT.gKFuLS{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 16 16", :width => "16"}
+              %path{:d => "M11.435 10.063h-.723l-.256-.247a5.92 5.92 0 0 0 1.437-3.87 5.946 5.946 0 1 0-5.947 5.947 5.92 5.92 0 0 0 3.87-1.437l.247.256v.723L14.637 16 16 14.637l-4.565-4.574zm-5.489 0A4.111 4.111 0 0 1 1.83 5.946 4.111 4.111 0 0 1 5.946 1.83a4.111 4.111 0 0 1 4.117 4.116 4.111 4.111 0 0 1-4.117 4.117z", :fill => "currentColor", "fill-rule" => "nonzero"}
+      .mercari__head__bottom
+        .mercari__head__bottom__categorys
+          .mercari__head__bottom__category
+            %a.mercari__category{:href => "/jp/category/"}
+              %svg.sc-cvbbAY.sc-fAjcbJ.dKBFhm{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 20 16", :width => "20"}>
+                %path{:d => "M18.799 15.25h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zM2 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z", :fill => "currentColor", "fill-rule" => "nonzero"}
+            カテゴリーから探す
+          .mercari__head__bottom__brand
+            %a.mercari__brand{:href => "/jp/brand/"}
+              %svg.sc-csuQGl.sc-caSCKo.kspmux{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 23 16", :width => "23"}>
+                %path{:d => "M6.315 0L4.473 1.806 2.833.019.73 1.977l1.69 1.84L1.198 5.02c-1.594 1.594-1.594 4.188-.01 5.772L6.3 16h13.272a3.08 3.08 0 0 0 3.077-3.077V3.076A3.08 3.08 0 0 0 19.57 0H6.315zm13.46 12.925a.211.211 0 0 1-.205.205H7.504L3.227 8.771a1.226 1.226 0 0 1-.01-1.71L4.38 5.92l1.28 1.371a2.68 2.68 0 1 0 2.13-1.93L6.433 3.907 7.49 2.87h12.082a.211.211 0 0 1 .206.205v9.848h-.002z", :fill => "currentColor", "fill-rule" => "nonzero"}
+            ブランドから探す
+        .mercari__head__bottom__register
+          .mercari__head__bottom__new
+            %a.mercari__head__bottom__signup{:href => "/jp/signup/"} 新規会員登録
+          .mercari__head__bottom__log
+            %a.mercari__head__bottom__in{:href => "/jp/login/?login_callback=%2Fjp%2F"} ログイン
+    -# ここまでヘッダーです
+  %section.item-box-container.l-single-container
+    %h1.item-name
+      >FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224
+    %p.item-wording
+      『FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224』は、651回の取引実績を持つ
+      %a{href: "#"}> ブランド多数出品中！
+      さんから出品されました。
+      %a{href: "#"}> フェンディ
+      （
+      %a{href: "#"}> 長財布/レディース
+      ）の商品で、大阪府から1~2日で発送されます。
+    .item-main-content.clearfix
+      .item-photo
+        .owl-carousel.owl-loaded.owl-drag
+          .owl-stage-outer
+            .owl-stage
+              .owl-item{style: "width: 300px;"}
+                .owl-item-inner
+                  %img.owl-lazy{alt: "FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m91592311337_1.jpg?1567487513", :src => "https://static.mercdn.net/item/detail/orig/photos/m91592311337_1.jpg?1567487513", :style => "opacity: 1;"}/
+          .owl-nav.disabled
+            .owl-prev 
+            .owl-next 
+          .owl-dots
+            .owl-dot
+              %span
+      %section.visible-sp
+        .item-btn-float-area
+      %table.item-detail-table
+        %tbody
+          %tr
+            %th 出品者
+            %td
+              %a{href: "#"} ブランド多数出品中！
+              %div
+                .item-user-ratings
+                  %i.far.fa-smile
+                  %span 656
+                .item-user-ratings
+                  %i.far.fa-meh
+                  %span 13
+                .item-user-ratings
+                  %i.far.fa-frown
+                  %span 5
+          %tr
+            %th カテゴリー
+            %td
+              %a{href: "#"}
+                %div レディース
+              %a{href: "#"}
+                .item-detail-table-sub-category
+                  %i.fas.fa-chevron-right
+                  小物
+              %a{href: "#"}
+                .item-detail-table-sub-sub-category
+                  %i.fas.fa-chevron-right
+                  長財布
+          %tr
+            %th ブランド
+            %td
+              %a{href: "#"}
+                %div
+                  フェンディ
+          %tr
+            %th 商品の状態
+            %td やや傷や汚れあり
+          %tr
+            %th 配送料の負担
+            %td 送料込み(出品者負担)
+          %tr
+            %th 配送の方法
+            %td 未定
+          %tr
+            %th 配送元地域
+            %td
+              %a{href: "#"} 大阪府
+          %tr
+            %th 発送日の目安
+            %td 1~2日で発送
+    .item-price-box.text-center
+      %span.item-price.bold ¥5,800
+      %span.item-tax (税込)
+      %span.item-shipping-fee 送料込み
+    %a.item-buy-btn{href: "#"}
+      購入画面に進む
+    .item-description.f14
+      %p.item-description-inner
+        ■□ご入金確認後、1～2日(日祝除く)で発送致します！■□
+        
+        こちらで扱っている商品は確実に正規品です。
+        万が一、コピー商品がありましたら返品・返金致します！
+        
+        ご入金確認後、1～2日(日祝除く)で発送致します！
+        
+        《製品情報》
+        FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224になります。
+        
+        ◆インパクトがあり人気のモンスターシリーズ
+        ◆カード入れポケットも充実していて、収納力にも優れた長財布
+        
+        縦 約9㎝×横 約19㎝
+        カード入れ　10
+        お札入れ　2
+        その他ポケット　4
+        
+        ≪シリアル≫
+        8M0251-88E-169-9834
+        
+        ≪カラー≫
+        グレー×パープル×レッド他
+        
+        ≪付属品≫
+        保管袋　
+        
+        《使用状況》
+        □外観□
+        角擦れによる色剥げ、フラップの表面や裏面も擦れにより色剥げがみられますので、使用感はあります。
+        目の出っ張り部分も擦れて若干色が薄くなっている部分があり、上部の角のフチの革は少しめくれがみられます。
+        ホックは少し緩い感じもありますが、きちんと閉まります。
+        
+        ★内側★
+        レザー部分は少し擦れで色がうすくなっていて、小銭入れ内は使用により黒ずみ汚れがありますが、破損などはないのでまだまだ使用していただけます。
+        
+        
+        
+        USED品になります！
+        商品の状態に関しましてもあくまでも主観となります。
+        簡易清掃のみとなりますので、細部に取りきれない埃や商品以外のもの、汚れなどがある場合もございます。
+        画像に関しましても加工はしておりません。なるべく忠実に撮影していますが、照明の関係やお使いの機種によって、色の見え方が多少実物と異なる場合がございます。
+        ご理解いただける方のみご購入お願いいたします。
+        
+        
+        他にも出品していますので、セット購入希望の商品がございましたらご相談ください。
+        
+        気になることなどございましたらお気軽にご質問ください！
+    .item-button-container.clearfix
+      .item-button-left
+        %a.item-button.item-button-like{href: "#"}
+          %i.far.fa-heart
+          %span いいね!
+          %span{"data-num" => "like"} 11
+        %a.item-button.item-button-report.clearfix{href: "#"}
+          %i.far.fa-flag
+          %span 不適切な商品の報告
+      .item-button-right
+        %a{href: "#", target: "_blank"}
+          %i.fas.fa-lock
+          %span あんしん・あんぜんへの取り組み
+  .item-detail-message
+    .message-container
+  %ul.nav-item-link-prev-next.clearfix
+    %li.nav-item-link-prev
+      %a{href: "#"}
+        %i.fas.fa-chevron-left
+        アメジスト 原石
+    %li.nav-item-link-next
+      %a{href: "#"}
+        ワコーズ　スーパーハード　新品・未使用
+        %i.fas.fa-chevron-right
+  .item-social-media-box
+    .text-center
+      .fb-save.fb_iframe_widget{"data-uri" => "product://113299479059860/m91592311337", "fb-iframe-plugin-query" => "app_id=466308336793848&container_width=700&locale=ja_JP&sdk=joey&uri=product%3A%2F%2F113299479059860%2Fm91592311337", "fb-xfbml-state" => "rendered"}
+        %span{:style => "vertical-align: top; width: 0px; height: 0px; overflow: hidden;"}
+          %iframe{:allow => "encrypted-media", :allowfullscreen => "true", :allowtransparency => "true", :frameborder => "0", :height => "1000px", :name => "f2b1591b1b517fc", :scrolling => "no", :src => "https://www.facebook.com/v2.5/plugins/save.php?app_id=466308336793848&channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D44%23cb%3Df2ff81f412fba44%26domain%3Ditem.mercari.com%26origin%3Dhttps%253A%252F%252Fitem.mercari.com%252Ff1358d9311a614%26relation%3Dparent.parent&container_width=700&locale=ja_JP&sdk=joey&uri=product%3A%2F%2F113299479059860%2Fm91592311337", :style => "border: none; visibility: visible; width: 0px; height: 0px;", :title => "fb:save Facebook Social Plugin", :width => "1000px"}
+    %ul.social-media-box
+      %li
+        %a.share-btn{"data-window-name" => "facebook_window", :href => "http://www.facebook.com/share.php?u=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F", :target => "_blank"}
+          %i.fab.fa-facebook-square
+      %li
+        %a.share-btn{"data-window-name" => "twitter_window", :href => "http://twitter.com/share?count=horizontal&original_referer=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F&text=FENDI%20%E3%83%95%E3%82%A7%E3%83%B3%E3%83%87%E3%82%A3%2F%E9%95%B7%E2%80%A6%20%28%C2%A55%2C800%29%20https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F%20%E3%83%95%E3%83%AA%E3%83%9E%E3%82%A2%E3%83%97%E3%83%AA%E3%80%8C%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%E3%80%8D%E3%81%A7%E8%B2%A9%E5%A3%B2%E4%B8%AD%E2%99%AA%20%23%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%20%40mercari_jp%E3%81%95%E3%82%93%E3%81%8B%E3%82%89", :target => "_blank"}
+          %i.fab.fa-twitter-square
+      %li.social-hidden-item
+        %a{:href => "http://line.me/R/msg/text/?FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224%20%7C%20%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%20%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%A7%E3%81%8B%E3%82%93%E3%81%9F%E3%82%93%20%E3%83%95%E3%83%AA%E3%83%9E%E3%82%A2%E3%83%97%E3%83%AA%0D%0Ahttps://item.mercari.com/jp/m91592311337/", :target => "_blank"}
+          %i.fab.fa-line
+      %li
+        %a.share-btn{"data-window-name" => "pinterest_window", :href => "http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F&media=https%3A%2F%2Fstatic.mercdn.net%2Fitem%2Fdetail%2Forig%2Fphotos%2Fm91592311337_1.jpg%3F1567487513&description=%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%E5%95%86%E5%93%81%3A%20FENDI%20%E3%83%95%E3%82%A7%E3%83%B3%E3%83%87%E3%82%A3%2F%E9%95%B7%E8%B2%A1%E5%B8%83%2F%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%2F%E3%83%AC%E3%82%B6%E3%83%BC%2F%E3%82%B0%E3%83%AC%E3%83%BC%E7%B3%BB%2F%E3%81%82224%20%23%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA", :target => "_blank"}
+          %i.fab.fa-pinterest
+  .items-in-user-profile
+    %section.items-box-container.clearfix.related-item-column.items-in-user-profile
+      %h2.items-box-head
+        %a{href: "#"} ブランド多数出品中！さんのその他の出品
+      .items-box-content.clearfix
+        %section.items-box
+          %a{href: "#"}
+            %figure.items-box-photo
+              %img.lazyloaded{:alt => "【新品未使用】ルイヴィトン/手帳カバー/アジェンダPM/モノグラム/う037", "data-src" => "https://static.mercdn.net/thumb/photos/m41030575093_1.jpg?1570668701", :src => "https://static.mercdn.net/thumb/photos/m41030575093_1.jpg?1570668701"}/
+            .items-box-body
+              %h3.items-box-name.font-2 【新品未使用】ルイヴィトン/手帳カバー/アジェンダPM/モノグラム/う037
+              .items-box-num
+                .items-box-price.font-5 ¥23,000
+        %section.items-box
+          %a{href: ""}
+            %figure.items-box-photo
+              %img.lazyloaded{:alt => "CELINEセリーヌ/キーホルダー/馬車ロゴ/チャーム/ゴールド/う036", "data-src" => "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579", :src => "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579"}/
+              %figcaption
+                .item-sold-out-badge
+                  %div 
+            .items-box-body
+              %h3.items-box-name.font-2 CELINEセリーヌ/キーホルダー/馬車ロゴ/チャーム/ゴールド/う036
+              .items-box-num
+                .items-box-price.font-5 ¥4,800
+                .font-2
+                  %i.far.fa-heart
+                  %span 1
+        %section.items-box
+          %a{href: "#"}
+            %figure.items-box-photo
+              %img.lazyloaded{:alt => "【未使用保管】ロエベ/ベルト/ユニセックス/レザー/ゴールドブラック/う035", "data-src" => "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830", :src => "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830"}/
+            .items-box-body
+              %h3.items-box-name.font-2 【未使用保管】ロエベ/ベルト/ユニセックス/レザー/ゴールドブラック/う035
+              .items-box-num
+                .items-box-price.font-5 ¥32,000
+        %section.items-box
+          %a{href: "#"}
+            %figure.items-box-photo
+              %img.lazyloaded{:alt => "【未使用保管】フェンディ/折財布/Wホック/ネイビー/ストライプ/う034", "data-src" => "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273", :src => "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273"}/
+            .items-box-body
+              %h3.items-box-name.font-2 【未使用保管】フェンディ/折財布/Wホック/ネイビー/ストライプ/う034
+              .items-box-num
+                .items-box-price.font-5 ¥9,200
+        %section.items-box
+          %a{href: "#"}
+            %figure.items-box-photo
+              %img.lazyloaded{:alt => "【良品】グッチ/トートバッグ/シェリーライン/GG/キャンバス/う033", "data-src" => "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560", :src => "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560"}/
+            .items-box-body
+              %h3.items-box-name.font-2 【良品】グッチ/トートバッグ/シェリーライン/GG/キャンバス/う033
+              .items-box-num
+                .items-box-price.font-5 ¥39,800
+                .font-2
+                  %i.far.fa-heart
+                  %span 3
+        %section.items-box
+          %a{href: "#"}
+            %figure.items-box-photo
+              %img.lazyloaded{:alt => "ハンティングワールド/セカンドバッグ/クラッチ/ビジネス/カーキ/う032", "data-src" => "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985", :src => "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985"}/
+            .items-box-body
+              %h3.items-box-name.font-2 ハンティングワールド/セカンドバッグ/クラッチ/ビジネス/カーキ/う032
+              .items-box-num
+                .items-box-price.font-5 ¥5,600
+    %section.items-box-container.clearfix.related-item-column
+      %h2.items-box-head
+        %a{href: "#"}
+          フェンディの長財布 その他の商品
+      .items-box-content.clearfix
+        %section.items-box
+          %a{href: "#"}
+            %figure.items-box-photo
+              %img.is-higher-width.lazyloaded{:alt => "値下げ決行！早い者勝ち！FENDI　財布　未使用", "data-src" => "https://static.mercdn.net/thumb/photos/m27987016160_1.jpg?1570117841", :src => "https://static.mercdn.net/thumb/photos/m27987016160_1.jpg?1570117841"}/
+            .items-box-body
+              %h3.items-box-name.font-2 値下げ決行！早い者勝ち！FENDI　財布　未使用
+              .items-box-num
+                .items-box-price.font-5 ¥15,200
+                .font-2
+                  %i.far.fa-heart
+                  %span 4
+        %section.items-box
+          %a{href: "#"}
+            %figure.items-box-photo
+              %img.lazyloaded{:alt => "FENDI 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m21976993867_1.jpg?1570665475", :src => "https://static.mercdn.net/thumb/photos/m21976993867_1.jpg?1570665475"}/
+            .items-box-body
+              %h3.items-box-name.font-2 FENDI 長財布
+              .items-box-num
+                .items-box-price.font-5 ¥6,900
+        %section.items-box
+          %a{href: "#"}
+            %figure.items-box-photo
+              %img.lazyloaded{:alt => "フェンディ財布 ラウンドファスナー 正規品 ズッカ柄 長財布 箱付き 巾着袋付き", "data-src" => "https://static.mercdn.net/thumb/photos/m23662861040_1.jpg?1570440870", :src => "https://static.mercdn.net/thumb/photos/m23662861040_1.jpg?1570440870"}/
+            .items-box-body
+              %h3.items-box-name.font-2 フェンディ財布 ラウンドファスナー 正規品 ズッカ柄 長財布 箱付き 巾着袋付き
+              .items-box-num
+                .items-box-price.font-5 ¥20,800
+                .font-2
+                  %i.far.fa-heart
+                  %span 5
+        %section.items-box
+          %a{href: "#"}
+            %figure.items-box-photo
+              %img.is-higher-width.lazyloaded{:alt => "FENDI　ズッカ 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m47418822351_1.jpg?1570446406", :src => "https://static.mercdn.net/thumb/photos/m47418822351_1.jpg?1570446406"}/
+            .items-box-body
+              %h3.items-box-name.font-2 FENDI　ズッカ 長財布
+              .items-box-num
+                .items-box-price.font-5 ¥2,790
+        %section.items-box
+          %a{href: "#"}
+            %figure.items-box-photo
+              %img.is-higher-height.lazyloaded{:alt => "FENDI 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m72936775245_1.jpg?1570329729", :src => "https://static.mercdn.net/thumb/photos/m72936775245_1.jpg?1570329729"}/
+            .items-box-body
+              %h3.items-box-name.font-2 FENDI 長財布
+              .items-box-num
+                .items-box-price.font-5 ¥8,000
+        %section.items-box
+          %a{href: "#"}
+            %figure.items-box-photo
+              %img.lazyloaded{:alt => "FENDI 財布　カールラガーフェルド", "data-src" => "https://static.mercdn.net/thumb/photos/m82878093603_1.jpg?1569848967", :src => "https://static.mercdn.net/thumb/photos/m82878093603_1.jpg?1569848967"}/
+            .items-box-body
+              %h3.items-box-name.font-2 FENDI 財布　カールラガーフェルド
+              .items-box-num
+                .items-box-price.font-5 ¥47,200
+                .font-2
+                  %i.far.fa-heart
+                  %span 3
+  %nav.bread-crumbs.pos-bottom
+    %ul
+      %li{itemscope: "", itemtype: "http://data-vocabulary.org/Breadcrumb"}
+        %a{href: "#", itemprop: "url"}
+          %span{itemprop: "title"} メルカリ
+        %i.fas.fa-chevron-right
+      %li{itemscope: "", itemtype: "#"}
+        %span{itemprop: "title"} FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224
+  -# ここからフッダーです
+  %aside.advertising
+    .sc-ESoVU.bSubhH.sc-cjHlYL.bcomWS
+      .sc-dRaagA.gcWQbR
+        .sc-fEUNkw.fmTzct
+          .sc-dREXXX.hjdsEZ スマホでかんたんフリマアプリ
+          .sc-kcbnda.ihRzkY 今すぐ無料ダウンロード！
+          .sc-hcmgZB.gsXioq
+            %img.sc-dHmInP.kwTqFs{:alt => "", :src => "https://web-jp-assets.mercdn.net/_next/static/images/mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"}/
+            %a.sc-ejGVNB.TFEjN{:href => "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", :target => "_blank"}
+              %img.sc-eLdqWK.sc-iiUIRa.couthQ{:alt => "", :src => "https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg"}/
+            %a.sc-ejGVNB.TFEjN{:href => "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", :target => "_blank"}
+              %img.sc-eLdqWK.sc-hgRTRy.iBGblK{:alt => "", :src => "https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg"}/
+        %figure.sc-iIHSe.bMxODi
+          %img.sc-gldTML.iQCbun{:alt => "", :src => "https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png"}/
+  %footer.copyright
+    .sc-hRmvpr.jEIztn
+      .sc-cZBZkQ.fWNMlS
+        %h2.style_heading__3qSF6.common_fontFamily__3-3Si.style_medium__1YL67.sc-jdfcpN.kWagRH メルカリについて
+        %ul.sc-jMMfwr.jqeddd
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "https://about.mercari.com/"} 会社概要（運営会社）
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "/jp/jobs/"} 採用情報
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "https://about.mercari.com/press/news/"} プレスリリース
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "https://jp-news.mercari.com/", :target => "_blank"} 公式ブログ
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "/jp/logo-guidelines/"} メルカリロゴ利用ガイドライン
+          %a.sc-cBrjTV.gdPTKQ{:href => "https://twitter.com/mercari_jp", :target => "_blank"}
+            %svg.sc-bRBYWo.sc-fkyLDJ.eCFuzj{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 21 16", :width => "21"}
+              %path{:d => "M6.343 15.969c7.61 0 11.773-6.134 11.773-11.444 0-.172 0-.345-.008-.517a8.303 8.303 0 0 0 2.066-2.086 8.576 8.576 0 0 1-2.38.635A4.07 4.07 0 0 0 19.616.329a8.377 8.377 0 0 1-2.63.973 4.186 4.186 0 0 0-3.019-1.27c-2.283 0-4.14 1.803-4.14 4.023 0 .314.041.62.106.918A11.866 11.866 0 0 1 1.404.769a3.936 3.936 0 0 0-.557 2.023c0 1.396.735 2.628 1.84 3.35a4.278 4.278 0 0 1-1.872-.503v.055c0 1.945 1.428 3.577 3.317 3.945-.347.094-.71.141-1.09.141-.266 0-.524-.023-.774-.07.524 1.6 2.057 2.76 3.865 2.792a8.452 8.452 0 0 1-5.14 1.725 8.19 8.19 0 0 1-.985-.054 12.02 12.02 0 0 0 6.335 1.796", :fill => "currentColor", "fill-rule" => "evenodd"}
+          %a.sc-cBrjTV.gdPTKQ{:href => "https://www.facebook.com/mercarijp", :target => "_blank"}
+            %svg.sc-kEYyzF.sc-iCwjlJ.kXgLaj{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 16 16", :width => "16"}
+              %path{:d => "M15.111 0H.89A.889.889 0 0 0 0 .889V15.11c0 .491.398.889.889.889h7.658V9.813H6.469V7.391h2.078V5.613c0-2.066 1.262-3.193 3.11-3.193.623-.002 1.244.03 1.863.096v2.15h-1.276c-1.002 0-1.197.478-1.197 1.178v1.543h2.397l-.31 2.422h-2.087V16h4.064c.491 0 .889-.398.889-.889V.89A.889.889 0 0 0 15.111 0z", :fill => "currentColor", "fill-rule" => "evenodd"}
+      .sc-cZBZkQ.fWNMlS
+        %h2.style_heading__3qSF6.common_fontFamily__3-3Si.style_medium__1YL67.sc-jdfcpN.kWagRH ヘルプ＆ガイド
+        %ul.sc-jMMfwr.jqeddd
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "/jp/help_center/"} メルカリガイド
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "/jp/rakuraku-mercari/"} らくらくメルカリ便
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "/jp/yuyu-mercari/"} ゆうゆうメルカリ便
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "/jp/rakuraku-ogata/"} 大型メルカリ便
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "/jp/guide/car/"} 車体取引ガイド
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "/jp/safe/description/", :target => "_blank"} メルカリあんしん・あんぜん宣言！
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "/jp/authenticity/"} 偽ブランド品撲滅への取り組み
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.lhBUUv{:href => "/jp/box/"} メルカリボックス
+      .sc-cZBZkQ.sc-ecaExY.jkJraH
+        %h2.style_heading__3qSF6.common_fontFamily__3-3Si.style_medium__1YL67.sc-jdfcpN.kWagRH プライバシーと利用規約
+        .sc-jqIZGH.dqgEsZ
+          %ul.sc-jMMfwr.jqeddd
+            %li.sc-jGxEUC.deTNXB
+              %a.sc-jdeSqf.lhBUUv{:href => "/jp/privacy/"} プライバシーポリシー
+            %li.sc-jGxEUC.deTNXB
+              %a.sc-jdeSqf.lhBUUv{:href => "/jp/tos/"} メルカリ利用規約
+            %li.sc-jGxEUC.deTNXB
+              %a.sc-jdeSqf.lhBUUv{:href => "/jp/tos_smartphone_support/"} あんしんスマホサポート制度に関する利用特約
+            %li.sc-jGxEUC.deTNXB
+              %a.sc-jdeSqf.lhBUUv{:href => "/jp/compliance/"} コンプライアンスポリシー
+        .sc-jqIZGH.dqgEsZ
+          %ul.sc-jMMfwr.jqeddd
+            %li.sc-jGxEUC.deTNXB
+              %a.sc-jdeSqf.lhBUUv{:href => "/jp/data_security/"} 個人データの安全管理に係る基本方針
+            %li.sc-jGxEUC.deTNXB
+              %a.sc-jdeSqf.lhBUUv{:href => "/jp/tokutei/"} 特定商取引に関する表記
+            %li.sc-jGxEUC.deTNXB
+              %a.sc-jdeSqf.lhBUUv{:href => "/jp/shikin_kessai/"} 資金決済法に基づく表示
+            %li.sc-jGxEUC.deTNXB
+              %a.sc-jdeSqf.lhBUUv{:href => "https://about.mercari.com/csr/safety/"} 法令順守と犯罪抑止のために
+      .sc-cZBZkQ.sc-gbzWSY.bLlPss
+        %h2.style_heading__3qSF6.common_fontFamily__3-3Si.style_medium__1YL67.sc-jdfcpN.kWagRH 国
+        %ul.sc-jMMfwr.jqeddd
+          %li.sc-jGxEUC.deTNXB
+            %a.sc-jdeSqf.sc-jUpvKA.iuRzFU{:href => "/jp/"} 日本
+            %a.sc-jdeSqf.sc-jUpvKA.iuRzFU{:href => "/"} United States
+    .sc-eNNmBn.bZYlel
+      %a.sc-jRuhRL.fcQzqW{:href => "/jp/"}
+        %img.sc-kNBZmU.igKrOd{:alt => "Mercari", :src => "https://web-jp-assets.mercdn.net/_next/static/images/logo-white-1a0696cf557ee1ed6f3c3444661d21ad.svg"}/
+      %span.sc-kkbgRg.fdphvP © 2019 Mercari
