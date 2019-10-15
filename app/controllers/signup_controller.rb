@@ -38,7 +38,8 @@ class SignupController < ApplicationController
     session[:district] = profile_params[:district]
     session[:builing] = profile_params[:buiding]
 
-    @profile = @user.build_creditcard
+    @user = User.new
+    @creditcard = @user.build_creditcard
   end
 
   private

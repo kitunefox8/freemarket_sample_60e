@@ -34,55 +34,56 @@
       クレジットカード情報入力
     .new-session-main__body
       .form
-        = fields_for @creditcard, url: session2_signup_index_path, method: :get do |c|
-          .field
-            %label.top-text カード番号
-            %span.top-red-text 必須
-            %br/
-            = c.text_field :credit_number, placeholder: '例）半角数字のみ', class: 'textarea'
-            %ul.signup-card-list
-              %li
-                = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2296184308", class: 'card-image'
-              %li
-                = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?2296184308", class: 'card-image'
-              %li
-                = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?2296184308", class: 'card-image'
-              %li
-                = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2296184308", class: 'card-image'
-              %li
-                = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2296184308", class: 'card-image'
-              %li
-                = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?2296184308", class: 'card-image'
-              %li
-                = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?2296184308", class: 'card-image'
+        = form_for @user, url: signup_index_path, method: :post do |f|
+          = f.fields_for @creditcard, url: signup_index_path, method: :post do |c|
+            .field
+              %label.top-text カード番号
+              %span.top-red-text 必須
+              %br/
+              = c.text_field :credit_number, placeholder: '例）半角数字のみ', class: 'textarea'
+              %ul.signup-card-list
+                %li
+                  = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2296184308", class: 'card-image'
+                %li
+                  = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?2296184308", class: 'card-image'
+                %li
+                  = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?2296184308", class: 'card-image'
+                %li
+                  = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2296184308", class: 'card-image'
+                %li
+                  = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2296184308", class: 'card-image'
+                %li
+                  = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?2296184308", class: 'card-image'
+                %li
+                  = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?2296184308", class: 'card-image'
 
-          .field
-            %label.top-text 有効期限
-            %span.top-red-text 必須
-            %br/
-            .selecter
-              .monthday-selecter
-                -# = fa_icon 'chevron-down', class: 'icon-bottom'
-                = c.collection_select :validity_month, Month.all, :name, :name, {prompt: "---"}, class: 'select-monthday'
-                %span 月
+            .field
+              %label.top-text 有効期限
+              %span.top-red-text 必須
+              %br/
+              .selecter
+                .monthday-selecter
+                  -# = fa_icon 'chevron-down', class: 'icon-bottom'
+                  = c.collection_select :validity_month, Month.all, :name, :name, {prompt: "---"}, class: 'select-monthday'
+                  %span 月
 
-              .monthday-selecter
-                -# = fa_icon 'chevron-down', class: 'icon-bottom'
-                = c.collection_select :validity_day, Day.all, :name, :name, {prompt: "---"}, class: 'select-monthday'
-                %span 日
+                .monthday-selecter
+                  -# = fa_icon 'chevron-down', class: 'icon-bottom'
+                  = c.collection_select :validity_day, Day.all, :name, :name, {prompt: "---"}, class: 'select-monthday'
+                  %span 日
+                
+            .field
+              %label.top-text セキュリティカード
+              %span.top-red-text 必須
+              %br/
+              = c.text_field :security_number, placeholder: '例）カード背面４桁もしくは3桁の番号', class: 'textarea'
               
-          .field
-            %label.top-text セキュリティカード
-            %span.top-red-text 必須
-            %br/
-            = c.text_field :security_number, placeholder: '例）カード背面４桁もしくは3桁の番号', class: 'textarea'
-            
-          .field-right
-            .right-text 
-              = fa_icon 'question-circle', class: 'icon-question'
-              %label.top-text カード番号の裏面とは
+            .field-right
+              .right-text 
+                = fa_icon 'question-circle', class: 'icon-question'
+                %label.top-text カード番号の裏面とは
 
           .field
-            %input.form-submit{type: 'submit', value: '追加する'}
+            = f.submit '追加する', class: 'form-submit'
 
   = render 'footer'
