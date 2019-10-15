@@ -25,7 +25,20 @@ class SignupController < ApplicationController
 
     @profile = Profile.new
   end
-  
+
+  def session5
+    session[:first_name] = profile_params[:first_name]
+    session[:last_name] = profile_params[:last_name]
+    session[:first_kana] = profile_params[:first_kana]
+    session[:last_kana] = profile_params[:last_kana]
+    session[:zipcode] = profile_params[:zipcode]
+    session[:city] = profile_params[:city]
+    session[:district] = profile_params[:district]
+    session[:builing] = profile_params[:buiding]
+
+    @creditcard = Creditcard.new
+  end
+
   private
   def user_params
     params.require(:user).permit(
@@ -52,5 +65,14 @@ class SignupController < ApplicationController
       :district,
       :building
   )
-  end 
+  end
+
+  def creditcard_params
+    params.require(:creditcard).permit(
+      :credit_number,
+      :validity_month,
+      :validity_day,
+      :security_number
+    )
+  end
 end
