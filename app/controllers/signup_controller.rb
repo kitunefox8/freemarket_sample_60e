@@ -1,7 +1,7 @@
 class SignupController < ApplicationController
   def session1
     @user = User.new
-    @profile = Profile.new
+    @profile = @user.build_profile
   end
   def session2
     session[:nickname] = user_params[:nickname]
@@ -17,13 +17,13 @@ class SignupController < ApplicationController
     session[:birth_month] = profile_params[:birth_month]
     session[:birth_day] = profile_params[:birth_day]
     
-    @profile = Profile.new
+    @profile = @user.build_profile
   end
 
   def session4
     session[:tel] = profile_params[:tel]
 
-    @profile = Profile.new
+    @profile = @user.build_profile
   end
 
   def session5
@@ -36,7 +36,7 @@ class SignupController < ApplicationController
     session[:district] = profile_params[:district]
     session[:builing] = profile_params[:buiding]
 
-    @creditcard = Creditcard.new
+    @profile = @user.build_creditcard
   end
 
   private
