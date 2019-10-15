@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_022842) do
+ActiveRecord::Schema.define(version: 2019_10_15_035450) do
 
   create_table "brandgroups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -55,10 +55,13 @@ ActiveRecord::Schema.define(version: 2019_10_08_022842) do
   end
 
   create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "credit_namber", null: false
+    t.string "credit_number", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "validity_month", null: false
+    t.integer "validity_day", null: false
+    t.integer "security_number", null: false
   end
 
   create_table "grandchildren", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
