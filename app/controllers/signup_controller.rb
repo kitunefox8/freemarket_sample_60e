@@ -17,6 +17,7 @@ class SignupController < ApplicationController
     session[:birth_month] = profile_params[:birth_month]
     session[:birth_day] = profile_params[:birth_day]
     
+    @user = User.new
     @profile = @user.build_profile
   end
 

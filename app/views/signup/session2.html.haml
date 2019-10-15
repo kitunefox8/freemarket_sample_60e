@@ -34,24 +34,25 @@
       電話番号の確認
     .new-session-main__body
       .form
-        = fields_for @profile, url: session2_signup_index_path, method: :get do |o|
-          .field
-            %label.top-text 電話番号
-            %br/
-            = o.text_field :tel, placeholder: '例）携帯番号の入力', size: "40", class: 'textarea'
+        = form_for @user, url: session4_signup_index_path, method: :get do |f|
+          = f.fields_for @profile, url: session4_signup_index_path, method: :get do |o|
+            .field
+              %label.top-text 電話番号
+              %br/
+              = o.text_field :tel, placeholder: '例）携帯番号の入力', size: "40", class: 'textarea'
+              
+            .field
+              %p.main-text 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
             
           .field
-            %p.main-text 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
-          
-          .field
-            = o.submit 'SMSを送信する', class: 'form-submit'
+            = f.submit 'SMSを送信する', class: 'form-submit'
 
-          .field
-            %p.main-text ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+            .field
+              %p.main-text ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
 
-          .field-right
-            .right-text
-              = link_to '電話番号確認が必要な理由', '#' 
-              = fa_icon 'chevron-right', class: 'icon-right'
+            .field-right
+              .right-text
+                = link_to '電話番号確認が必要な理由', '#' 
+                = fa_icon 'chevron-right', class: 'icon-right'
 
   = render 'footer'
