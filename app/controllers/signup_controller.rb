@@ -24,6 +24,7 @@ class SignupController < ApplicationController
   def session4
     session[:tel] = profile_params[:tel]
 
+    @user = User.new
     @profile = @user.build_profile
   end
 
