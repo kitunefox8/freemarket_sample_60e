@@ -17,13 +17,19 @@ class SignupController < ApplicationController
     session[:birth_month] = profile_params[:birth_month]
     session[:birth_day] = profile_params[:birth_day]
     
-    @profile = User.new
+    @profile = Profile.new
   end
 
+  def session4
+    session[:tel] = profile_params[:tel]
+
+    @profile = Profile.new
+  end
+  
   private
   def user_params
     params.require(:user).permit(
-      :name
+      :name,
       :email,
       :password,
       :password_confirmation
