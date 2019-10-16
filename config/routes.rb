@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
   resources :image_tests, only: [:index, :create]
 
-  resources :signup, only: [:index, :create] do
+  resources :signup, only: [:create] do
     collection do
       get 'index'
       get 'session1'
