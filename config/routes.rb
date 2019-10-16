@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get 'show2'
     end
   end
+  
   resources :users, only: [:index] do
     collection do
       get 'session1'
@@ -21,4 +22,15 @@ Rails.application.routes.draw do
   end
   resources :image_tests, only: [:index, :create]
 
+  resources :signup, only: [:create] do
+    collection do
+      get 'session0'
+      get 'session1'
+      get 'session2'
+      get 'session3'
+      get 'session4'
+      get 'session5'
+    end
+  end
+  
 end
