@@ -24,13 +24,12 @@ Rails.application.routes.draw do
 
   resources :signup, only: [:create] do
     collection do
-      get 'index'
+      get 'session0'
       get 'session1'
       get 'session2'
       get 'session3'
       get 'session4'
       get 'session5'
-      post 'session5'
     end
   end
   
