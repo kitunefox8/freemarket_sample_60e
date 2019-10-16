@@ -1,8 +1,13 @@
 class SignupController < ApplicationController
+  before_action :set_user_parameter, only: [:create]
+  before_action :set_profile_parameter, only: [:create]
+  before_action :set_creditcard_parameter, only: [:create]
+
   def session1
     @user = User.new
     @profile = @user.build_profile
   end
+
   def session2
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
@@ -44,17 +49,25 @@ class SignupController < ApplicationController
   end
 
   def create
-    session[:credit_number] = user_params[:creditcard][:credit_number]
-    session[:validity_month] = user_params[:creditcard][:validity_month]
-    session[:validity_day] = user_params[:creditcard][:validity_day]
-    session[:security_number] = user_params[:creditcard][:security_number]
+    if @user.save && @profile.save && @creditcard.save
+      session[:id] = @user.id
+      sign_in User.find(session[:id])
+      redirect_to root_path
+    else
+      redirect_to session0_signup_index_path
+    end
+  end
 
+  def set_user_parameter
     @user = User.new(
       nickname: session[:nickname], 
       email: session[:email],
       password: session[:password],
       password_confirmation: session[:password_confirmation]
     )
+  end
+
+  def set_profile_parameter
     @profile = @user.build_profile(
       first_name: session[:first_name],
       last_name: session[:last_name],
@@ -70,20 +83,20 @@ class SignupController < ApplicationController
       building: session[:building],
       tel: session[:tel]
     )
+  end
+
+  def set_creditcard_parameter
+    session[:credit_number] = user_params[:creditcard][:credit_number]
+    session[:validity_month] = user_params[:creditcard][:validity_month]
+    session[:validity_day] = user_params[:creditcard][:validity_day]
+    session[:security_number] = user_params[:creditcard][:security_number]
+
     @creditcard = @user.build_creditcard(
       credit_number: session[:credit_number],
       validity_month: session[:validity_month],
       validity_day: session[:validity_day],
       security_number: session[:security_number]
     )
-
-    if @user.save && @profile.save && @creditcard.save
-      session[:id] = @user.id
-      sign_in User.find(session[:id])
-      redirect_to root_path
-    else
-      redirect_to session0_signup_index_path
-    end
   end
 
   private
@@ -96,5 +109,5 @@ class SignupController < ApplicationController
       creditcard: [:credit_number, :validity_month, :validity_day, :security_number]
     )
   end
-  
+
 end
