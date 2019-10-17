@@ -17,6 +17,7 @@
               .sell-dropbox-container-clearfix
                 .sell-dropbox-container-clearfix__items
                 .sell-upload-drop-box 
+                  = f.text_field :image, placeholder:"img_url", type: "text", class: "textarea-default" 
                   %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
       .sell-content
         .form-group
@@ -24,7 +25,6 @@
           %label
             %span.image-form__upload-box--header__require　必須
           %div
-            
             = f.text_field :name, placeholder: "商品名（必須 40文字まで)", type: "string", class: "image-form__upload-box--header__default" 
 
         .form-group
@@ -40,7 +40,7 @@
             %div
             = f.fields_for :category do |c|
               .select-wrap
-                = c.select :name,[["---",""],["レディース","1"],["メンズ","2"],["ベビー・キッズ","3"],["インテリア・住まい・小物","4"],["本・音楽・ゲーム","5"],["おもちゃ・ホビー・グッズ","1328"],["コスメ・香水・美容","6"],["家電・スマホ・カメラ","7"],["ハンドメイド","9"],["チケット","1027"],["自動車・オートバイ","1318"],["その他","10"]], {}, class: "select-default"
+                = c.select :name,[["---",""],["レディース"],["メンズ"],["ベビー・キッズ"],["インテリア・住まい"],["本・音楽・ゲーム"],["おもちゃ・ホビー・グッズ"],["コスメ・香水・美容"],["家電・スマホ・カメラ"],["ハンドメイド"],["チケット"],["自動車・オートバイ"],["その他"]], {}, class: "select-default"
               %i.icon-arrow-bottom
 
           .form-group.form-suggest-container
@@ -60,7 +60,7 @@
             %div
             = f.fields_for :status do |s|
               .select-wrap
-                = s.select :name, [["---",""],["新品・未使用","1"],["未使用に近い","2"],["目立った傷、汚れ無し","3"],["やや傷、汚れあり","4"],["傷汚れあり","5"],["全体的に状態が悪い","1328"]], {}, class: "select-default"
+                = s.select :name, [["---",""],["新品・未使用"],["未使用に近い"],["目立った傷、汚れ無し"],["やや傷、汚れあり"],["傷汚れあり"],["全体的に状態が悪い"]], {}, class: "select-default"
                 %i.icon-arrow-bottom
       .sell-content.clearfix
         %h3.sell-sub-head  配達について    
@@ -71,19 +71,25 @@
             %span.image-form__upload-box--header__require 必須
             %div
               .select-wrap
-                = f.select :delivery_fee, [["---",""],["送料込み（出品者負担）","1"],["着払い（購入者負担）","2"]], {}, class: "select-default"
+                = f.select :delivery_fee, [["---",""],["送料込み（出品者負担）"],["着払い（購入者負担）"]], {}, class: "select-default"
+          .form-group
+            .image-form__upload-box--header 配送方法
+            %span.image-form__upload-box--header__require 必須
+            %div
+              .select-wrap
+                = f.select :delivery, [["---",""],["未定"],["らくらくメルカリ便"],["ゆうメール"],["レターパック"],["普通郵便"],["クロネコヤマト"],["ゆうパック"],["クリックポスト"],["ゆうパケット"]], {}, class: "select-default"
           .form-group
             .image-form__upload-box--header 発送元の地域
             %span.image-form__upload-box--header__require 必須
             %div
               .select-wrap
-                = f.select :shipping_area, [["---",""],["北海道","1"],["青森県","2"],["岩手県","3"],["宮城県","4"],["秋田県","5"],["山形県","6"],["福島県","7"],["茨城県","8"],["栃木県","9"],["群馬県","10"],["埼玉県","11"],["千葉県","12"],["東京都","13"],["神奈川県","14"],["新潟県","15"],["富山県","16"],["石川県","17"],["福井県","18"],["山梨県","19"],["長野県","20"],["岐阜県","21"],["静岡県","22"],["愛知県","23"],["三重県","24"],["滋賀県","25"],["京都府","26"],["大阪府","27"],["兵庫県","28"],["奈良県","29"],["和歌山県","30"],["鳥取県","31"],["島根県","32"],["広島県","33"],["岡山県","34"],["山口県","35"],["徳島県","36"],["香川県","37"],["愛媛県","38"],["高知県","39"],["福岡県","40"],["佐賀県","41"],["長崎県","42"],["熊本県","43"],["大分県","44"],["宮崎県","45"],["鹿児島県","46"],["沖縄県","47"],["未定","48"]], {}, class: "select-default"
+                = f.select :shipping_area, [["---",""],["北海道"],["青森県"],["岩手県"],["宮城県"],["秋田県"],["山形県"],["福島県"],["茨城県"],["栃木県"],["群馬県"],["埼玉県"],["千葉県"],["東京都"],["神奈川県"],["新潟県"],["富山県"],["石川県"],["福井県"],["山梨県"],["長野県"],["岐阜県"],["静岡県"],["愛知県"],["三重県"],["滋賀県"],["京都府"],["大阪府"],["兵庫県"],["奈良県"],["和歌山県"],["鳥取県"],["島根県"],["広島県"],["岡山県"],["山口県"],["徳島県"],["香川県"],["愛媛県"],["高知県"],["福岡県"],["佐賀県"],["長崎県"],["熊本県"],["大分県"],["宮崎県"],["鹿児島県"],["沖縄県"],["未定"]], {}, class: "select-default"
           .form-group
             .image-form__upload-box--header 発送までの日数
             %span.image-form__upload-box--header__require 必須
             %div
               .select-wrap
-                = f.select :shipping_days, [["---",""],["1〜2日で発送","1"],["2〜3日で発送","2"],["4〜7日で発送","3"]], {}, class: "select-default"
+                = f.select :shipping_days, [["---",""],["1〜2日で発送"],["2〜3日で発送"],["4〜7日で発送"]], {}, class: "select-default"
       .sell-content.clearfix
         %h3.sell-sub-head  販売価格(300〜9,999,999)    
         %a.form-question{:href => "/jp/help_center/article/68/", :target => "_blank"} 
@@ -96,8 +102,7 @@
                 .l-right-sell-price-input ¥
                 = f.text_field :price, class: "input-default", placeholder: "例）300"
             .clearfix2
-              .l-left 手数料(10%)
-              
+              .l-left 手数料(10%)              
             .clearfix-bold
               .l-left 販売手数料
               
