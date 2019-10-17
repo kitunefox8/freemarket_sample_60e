@@ -28,3 +28,5 @@
 /config/credentials.yml.enc
 
 public/uploads/*
+
+app/views/.DS_Store
