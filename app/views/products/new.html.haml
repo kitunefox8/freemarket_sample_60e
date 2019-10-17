@@ -17,7 +17,8 @@
               .sell-dropbox-container-clearfix
                 .sell-dropbox-container-clearfix__items
                 .sell-upload-drop-box 
-                  = f.text_field :image, placeholder:"img_url", type: "text", class: "textarea-default" 
+                = f.fields_for :image do |i|
+                  = i.file_field :image_url
                   %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
       .sell-content
         .form-group
