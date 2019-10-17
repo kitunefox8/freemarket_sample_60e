@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   private
   def create_params
     params.require(:product).permit(
-      :image, :name, :price, :description, :exposition, :delivery_fee, :delivery, :shipping_area, :shipping_days, :saller_id,
+      :name, :price, :description, :exposition, :delivery_fee, :delivery, :shipping_area, :shipping_days, :saller_id,
       category_attributes: [:id, :name],
       status_attributes: [:id, :name],
       brand_attributes: [:id, :name],
