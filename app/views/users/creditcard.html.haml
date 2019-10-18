@@ -1,0 +1,24 @@
+= render 'shared/header'
+
+.body
+  .mypage
+    = render 'side-bar'
+
+    .mypage__main
+      .mypage-section-credit
+        .top-text-credit
+          支払い方法
+        .main-credit
+          .top-text
+            クレジットカード一覧
+          .link-credit
+            = link_to '#' ,class: 'btn-credit' do
+              .icon
+                = fa_icon 'credit-card', class: 'icon-credit'
+              .text
+                クレジットカードを追加する
+          .field-right
+            = link_to '支払い方法について', '#', class: 'right-text'
+            = fa_icon 'chevron-right', class: 'right-text'
+
+= render 'shared/footer'   
