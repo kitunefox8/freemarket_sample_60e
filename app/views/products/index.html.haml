@@ -34,7 +34,8 @@
               - @product.each do |product|
                 .product
                   %a.style_link{:href => "/products/#{product.id}"}
-                    %img{alt: "image", src: product.images[0].image_url}
+                    = image_tag product.images[0].image_url.url
+                    -# %img{alt: "image", src: product.images[0].image_url}
                   -# =image_tag "#{product.images.first.image_url}"
                   .name
                     =product.name
@@ -67,7 +68,8 @@
               - @product.each do |product|
                 .product
                   %a.style_link{:href => "/products/#{product.id}"}
-                    %img{alt: "image", src: product.images[0].image_url}
+                    = image_tag product.images[0].image_url.url
+                    -# %img{alt: "image", src: product.images[0].image_url}
                   -# =image_tag "#{product.images.first.image_url}"
                   .name
                     = product.name
