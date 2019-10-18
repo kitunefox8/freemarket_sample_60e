@@ -8,20 +8,25 @@
       %section.buy-content
         .buy-content__inner
           %h3.buy-content__inner--img
-            %img{alt:"mercari2",width: "65",height:"70",src:"https://static.mercdn.net/thumb/photos/m26991030967_1.jpg?1570582099"}/
-          %p.buy-content__inner--bold ハーフパンツ
+            %img{alt:"mercari2",width: "65",height:"70",src:@product.images.first.image_url}/
+          %p.buy-content__inner--bold 
+            =@product.name
           .buy-form
-            %ul.buy-form__price-bold ¥3,200
-            %il.buy-form__price-bold-fee (送料込み)
+            %ul.buy-form__price-bold 
+              ="¥" + @product.price
+            %il.buy-form__price-bold-fee 
+              =@product.delivery_fee
             %ul.buy-form__not-point
               %il.buy-form__not-point__btn
                 .buy-form__not-point__btn--grey ポイントはありません
             %ul.buy-form__price
               .buy-form__price__content
                 %il.buy-form__price__content--guide 支払い金額
-                %il.buy-form__price__content--box ¥3200
+                %il.buy-form__price__content--box 
+                  ="¥" + @product.price
             %p.buy-form__price-error 配送先と支払い方法の入力を完了してください。
             %button.buy-form__price-btn{type: "submit"} 購入する
+            %a.style_link{:href => "/products/buyer/#{@product.id}"}
       %section.buy-user-info
         .buy-user-inner
           %h3 配送先

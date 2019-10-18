@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def index
+    @product = Product.all.order("id DESC")
   end
 
   def new
@@ -7,16 +8,32 @@ class ProductsController < ApplicationController
     @product.build_category
     @product.build_status
     @product.build_brand
-    @product.build_image
+    @product.images.build
   end
 
   def show
+    @product = Product.find(params[:id])  
+    @category = Category.find(params[:id])  
+    @status = Status.find(params[:id])  
+    @brand = Brand.find(params[:id])
+    @image = Image.find(params[:id])
   end
-
+  def buy
+    @product = Product.find(params[:id])
+  end
+  
+  def buyer
+    @product = Product.find(params[:id])
+    if @product.update(buyer: 1)
+    redirect_to action: :index
+    else
+    redirect_to action: :index
+    end
+  end
   def create
     @product = Product.new(create_params)
     if @product.save
-      redirect_to new_product_path
+      redirect_to action: :index
     else
       render :new
     end
@@ -25,11 +42,11 @@ class ProductsController < ApplicationController
   private
   def create_params
     params.require(:product).permit(
-      :name, :price, :description, :exposition, :delivery_fee, :delivery, :shipping_area, :shipping_days, :saller_id,
+       :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days, :saller_id, :buyer,
       category_attributes: [:id, :name],
       status_attributes: [:id, :name],
       brand_attributes: [:id, :name],
-      image_attributes: [:id, :image_url]
+      images_attributes: [:id, :image_url]
     )
   end
 end
