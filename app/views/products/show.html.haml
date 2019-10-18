@@ -40,7 +40,7 @@
             .owl-stage
               .owl-item{style: "width: 300px;"}
                 .owl-item-inner
-                  %img.owl-lazy{alt: "image", src: @product.images[0].image_url, :style => "opacity: 1;"}
+                  %img.owl-lazy{alt: "image", src: @product.images[0].image_url, style: "opacity: 1;"}
                     -if @product.buyer == "1" 
                       .items-box_photos__sold
                         .items-box_photos__sold__inner
@@ -120,7 +120,7 @@
       .item-buy-btns
         取引停止中
     -else
-      %a.item-buy-btn{:href => "/products/buy/#{@product.id}"}
+      %a.item-buy-btn{href: "/products/buy/#{@product.id}"}
         購入画面に進む
     .item-description.f14
       %p.item-description-inner
