@@ -1,0 +1,125 @@
+.body{
+  background-color: $cream;
+  .header{
+    height: 130px;
+    align-items: center;
+    .header-logo{
+      height: 70px;
+      width: 180px;
+      margin: 0 auto;
+    }
+  }
+  .new-signin-main{
+    width: 500px;
+    margin: 0 auto;
+    border: 1px solid;
+    border-color: $white2;
+    box-sizing: border-box;
+    background-color: $white;
+    &__top{
+      padding: 40px 64px;
+      text-align: center;
+      border-bottom: 1px solid;
+      border-color: $white2;
+      .top-text{
+        font-size: 14px;
+      }
+      .link-button-mail-blue{
+        height: 50px;
+        width: 350px;
+        background-color: $light-blue2;
+        border: 1px solid $light-blue2;
+        margin: 0 auto;
+        margin-top: 8px;
+        .btn-mail-blue{
+          display: flex;
+          text-decoration: none;
+          .text{
+            color: $white;
+            line-height: 50px;
+            display: block;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+    &__body{
+      padding: 20px 15px 40px 15px;
+      box-sizing: border-box;
+      .link-button-facebook{
+        height: 50px;
+        width: 350px;
+        background-color:$navy;
+        border: 1px solid $navy;
+        margin: 0 auto;
+        .btn-facebook{
+          display: flex;
+          text-decoration: none;
+          .icon-facebook{
+            color: $white;
+            line-height: 50px;
+            padding:0 15px;
+            font-size: 26px;
+          }
+          .text{
+            color: $white;
+            line-height: 50px;
+            display: block;
+            margin: 0 auto;
+          }
+        }
+      }
+      .link-button-google{
+        height: 50px;
+        width: 350px;
+        border: 1px solid;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        position: relative;
+        margin-top: 16px;
+        .btn-google{
+          display: flex;
+          text-decoration: none;
+          .icon-google{
+            height: 30px;
+            width: 30px;
+            padding:0 15px;
+            position: absolute;
+            top: 10px;
+            left: 1px;
+          }
+          .text{
+            color: $black2;
+            line-height: 50px;
+            display: block;
+            margin: 0 auto;
+          }
+        }
+      }
+      .field{
+        max-width: 350px;
+        margin: 20px auto;
+        .textarea{
+          width: 310px;
+          border-radius: 3px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid;
+          border-color: $gray;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+        }
+        .form-submit{
+          height: 50px;
+          width: 350px;
+          line-height: 50px;
+          text-align: center;
+          color: $white;
+          background-color: $red;
+        }
+      }
+    }
+  }
+}
+  
