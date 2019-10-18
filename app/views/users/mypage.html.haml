@@ -1,0 +1,115 @@
+= render 'shared/header'
+
+.body
+  .mypage
+    = render 'side-bar'
+
+    .mypage__main
+      .mypage-section-user
+        = link_to '#', class: 'link-non' do
+          .section-image
+            = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: 'user-icon'
+          .user-name メルカリ
+          .mypage-number 
+            .evaluation 評価
+            %span.count 0
+            .evaluation 出品数
+            %span.count 0
+      .mypage-tab
+        %ul.section-tab
+          %li.active
+            = link_to 'お知らせ', '#', class: 'link-non'
+          %li.non-active
+            = link_to 'やることリスト', '#', class: 'link-non' 
+
+      .mypage-content
+        %ul.content-area
+          %li.content-field
+            = link_to '#', class: 'link-non' do
+              .content-image
+                = image_tag '//static.mercdn.net/images/mercari_profile.png', class: 'mini-mercari-image'
+              .content-text
+                .top-text
+                  事務局から個別メッセージ「ログイン通知」
+                .bottom-text
+                  = fa_icon 'clock', class: 'icon-time'
+                  %span.time 1時間前
+              .content-arrow
+                = fa_icon 'chevron-right', class: 'icon-right'     
+          %li.content-field
+            = link_to '#', class: 'link-non' do
+              .content-image
+                = image_tag '//static.mercdn.net/images/mercari_profile.png', class: 'mini-mercari-image'
+              .content-text
+                .top-text
+                  明日、P999還元クーポンの有効期限が切れます！タップして詳細を確認しましょう。
+                .bottom-text
+                  = fa_icon 'clock', class: 'icon-time'
+                  %span.time 1日前
+              .content-arrow
+                = fa_icon 'chevron-right', class: 'icon-right'     
+          %li.content-field
+            = link_to '#', class: 'link-non' do
+              .content-image
+                = image_tag '//static.mercdn.net/images/mercari_profile.png', class: 'mini-mercari-image'
+              .content-text
+                .top-text
+                  明日、P999還元クーポンの有効期限が切れます！タップして詳細を確認しましょう。
+                .bottom-text
+                  = fa_icon 'clock', class: 'icon-time'
+                  %span.time 1日前
+              .content-arrow
+                = fa_icon 'chevron-right', class: 'icon-right'     
+          %li.content-field
+            = link_to '#', class: 'link-non' do
+              .content-image
+                = image_tag '//static.mercdn.net/images/mercari_profile.png', class: 'mini-mercari-image'
+              .content-text
+                .top-text
+                  事務局から個別メッセージ「ログイン通知」
+                .bottom-text
+                  = fa_icon 'clock', class: 'icon-time'
+                  %span.time 1日前
+              .content-arrow
+                = fa_icon 'chevron-right', class: 'icon-right'     
+          %li.content-field
+            = link_to '#', class: 'link-non' do
+              .content-image
+                = image_tag '//static.mercdn.net/images/mercari_profile.png', class: 'mini-mercari-image'
+              .content-text
+                .top-text
+                  《お買い物応援！》¥1,000の商品を実質1円でご購入いただけます！
+                .bottom-text
+                  = fa_icon 'clock', class: 'icon-time'
+                  %span.time 2日前
+              .content-arrow
+                = fa_icon 'chevron-right', class: 'icon-right'     
+          %li.content-field
+            = link_to '#', class: 'link-non' do
+              .content-image
+                = image_tag '//static.mercdn.net/images/mercari_profile.png', class: 'mini-mercari-image'
+              .content-text
+                .top-text
+                  事務局から個別メッセージ「ログイン通知」
+                .bottom-text
+                  = fa_icon 'clock', class: 'icon-time'
+                  %span.time 2日前
+              .content-arrow
+                = fa_icon 'chevron-right', class: 'icon-right'     
+          %li.content-field2
+            = link_to '一覧を見る', '#', class: 'content-submit'
+
+      .mypage-section-trading
+        .section-top
+          購入した商品
+        .mypage-tab
+          %ul.section-tab
+            %li.active
+              = link_to '取引中','#', class: 'link-non'
+            %li.non-active
+              = link_to '過去の取引', '#', class: 'link-non'
+        .content-area
+          .content-area-text
+            取引中の商品がありません
+
+= render 'shared/footer'   

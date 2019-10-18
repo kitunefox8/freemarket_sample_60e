@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index] do
     collection do
-      get 'session1'
-      get 'session2'
-      get 'session3'
-      get 'session4'
-      get 'session5'
+      get 'mypage'
+      get 'profile'
+      get 'person'
+      get 'creditcard'
+      get 'logout'
     end
   end
   resources :image_tests, only: [:index, :create]

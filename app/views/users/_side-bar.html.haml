@@ -1,0 +1,123 @@
+.mypage__side
+  %ul.mypage-list
+    %li.mypage-single-active
+      = link_to mypage_users_path, class: 'link-non' do
+        .list-text
+          マイページ
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          お知らせ
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          やることリスト
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          いいね！一覧
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          出品する
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          出品した商品 - 出品中
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          出品した商品 - 取引中
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          出品した商品 - 売却済
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          購入した商品 - 取引中
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          購入した商品 -過去の取引
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          ニュース一覧
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          評価一覧
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          ガイド
+        = fa_icon 'chevron-right', class: 'icon-right'
+    %li.mypage-single-white
+      = link_to '#', class: 'link-non' do
+        .list-text
+          お問い合わせ
+        = fa_icon 'chevron-right', class: 'icon-right'
+
+    %h3.mypage-head-text メルペイ
+    %ul.mypage-list
+      %li.mypage-single-white
+        = link_to '#', class: 'link-non' do
+          .list-text
+            売上・振込申請
+          = fa_icon 'chevron-right', class: 'icon-right'
+      %li.mypage-single-white
+        = link_to '#', class: 'link-non' do
+          .list-text
+            ポイント
+          = fa_icon 'chevron-right', class: 'icon-right'
+
+    %h3.mypage-head-text 設定 
+    %ul.mypage-list
+      %li.mypage-single-white
+        = link_to profile_users_path, class: 'link-non' do
+          .list-text
+            プロフィール
+          = fa_icon 'chevron-right', class: 'icon-right'
+      %li.mypage-single-white
+        = link_to '#', class: 'link-non' do
+          .list-text
+            発送元・お届け先住所変更
+          = fa_icon 'chevron-right', class: 'icon-right'
+      %li.mypage-single-white
+        = link_to creditcard_users_path, class: 'link-non' do
+          .list-text
+            支払い方法
+          = fa_icon 'chevron-right', class: 'icon-right'
+      %li.mypage-single-white
+        = link_to '#', class: 'link-non' do
+          .list-text
+            メール/パスワード
+          = fa_icon 'chevron-right', class: 'icon-right'
+      %li.mypage-single-white
+        = link_to person_users_path, class: 'link-non' do
+          .list-text
+            本人情報
+          = fa_icon 'chevron-right', class: 'icon-right'
+      %li.mypage-single-white
+        = link_to '#', class: 'link-non' do
+          .list-text
+            電話番号の確認
+          = fa_icon 'chevron-right', class: 'icon-right'
+      %li.mypage-single-white
+        = link_to logout_users_path, class: 'link-non' do
+          .list-text
+            ログアウト
+          = fa_icon 'chevron-right', class: 'icon-right'
