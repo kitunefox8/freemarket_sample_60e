@@ -8,9 +8,9 @@
     display: flex;
 
     &__side{
-      width: 280px;
       margin-left: 40px;
       .mypage-list{
+        width: 280px;
         list-style: none;
         .mypage-single-active{
           height: 48px;
