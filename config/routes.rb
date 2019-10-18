@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   
   resources :products, only: [:index, :show, :new, :create] do
     collection do
-      get 'buy'
-      # get 'show'
-      # get 'show2'
+      get '/buy/:id'  => 'products#buy'
+      get '/buyer/:id' => 'products#buyer'
     end
   end
   

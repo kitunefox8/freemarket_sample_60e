@@ -1,3 +1,5 @@
 class Image < ApplicationRecord
-  has_many :products
+  belongs_to :product
+
+  mount_uploader :image_url, ImageUploader
 end

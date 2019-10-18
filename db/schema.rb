@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_051747) do
+
 
   create_table "brandgroups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -82,7 +82,8 @@ ActiveRecord::Schema.define(version: 2019_10_17_051747) do
     t.string "image_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "product_id"
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_images_on_product_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -106,14 +107,13 @@ ActiveRecord::Schema.define(version: 2019_10_17_051747) do
     t.string "price", null: false
     t.text "description", null: false
     t.integer "saller_id"
-    t.integer "delivery_fee"
-    t.integer "shipping_area"
-    t.integer "shipping_days"
+
     t.integer "category_id"
     t.integer "status_id"
     t.integer "brand_id"
     t.integer "image_id"
     t.string "delivery"
+
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -139,6 +139,12 @@ ActiveRecord::Schema.define(version: 2019_10_17_051747) do
     t.text "comment"
     t.integer "trading_id"
     t.integer "rating", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sallers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -203,4 +209,5 @@ ActiveRecord::Schema.define(version: 2019_10_17_051747) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "images", "products"
 end

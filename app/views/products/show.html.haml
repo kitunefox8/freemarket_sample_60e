@@ -6,6 +6,7 @@
         .mercari__head__logo
           %a.mercari__head__logo-image
             =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari__head__logo-image", size: "134x36"
+            %a.style_link{:href => "/products"}
         %form.search__form{}
           %input{type: "search", class: "search__form__input"}
           %button.search-button
@@ -31,15 +32,7 @@
     -# ここまでヘッダーです
   %section.item-box-container.l-single-container
     %h1.item-name
-      >FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224
-    %p.item-wording
-      『FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224』は、651回の取引実績を持つ
-      %a{href: "#"}> ブランド多数出品中！
-      さんから出品されました。
-      %a{href: "#"}> フェンディ
-      （
-      %a{href: "#"}> 長財布/レディース
-      ）の商品で、大阪府から1~2日で発送されます。
+      = @product.name
     .item-main-content.clearfix
       .item-photo
         .owl-carousel.owl-loaded.owl-drag
@@ -47,7 +40,11 @@
             .owl-stage
               .owl-item{style: "width: 300px;"}
                 .owl-item-inner
-                  %img.owl-lazy{alt: "FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m91592311337_1.jpg?1567487513", :src => "https://static.mercdn.net/item/detail/orig/photos/m91592311337_1.jpg?1567487513", :style => "opacity: 1;"}/
+                  %img.owl-lazy{alt: "image", src: @product.images[0].image_url, style: "opacity: 1;"}
+                    -if @product.buyer == "1" 
+                      .items-box_photos__sold
+                        .items-box_photos__sold__inner
+                          SOLD
           .owl-nav.disabled
             .owl-prev 
             .owl-next 
@@ -76,7 +73,8 @@
             %th カテゴリー
             %td
               %a{href: "#"}
-                %div レディース
+                %div 
+                  =@category.name
               %a{href: "#"}
                 .item-detail-table-sub-category
                   %i.fas.fa-chevron-right
@@ -90,79 +88,43 @@
             %td
               %a{href: "#"}
                 %div
-                  フェンディ
+                  = @brand.name
           %tr
             %th 商品の状態
-            %td やや傷や汚れあり
+            %td 
+              =@status.name
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td 
+              = @product.delivery_fee
           %tr
             %th 配送の方法
-            %td 未定
+            %td 
+              = @product.delivery
           %tr
             %th 配送元地域
             %td
-              %a{href: "#"} 大阪府
+              %a{href: "#"} 
+                =@product.shipping_area
           %tr
             %th 発送日の目安
-            %td 1~2日で発送
+            %td 
+              =@product.shipping_days
     .item-price-box.text-center
-      %span.item-price.bold ¥5,800
+      %span.item-price.bold 
+        ="¥"+@product.price
       %span.item-tax (税込)
-      %span.item-shipping-fee 送料込み
-    %a.item-buy-btn{href: "#"}
-      購入画面に進む
+      %span.item-shipping-fee 
+        = @product.delivery_fee
+    -if @product.buyer == "1" 
+      .item-buy-btns
+        取引停止中
+    -else
+      %a.item-buy-btn{href: "/products/buy/#{@product.id}"}
+        購入画面に進む
     .item-description.f14
       %p.item-description-inner
-        ■□ご入金確認後、1～2日(日祝除く)で発送致します！■□
-        
-        こちらで扱っている商品は確実に正規品です。
-        万が一、コピー商品がありましたら返品・返金致します！
-        
-        ご入金確認後、1～2日(日祝除く)で発送致します！
-        
-        《製品情報》
-        FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224になります。
-        
-        ◆インパクトがあり人気のモンスターシリーズ
-        ◆カード入れポケットも充実していて、収納力にも優れた長財布
-        
-        縦 約9㎝×横 約19㎝
-        カード入れ　10
-        お札入れ　2
-        その他ポケット　4
-        
-        ≪シリアル≫
-        8M0251-88E-169-9834
-        
-        ≪カラー≫
-        グレー×パープル×レッド他
-        
-        ≪付属品≫
-        保管袋　
-        
-        《使用状況》
-        □外観□
-        角擦れによる色剥げ、フラップの表面や裏面も擦れにより色剥げがみられますので、使用感はあります。
-        目の出っ張り部分も擦れて若干色が薄くなっている部分があり、上部の角のフチの革は少しめくれがみられます。
-        ホックは少し緩い感じもありますが、きちんと閉まります。
-        
-        ★内側★
-        レザー部分は少し擦れで色がうすくなっていて、小銭入れ内は使用により黒ずみ汚れがありますが、破損などはないのでまだまだ使用していただけます。
-        
-        
-        
-        USED品になります！
-        商品の状態に関しましてもあくまでも主観となります。
-        簡易清掃のみとなりますので、細部に取りきれない埃や商品以外のもの、汚れなどがある場合もございます。
-        画像に関しましても加工はしておりません。なるべく忠実に撮影していますが、照明の関係やお使いの機種によって、色の見え方が多少実物と異なる場合がございます。
-        ご理解いただける方のみご購入お願いいたします。
-        
-        
-        他にも出品していますので、セット購入希望の商品がございましたらご相談ください。
-        
-        気になることなどございましたらお気軽にご質問ください！
+        = @product.description
     .item-button-container.clearfix
       .item-button-left
         %a.item-button.item-button-like{href: "#"}
