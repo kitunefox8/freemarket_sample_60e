@@ -1,0 +1,14 @@
+= render 'shared/header'
+
+.body
+  .mypage
+    = render 'side-bar'
+
+    .mypage__main
+      .mypage-section-logout
+        .link-logout
+          = link_to '#' ,class: 'btn-logout' do
+            .text
+              ログアウト
+
+= render 'shared/footer'
