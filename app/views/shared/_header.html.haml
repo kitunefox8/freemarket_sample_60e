@@ -30,11 +30,11 @@
             = link_to '#', class: 'link-none' do
               = fa_icon 'check', class: 'icon'
               .nav-text やることリスト
-            = link_to '#', class: 'link-none' do
+            = link_to  mypage_users_path, class: 'link-none' do
               = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: 'user-icon'
               .nav-text マイページ 
         - else 
           .mercari__head__bottom__new
-            = link_to '新規会員登録', '#', class: 'mercari__head__bottom__signup'
+            = link_to '新規会員登録', session0_signup_index_path, class: 'mercari__head__bottom__signup'
           .mercari__head__bottom__log
-            = link_to 'ログイン', '#', class: 'mercari__head__bottom__in'
+            = link_to 'ログイン', user_session_path, class: 'mercari__head__bottom__in'
