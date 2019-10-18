@@ -1,7 +1,7 @@
 .mypage__side
   %ul.mypage-list
     %li.mypage-single-active
-      = link_to '#', class: 'link-non' do
+      = link_to mypage_users_path, class: 'link-non' do
         .list-text
           マイページ
         = fa_icon 'chevron-right', class: 'icon-right'
@@ -87,7 +87,7 @@
     %h3.mypage-head-text 設定 
     %ul.mypage-list
       %li.mypage-single-white
-        = link_to '#', class: 'link-non' do
+        = link_to profile_users_path, class: 'link-non' do
           .list-text
             プロフィール
           = fa_icon 'chevron-right', class: 'icon-right'
@@ -97,7 +97,7 @@
             発送元・お届け先住所変更
           = fa_icon 'chevron-right', class: 'icon-right'
       %li.mypage-single-white
-        = link_to '#', class: 'link-non' do
+        = link_to creditcard_users_path, class: 'link-non' do
           .list-text
             支払い方法
           = fa_icon 'chevron-right', class: 'icon-right'
@@ -107,7 +107,7 @@
             メール/パスワード
           = fa_icon 'chevron-right', class: 'icon-right'
       %li.mypage-single-white
-        = link_to '#', class: 'link-non' do
+        = link_to person_users_path, class: 'link-non' do
           .list-text
             本人情報
           = fa_icon 'chevron-right', class: 'icon-right'
@@ -117,7 +117,7 @@
             電話番号の確認
           = fa_icon 'chevron-right', class: 'icon-right'
       %li.mypage-single-white
-        = link_to '#', class: 'link-non' do
+        = link_to logout_users_path, class: 'link-non' do
           .list-text
             ログアウト
           = fa_icon 'chevron-right', class: 'icon-right'

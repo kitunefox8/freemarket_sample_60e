@@ -7,7 +7,7 @@
     .mypage__main
       .mypage-section-logout
         .link-logout
-          = link_to '#' ,class: 'btn-logout' do
+          = link_to destroy_user_session_path, method: :delete, class: 'btn-logout' do
             .text
               ログアウト
 
