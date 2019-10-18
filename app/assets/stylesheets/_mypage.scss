@@ -1,0 +1,475 @@
+.body{
+  background-color: $cream;
+  .mypage{
+    width: 1020px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 0 auto;
+    display: flex;
+
+    &__side{
+      width: 280px;
+      margin-left: 40px;
+      .mypage-list{
+        list-style: none;
+        .mypage-single-active{
+          height: 48px;
+          background-color: $white3;
+          position: relative;
+          border-bottom: 1px solid;
+          border-color: $white4;
+          .link-non{
+            text-decoration: none;
+            .list-text{
+              padding-left: 15px;
+              line-height: 48px;
+              font-weight: 600;
+              color: $black;
+            }
+            .icon-right{
+              position: absolute;
+              top: 15px;
+              right: 20px;
+              color: $black;
+            }
+          }
+        }
+
+        .mypage-single-white{
+          height: 48px;
+          background-color: $white;
+          position: relative;
+          border-bottom: 1px solid;
+          border-color: $white4;
+          .link-non{
+            text-decoration: none;
+            .list-text{
+              padding-left: 15px;
+              line-height: 48px;
+              text-decoration: none;
+              font-size: 14px;
+              color: $black;
+            }
+            .icon-right{
+              position: absolute;
+              top: 15px;
+              right: 20px;
+              color: $black;
+            }
+          }
+        }
+        .mypage-head-text{
+          margin-top: 30px;
+          font-weight: 600;
+        }
+      }         
+    }
+
+    &__main{
+      width: 700px;
+      margin-left: 40px;
+      
+      .mypage-section-user{
+        max-height: 200px;
+        padding: 20px;
+        background: url('https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?39195692;');
+        text-align: center;
+        font-weight: 600;
+        .link-non{
+          text-decoration: none;
+          .section-image{
+            .user-icon{
+              border-radius: 50%;
+              height: 60px;
+              width: 60px;
+            }
+          }
+          .user-name{
+            margin: 8px 0;
+            font-size: 14px;
+            color: $black;
+          }
+          .mypage-number{
+            display: flex;
+            justify-content: center;
+            margin: 8px 0;
+            color: $black;
+            .evaluation{
+              font-size: 14px;
+              padding: 0 8px;
+            }
+            .count{
+              font-size: 14px;
+              padding: 0 8px;
+            }
+          }
+        }
+      }
+      .mypage-tab{
+        height: 75px;
+        line-height: 75px; 
+        .section-tab{
+          display: flex;
+          font-weight: 600;
+          text-align: center;
+          .active{
+            width: 50%;
+            background: $white; 
+            border-top: 2px solid $red;
+            .link-non{
+              text-decoration: none;
+              color: $black;
+            }
+          }
+          .non-active{
+            width: 50%;
+            border-color: $white3;
+            .link-non{
+              text-decoration: none;
+              color: $black;
+            }
+          }
+        }
+      }
+      .mypage-content{
+        background: $white; 
+        .content-area{
+          .content-field{
+            border-bottom: 1px solid;
+            border-color: $white3;
+            position: relative;
+            .link-non{
+              text-decoration: none;
+              display: flex;
+              padding: 16px;
+              color: $black;
+              .content-image{
+                .mini-mercari-image{
+                  width: 50px;
+                  height: 50px;
+                }
+              }
+              .content-text{
+                padding: 0 15px;
+                .top-text{
+                  font-size: 14px;
+                }
+                .bottom-text{
+                  font-size: 14px;
+                  .icon-time{
+                    font-size: 20px;
+                    margin-right: 7px;
+                  }
+                  .time{
+                    font-size: 14px;
+                  }
+                }
+              }
+              .content-arrow{
+                .icon-right{
+                  position: absolute;
+                  top: 35px;
+                  right: 20px;
+                }  
+              }
+            }          
+          }
+          .content-field2{
+            padding: 16px;
+            .content-submit{
+              display: block;
+              height: 55px;
+              margin: 0 auto;
+              line-height: 55px;
+              text-align: center;
+              background: $white3;
+              color: $black;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+      .mypage-section-trading{
+        margin-top: 40px;
+        .section-top{
+          height: 70px;
+          line-height: 70px;
+          padding-left: 15px;
+          background: $white5;
+          font-size: 15px;
+          font-weight: 600;
+        }
+        .content-area{
+          padding-top: 150px;
+          // padding-bottom: 10px;
+          height: 50px;
+          background: url('https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?39597161');
+          background-repeat: no-repeat;
+          background-position: center 50px;
+          background-size: 80px 80px;
+          text-align: center;
+          font-size: 15px;
+          font-weight: 600;
+          color: $gray;
+          background-color: $white;
+        }
+      }
+      .mypage-section-profile{
+        background-color: $white;
+        .top-text{
+          font-size: 25px;
+          padding: 10px 25px;
+          text-align: center;
+          font-weight: 600;
+        }
+        .top-text-person{
+        padding: 12px 4%;
+        border-bottom: 1px solid;
+        border-color: $white2;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        }
+        .form{
+          // padding: 40px;
+          .form-top{
+            max-height: 200px;
+            background: url('https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?39195692;');
+            text-align: center;
+            padding: 70px 15px 25px;
+            position: relative;
+            .profile-image{
+              display: inline;
+              .user-icon{ 
+                border-radius: 50%;
+                height: 60px;
+                width: 60px; 
+                position: absolute;
+                top: 60px;
+                left: 150px;
+              }
+              .textarea{
+                padding: 10px 15px 10px;
+                border-radius: 4px;
+                border: 1px solid;
+                border-color: $gray;
+                background: $white;
+                font-size: 15px;
+              }
+            }
+          }
+          .form-bottom{
+            padding: 40px 16px;
+            background-color: $white;
+            .textarea-profile{
+              display: block;
+              // padding-bottom: 200px;
+              width: 97%;
+              max-width: 97%;
+              // min-height: 100px;
+              height: 200px;
+              padding: 7px;
+              border: 1px solid;
+              border-color: $gray;
+              background-color: $white;
+              font-size: 15px;
+              // word-wrap: break-word;
+            }
+            .form-submit{
+              margin-top: 15px;
+              display: block;
+              width: 100%;
+              line-height: 50px;
+              font-size: 14px;
+              color: $white;
+              border: 1px solid;
+              border-color: $red;
+              background-color: $red;
+              text-align: center;
+            }
+          }
+        }
+      }
+      .mypage-section-person{
+        background-color: $white;
+        .top-text-person{
+          padding: 12px 4%;
+          border-bottom: 1px solid;
+          border-color: $white2;
+          text-align: center;
+          font-size: 18px;
+          font-weight: 600;
+        }
+        .form{
+          padding: 40px;
+          .upper-text{
+            &__top{
+              margin: 8px 0 0;
+              line-height: 1.5;
+              font-size: 15px;
+            }
+            &__bottom{
+              text-align: right;
+              .bottom-text{
+                font-size: 15px;
+                color: $light-blue2;
+              }
+              .icon-right{
+                color: $light-blue2;
+              }
+            }
+          }
+          .field{
+            margin-top: 40px;
+            
+            .first-text{
+              font-weight: 600;
+              font-size: 15px;
+            }
+            .second-text{
+              margin-top: 8px;
+              line-height: 1.5;
+              font-size: 15px;
+            }
+            .top-gray-text{
+              color: white;
+              font-size: 14px;
+              background-color: $gray;
+              padding: 3px;
+            }
+            .textarea{
+              margin-top: 8px;
+              width: 100%;
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid;
+              border-color: $gray;
+              background-color: $white;
+              line-height: 1.5;
+              font-size: 16px;
+              box-sizing: border-box;
+            }
+            .prefectures-selecter{
+              // position: relative;
+              // .icon-bottom{
+              //   position: absolute;
+              //   top:  5px;
+              //   right: 5px;
+              //   font-size: 20px;
+              // }
+              .select-prefecture{
+                width: 100%;
+                height: 48px;
+                border-radius: 4px;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid;
+                border-color: $gray;
+                background-color: $white;
+                line-height: 1.5;
+                font-size: 16px;
+                box-sizing: border-box;
+                %option{
+                  width: 100%;
+                  height: 48px;
+                }
+              }
+            }
+            .form-submit{
+              width: 100%;
+              height: 48px;
+              line-height: 48px;
+              text-align: center;
+              color: $white;
+              background-color: $red;
+            }
+          }
+          .field-right{
+            margin-top: 40px;
+            text-align: right;
+            .right-text{
+              color: $light-blue2;
+              text-decoration: none;
+            }  
+          }
+        }
+      }
+      .mypage-section-credit{
+        background-color: $white;
+        .top-text-credit{
+          padding: 12px 4%;
+          border-bottom: 1px solid;
+          border-color: $white2;
+          text-align: center;
+          font-size: 18px;
+          font-weight: 600;
+        }
+        .main-credit{
+          padding: 40px;
+          .top-text{
+            padding-left: 130px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 40px;
+          }
+          .link-credit{
+            margin-top: 40px;
+            margin: 0 auto;
+            height: 48px;
+            max-width: 330px;
+            background-color: $red;
+            border: 1px solid $red;
+            box-sizing: border-box;
+            .btn-credit{
+              display: flex;
+              text-decoration: none;
+              .icon{
+                color: $white;
+                line-height: 48px;
+                padding:0 20px;
+                font-size: 20px;            
+              }
+              .text{
+                color: $white;
+                line-height: 48px;
+                display: block;
+                margin: 0 auto;
+              }
+            }
+          }
+          .field-right{
+            margin-top: 40px;
+            text-align: right;
+            border-top: 1px solid;
+            border-color: $white2;
+            .right-text{
+              margin-top: 40px;
+              color: $light-blue2;
+              text-decoration: none;
+            }  
+          } 
+        }
+      }
+      .mypage-section-logout{
+        background-color: $white;
+        padding: 40px;
+        .link-logout{
+          margin: 0 auto;
+          height: 48px;
+          max-width: 330px;
+          background-color: $red;
+          border: 1px solid $red;
+          .btn-logout{
+            text-decoration: none;
+            .text{
+              color: $white;
+              line-height: 48px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
