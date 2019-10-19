@@ -13,10 +13,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])  
-    @category = Category.find(params[:id])  
-    @status = Status.find(params[:id])  
-    @brand = Brand.find(params[:id])
-    @image = Image.find(params[:id])
   end
   def buy
     @product = Product.find(params[:id])
@@ -32,6 +28,7 @@ class ProductsController < ApplicationController
   end
   def create
     @product = Product.new(create_params)
+
     if @product.save
       redirect_to action: :index
     else

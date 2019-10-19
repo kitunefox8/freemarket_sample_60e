@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_145423) do
+ActiveRecord::Schema.define(version: 2019_10_19_060135) do
 
   create_table "brandgroups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 2019_10_17_145423) do
     t.integer "brandgroup_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "product_id"
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_brands_on_product_id"
   end
 
   create_table "buyers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -38,7 +39,8 @@ ActiveRecord::Schema.define(version: 2019_10_17_145423) do
     t.integer "grandchildren_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "product_id"
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_categories_on_product_id"
   end
 
   create_table "children", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -183,7 +185,8 @@ ActiveRecord::Schema.define(version: 2019_10_17_145423) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "product_id"
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_statuses_on_product_id"
   end
 
   create_table "tradings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -205,5 +208,8 @@ ActiveRecord::Schema.define(version: 2019_10_17_145423) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "brands", "products"
+  add_foreign_key "categories", "products"
   add_foreign_key "images", "products"
+  add_foreign_key "statuses", "products"
 end

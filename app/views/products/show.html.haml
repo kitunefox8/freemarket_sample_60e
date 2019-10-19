@@ -74,7 +74,7 @@
             %td
               %a{href: "#"}
                 %div 
-                  =@category.name
+                  =@product.category.name
               %a{href: "#"}
                 .item-detail-table-sub-category
                   %i.fas.fa-chevron-right
@@ -88,11 +88,11 @@
             %td
               %a{href: "#"}
                 %div
-                  = @brand.name
+                  = @product.brand.name
           %tr
             %th 商品の状態
             %td 
-              =@status.name
+              =@product.status.name
           %tr
             %th 配送料の負担
             %td 
