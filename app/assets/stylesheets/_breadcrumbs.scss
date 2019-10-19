@@ -1,0 +1,25 @@
+.nav-background-color{
+  background-color: $white;
+  border-top: 1px solid;
+  border-color: $white3;
+  .breadcrumbs{
+    width: 1020px;
+    margin: 0px auto;
+    .current{
+      font-weight: 600;
+    }
+    .breadcrumbs-list{
+      height: 50px;
+      line-height: 50px;
+      font-size: 14px;
+      color: $black;
+    }
+    // 親リンクに上手く当てれないので、一時コメントアウト
+    // .:hover{
+    //   border-bottom: 1px solid;
+    //   border-color: $white3;
+    // }
+  }
+}
+
+

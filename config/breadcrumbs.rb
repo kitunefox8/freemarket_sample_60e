@@ -1,5 +1,29 @@
 crumb :root do
-  link "Home", root_path
+  link "トップページ", root_path, class: 'top'
+end
+
+crumb :mypage do
+  link "マイページ", mypage_users_path
+end
+
+crumb :profile do
+  link "プロフィール", profile_users_path
+  parent :mypage
+end
+
+crumb :creditcard do
+  link "支払い方法", creditcard_users_path
+  parent :mypage
+end
+
+crumb :person do
+  link "本人情報の登録", person_users_path
+  parent :mypage
+end
+
+crumb :logout do
+  link "ログアウト", logout_users_path
+  parent :mypage
 end
 
 # crumb :projects do
