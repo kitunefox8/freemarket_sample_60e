@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  require 'payjp'
+
   def index
     @product = Product.all.order("id DESC")
   end
@@ -36,10 +38,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def purchase
+    @product = Product.find(params[:id])
+    Payjp.api_key = "sk_test_61a80630416980fc1b6e5fe2"
+    Payjp::Charge.create(currency: 'jpy', amount: @product.price, card: params['payjp-token'])
+  end
+
   private
   def create_params
     params.require(:product).permit(
-       :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days, :saller_id, :buyer,
+      :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days, :saller_id, :buyer,
       category_attributes: [:id, :name],
       status_attributes: [:id, :name],
       brand_attributes: [:id, :name],
