@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       get '/buy/:id'  => 'products#buy'
       get '/buyer/:id' => 'products#buyer'
+      post 'purchase/:id', to: 'products#purchase', as: 'purchase'
     end
   end
   
