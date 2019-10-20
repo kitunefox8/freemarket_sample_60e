@@ -25,7 +25,7 @@ class User < ApplicationRecord
           email:    auth.info.email,
           password: Devise.friendly_token[0, 20]
           )
-        SnsCredential.create(
+        Snscredential.create(
           uid: uid,
           provider: provider,
           user_id: user.id
