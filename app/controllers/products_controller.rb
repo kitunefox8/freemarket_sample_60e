@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   require 'payjp'
-  before_action :set_params, only: [:show,:buy,:edit]
+  before_action :set_params, only: [:show, :buy, :edit, :update, :destroy, :buyer, :purchase]
+  after_action :buyer, only: [:purchase]
 
   def index
     @product = Product.all.order("id DESC")
@@ -16,47 +17,44 @@ class ProductsController < ApplicationController
 
   def show 
   end
+
   def buy
   end
   
   def buyer
-    @product = Product.find(params[:id])
-    if @product.update(buyer: 1)
-    redirect_to action: :index
-    else
-    redirect_to action: :index
-    end
+    @product.update(buyer: 1)
   end
+
   def create
     @product = Product.new(create_params)
-
     if @product.save
       redirect_to action: :index
     else
       render :new
     end
   end
+
   def edit
   end
+
   def update
-    @product = Product.find(params[:id])  
     if @product.update(update_params) 
       redirect_to action: :index
     else
       render :new
     end
-  end  
+  end
+
   def destroy
-    @product = Product.find(params[:id])  
     if @product.destroy 
-      redirect_to action: :index
+      redirect_to root_path
     end
   end
 
   def purchase
-    @product = Product.find(params[:id])
     Payjp.api_key = "sk_test_61a80630416980fc1b6e5fe2"
     Payjp::Charge.create(currency: 'jpy', amount: @product.price, card: params['payjp-token'])
+    redirect_to root_path
   end
 
   private
