@@ -1,0 +1,121 @@
+.single-container
+  %header.single-header
+    %h1
+      =image_tag  "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2296184308", width:"180", height:"70",alt: "mercari"
+  .single-main 
+  = form_for [@product] do |f|
+    %section.l-single-container#buy-item-container
+      .sell-container
+        .data-reactroot
+          .sell-container__inner
+            .sell-container__inner__header 商品の情報を入力
+            .sell-form
+              .image-form
+                .image-form__upload-box--header 出品画像 
+                %span.image-form__upload-box--header__require 必須
+                %p 最大10枚までアップロード出来ます。
+              .sell-dropbox-container-clearfix
+                .sell-dropbox-container-clearfix__items
+                .sell-upload-drop-box 
+                = f.fields_for :images do |i|
+                  = i.file_field :image_url
+                  %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
+      .sell-content
+        .form-group
+          .image-form__upload-box--header 商品名
+          %label
+            %span.image-form__upload-box--header__require　必須
+          %div
+            = f.text_field :name, placeholder: "商品名（必須 40文字まで)", type: "string", class: "image-form__upload-box--header__default" 
+
+        .form-group
+          .image-form__upload-box--header 商品名
+          %span.image-form__upload-box--header__require 必須
+          = f.text_area :description, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", type: "text", rows: "5", class: "textarea-default"
+      .sell-content.clearfix
+        %h3.sell-sub-head 商品の詳細
+        .sell-cotent__form-box
+          .form-group
+            .image-form__upload-box--header カテゴリー
+            %span.image-form__upload-box--header__require 必須
+            %div
+            = f.fields_for :category do |c|
+              .select-wrap
+                = c.select :name,[["---",""],["レディース"],["メンズ"],["ベビー・キッズ"],["インテリア・住まい"],["本・音楽・ゲーム"],["おもちゃ・ホビー・グッズ"],["コスメ・香水・美容"],["家電・スマホ・カメラ"],["ハンドメイド"],["チケット"],["自動車・オートバイ"],["その他"]], {}, class: "select-default"
+              %i.icon-arrow-bottom
+
+          .form-group.form-suggest-container
+            %label
+              ブランド
+              %span.form-arbitrary 任意
+            %div
+            = f.fields_for :brand do |b|
+              .select-wrap
+                = b.text_field :name, placeholder: "例）シャネル", type: "string", class: "select-default"
+              %div
+                %ul.sell-brand-suggest.form-suggest-list
+
+          .form-gorup
+            .image-form__upload-box--header  カテゴリー
+            %span.image-form__upload-box--header__require 必須
+            %div
+            = f.fields_for :status do |s|
+              .select-wrap
+                = s.select :name, [["---",""],["新品・未使用"],["未使用に近い"],["目立った傷、汚れ無し"],["やや傷、汚れあり"],["傷汚れあり"],["全体的に状態が悪い"]], {}, class: "select-default"
+                %i.icon-arrow-bottom
+      .sell-content.clearfix
+        %h3.sell-sub-head  配達について    
+        %a.form-question{href: "/jp/help_center/article/68/", target: "_blank"} 
+        .sell-cotent__form-box
+          .form-group
+            .image-form__upload-box--header 配送料の負担
+            %span.image-form__upload-box--header__require 必須
+            %div
+              .select-wrap
+                = f.select :delivery_fee, [["---",""],["送料込み（出品者負担）"],["着払い（購入者負担）"]], {}, class: "select-default"
+          .form-group
+            .image-form__upload-box--header 配送方法
+            %span.image-form__upload-box--header__require 必須
+            %div
+              .select-wrap
+                = f.select :delivery, [["---",""],["未定"],["らくらくメルカリ便"],["ゆうメール"],["レターパック"],["普通郵便"],["クロネコヤマト"],["ゆうパック"],["クリックポスト"],["ゆうパケット"]], {}, class: "select-default"
+          .form-group
+            .image-form__upload-box--header 発送元の地域
+            %span.image-form__upload-box--header__require 必須
+            %div
+              .select-wrap
+                = f.collection_select :shipping_area, Prefecture.all, :name, :name, {prompt: "---"}, class:  "select-default"
+          .form-group
+            .image-form__upload-box--header 発送までの日数
+            %span.image-form__upload-box--header__require 必須
+            %div
+              .select-wrap
+                = f.select :shipping_days, [["---",""],["1〜2日で発送"],["2〜3日で発送"],["4〜7日で発送"]], {}, class: "select-default"
+      .sell-content.clearfix
+        %h3.sell-sub-head  販売価格(300〜9,999,999)    
+        %a.form-question{href: "/jp/help_center/article/68/",target: "_blank"} 
+        .sellform-box
+          %ul.sell-price
+            %li.formguroup
+              .clearfix
+                %label.l-left 価格
+                %span.image-form__upload-box--header__require 必須
+                .l-right-sell-price-input ¥
+                = f.text_field :price, class: "input-default", placeholder: "例）300"
+            .clearfix2
+              .l-left 手数料(10%)              
+            .clearfix-bold
+              .l-left 販売手数料
+              
+      .modal{role: "dialog", tabindex: "-1"}
+        .model-inner
+      .sellcontent-box
+        %div
+          .sellcontent-box__text
+            禁止されている出品、行為を必ずご確認ください。またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
+        %div
+          = f.submit class: "btn-default", value: "編集する"
+          %a.btn{href: "/products/update/#{@product.id}", method: :patch}/ 
+          %a.btn-defau-gray{href: "/products/"} 戻る
+    .overlay 
+    = render 'signup/signup_footer'

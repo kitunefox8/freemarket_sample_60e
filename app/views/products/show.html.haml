@@ -1,7 +1,6 @@
 .wrapper#__next
-  -# ここからヘッダーです
   = render 'shared/header'
-  -# ここまでヘッダーです
+
   %section.item-box-container.l-single-container
     %h1.item-name
       = @product.name
@@ -92,8 +91,12 @@
     -if @product.buyer == "1" 
       .item-buy-btns
         取引停止中
+      %a.item-buy-btn{href: "/products/destroy/#{@product.id}"}
+        出品を取り消す
     -else
       = link_to '購入画面に進む', "/products/buy/#{@product.id}", class: "item-buy-btn" 
+      %a.item-buy-btn{href: "/products/destroy/#{@product.id}"}
+        出品を取り消す
     .item-description.f14
       %p.item-description-inner
         = @product.description

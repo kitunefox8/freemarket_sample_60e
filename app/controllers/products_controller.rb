@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   require 'payjp'
+  before_action :set_params, only: [:show,:buy,:edit]
 
   def index
     @product = Product.all.order("id DESC")
@@ -13,11 +14,9 @@ class ProductsController < ApplicationController
     @product.images.build
   end
 
-  def show
-    @product = Product.find(params[:id])  
+  def show 
   end
   def buy
-    @product = Product.find(params[:id])
   end
   
   def buyer
@@ -37,6 +36,22 @@ class ProductsController < ApplicationController
       render :new
     end
   end
+  def edit
+  end
+  def update
+    @product = Product.find(params[:id])  
+    if @product.update(update_params) 
+      redirect_to action: :index
+    else
+      render :new
+    end
+  end  
+  def destroy
+    @product = Product.find(params[:id])  
+    if @product.destroy 
+      redirect_to action: :index
+    end
+  end
 
   def purchase
     @product = Product.find(params[:id])
@@ -54,4 +69,18 @@ class ProductsController < ApplicationController
       images_attributes: [:id, :image_url]
     )
   end
+  def update_params
+    params.require(:product).permit(
+     :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days, :saller_id, :buyer,
+     category_attributes: [:id, :name],
+     status_attributes: [:id, :name],
+     brand_attributes: [:id, :name],
+     images_attributes: [:id, :image_url]
+   )
+  end
+
+  def set_params
+    @product = Product.find(params[:id])  
+  end
+
 end
