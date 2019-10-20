@@ -24,9 +24,11 @@
                 %il.buy-form__price__content--guide 支払い金額
                 %il.buy-form__price__content--box 
                   ="¥" + @product.price
-            %p.buy-form__price-error 配送先と支払い方法の入力を完了してください。
-            %button.buy-form__price-btn{type: "submit"} 購入する
-            %a.style_link{:href => "/products/buyer/#{@product.id}"}
+            -# %p.buy-form__price-error 配送先と支払い方法の入力を完了してください。
+            -# %button.buy-form__price-btn{type: "submit"} 購入する
+            -# %a.style_link{href: "/products/buyer/#{@product.id}"}
+            = form_tag(action: :purchase, method: :post) do
+              %script.payjp-button{"data-key": "pk_test_7f527d93509f28c003496968", src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "購入する"}
       %section.buy-user-info
         .buy-user-inner
           %h3 配送先
@@ -50,6 +52,6 @@
         %il
           %p プライバシーポリシー
     %a.single-footer-logo{href: "https://www.mercari.com/jp/"}
-      %img{:alt => "mercari3", :height => "65", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2296184308", :width => "80"}/
+      = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2296184308", alt: "mercari3", height: "65", width: "80"
     %p
       %small © 2019 Mercari

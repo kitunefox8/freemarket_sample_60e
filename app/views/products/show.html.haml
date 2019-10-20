@@ -1,34 +1,6 @@
 .wrapper#__next
-  -# ここからヘッダーです
-  %header
-    .mercari__head
-      .mercari__head__top
-        .mercari__head__logo
-          %a.mercari__head__logo-image
-            =link_to image_tag("https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: 'image'), '/products'
-        %form.search__form{}
-          %input{type: "search", class: "search__form__input"}
-          %button.search-button
-            %svg.sc-jDwBTQ.sc-kgAjT.gKFuLS{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 16 16", :width => "16"}
-              %path{:d => "M11.435 10.063h-.723l-.256-.247a5.92 5.92 0 0 0 1.437-3.87 5.946 5.946 0 1 0-5.947 5.947 5.92 5.92 0 0 0 3.87-1.437l.247.256v.723L14.637 16 16 14.637l-4.565-4.574zm-5.489 0A4.111 4.111 0 0 1 1.83 5.946 4.111 4.111 0 0 1 5.946 1.83a4.111 4.111 0 0 1 4.117 4.116 4.111 4.111 0 0 1-4.117 4.117z", :fill => "currentColor", "fill-rule" => "nonzero"}
-      .mercari__head__bottom
-        .mercari__head__bottom__categorys
-          .mercari__head__bottom__category
-            %a.mercari__category{:href => "/jp/category/"}
-              %svg.sc-cvbbAY.sc-fAjcbJ.dKBFhm{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 20 16", :width => "20"}>
-                %path{:d => "M18.799 15.25h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zm0-6h-11.5a1.25 1.25 0 1 1 0-2.5h11.5a1.25 1.25 0 0 1 0 2.5zM2 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z", :fill => "currentColor", "fill-rule" => "nonzero"}
-            カテゴリーから探す
-          .mercari__head__bottom__brand
-            %a.mercari__brand{:href => "/jp/brand/"}
-              %svg.sc-csuQGl.sc-caSCKo.kspmux{"aria-hidden" => "true", :height => "16", :viewbox => "0 0 23 16", :width => "23"}>
-                %path{:d => "M6.315 0L4.473 1.806 2.833.019.73 1.977l1.69 1.84L1.198 5.02c-1.594 1.594-1.594 4.188-.01 5.772L6.3 16h13.272a3.08 3.08 0 0 0 3.077-3.077V3.076A3.08 3.08 0 0 0 19.57 0H6.315zm13.46 12.925a.211.211 0 0 1-.205.205H7.504L3.227 8.771a1.226 1.226 0 0 1-.01-1.71L4.38 5.92l1.28 1.371a2.68 2.68 0 1 0 2.13-1.93L6.433 3.907 7.49 2.87h12.082a.211.211 0 0 1 .206.205v9.848h-.002z", :fill => "currentColor", "fill-rule" => "nonzero"}
-            ブランドから探す
-        .mercari__head__bottom__register
-          .mercari__head__bottom__new
-            %a.mercari__head__bottom__signup{:href => "/jp/signup/"} 新規会員登録
-          .mercari__head__bottom__log
-            %a.mercari__head__bottom__in{:href => "/jp/login/?login_callback=%2Fjp%2F"} ログイン
-    -# ここまでヘッダーです
+  = render 'shared/header'
+
   %section.item-box-container.l-single-container
     %h1.item-name
       = @product.name
@@ -39,7 +11,8 @@
             .owl-stage
               .owl-item{style: "width: 300px;"}
                 .owl-item-inner
-                  %img.owl-lazy{alt: "image", src: @product.images[0].image_url, style: "opacity: 1;"}
+                  %div
+                    = image_tag "#{@product.images[0].image_url}", alt: 'image', style: "opacity: 1;", class: 'owl-lazy'
                     -if @product.buyer == "1" 
                       .items-box_photos__sold
                         .items-box_photos__sold__inner
@@ -57,7 +30,7 @@
           %tr
             %th 出品者
             %td
-              %a{href: "#"} ブランド多数出品中！
+              = link_to 'ブランド多数出品中！', '#'
               %div
                 .item-user-ratings
                   %i.far.fa-smile
@@ -71,27 +44,27 @@
           %tr
             %th カテゴリー
             %td
-              %a{href: "#"}
+              = link_to '#' do
                 %div 
-                  =@product.category.name
-              %a{href: "#"}
+                  = @product.category.name
+              = link_to '#' do
                 .item-detail-table-sub-category
                   %i.fas.fa-chevron-right
                   小物
-              %a{href: "#"}
+              = link_to '#' do
                 .item-detail-table-sub-sub-category
                   %i.fas.fa-chevron-right
                   長財布
           %tr
             %th ブランド
             %td
-              %a{href: "#"}
+              = link_to '#' do
                 %div
                   = @product.brand.name
           %tr
             %th 商品の状態
             %td 
-              =@product.status.name
+              = @product.status.name
           %tr
             %th 配送料の負担
             %td 
@@ -103,15 +76,15 @@
           %tr
             %th 配送元地域
             %td
-              %a{href: "#"} 
-                =@product.shipping_area
+              = link_to '#' do
+                = @product.shipping_area
           %tr
             %th 発送日の目安
             %td 
-              =@product.shipping_days
+              = @product.shipping_days
     .item-price-box.text-center
       %span.item-price.bold 
-        ="¥"+@product.price
+        = "¥ " + @product.price
       %span.item-tax (税込)
       %span.item-shipping-fee 
         = @product.delivery_fee
@@ -121,8 +94,7 @@
       %a.item-buy-btn{href: "/products/destroy/#{@product.id}"}
         出品を取り消す
     -else
-      %a.item-buy-btn{href: "/products/buy/#{@product.id}"}
-        購入画面に進む
+      = link_to '購入画面に進む', "/products/buy/#{@product.id}", class: "item-buy-btn" 
       %a.item-buy-btn{href: "/products/destroy/#{@product.id}"}
         出品を取り消す
     .item-description.f14
@@ -130,63 +102,72 @@
         = @product.description
     .item-button-container.clearfix
       .item-button-left
-        %a.item-button.item-button-like{href: "#"}
+        = link_to '#', class: "item-button item-button-like" do
           %i.far.fa-heart
           %span いいね!
-          %span{"data-num" => "like"} 11
-        %a.item-button.item-button-report.clearfix{href: "#"}
+          %span{"data-num": "like"} 11
+        = link_to '#', class: "item-button item-button-report clearfix" do
           %i.far.fa-flag
           %span 不適切な商品の報告
       .item-button-right
-        %a{href: "#", target: "_blank"}
+        = link_to '#' do
           %i.fas.fa-lock
           %span あんしん・あんぜんへの取り組み
   .item-detail-message
     .message-container
   %ul.nav-item-link-prev-next.clearfix
     %li.nav-item-link-prev
-      %a{href: "#"}
+      = link_to '#' do
         %i.fas.fa-chevron-left
         アメジスト 原石
     %li.nav-item-link-next
-      %a{href: "#"}
-        ワコーズ　スーパーハード　新品・未使用
+      = link_to '#' do
+        ワコーズ スーパーハード 新品・未使用
         %i.fas.fa-chevron-right
   .item-social-media-box
     .text-center
-      .fb-save.fb_iframe_widget{"data-uri" => "product://113299479059860/m91592311337", "fb-iframe-plugin-query" => "app_id=466308336793848&container_width=700&locale=ja_JP&sdk=joey&uri=product%3A%2F%2F113299479059860%2Fm91592311337", "fb-xfbml-state" => "rendered"}
-        %span{:style => "vertical-align: top; width: 0px; height: 0px; overflow: hidden;"}
-          %iframe{:allow => "encrypted-media", :allowfullscreen => "true", :allowtransparency => "true", :frameborder => "0", :height => "1000px", :name => "f2b1591b1b517fc", :scrolling => "no", :src => "https://www.facebook.com/v2.5/plugins/save.php?app_id=466308336793848&channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D44%23cb%3Df2ff81f412fba44%26domain%3Ditem.mercari.com%26origin%3Dhttps%253A%252F%252Fitem.mercari.com%252Ff1358d9311a614%26relation%3Dparent.parent&container_width=700&locale=ja_JP&sdk=joey&uri=product%3A%2F%2F113299479059860%2Fm91592311337", :style => "border: none; visibility: visible; width: 0px; height: 0px;", :title => "fb:save Facebook Social Plugin", :width => "1000px"}
+      .fb-save.fb_iframe_widget{"data-uri": "product://113299479059860/m91592311337", "fb-iframe-plugin-query": "app_id=466308336793848&container_width=700&locale=ja_JP&sdk=joey&uri=product%3A%2F%2F113299479059860%2Fm91592311337", "fb-xfbml-state": "rendered"}
+        %span{style: "vertical-align: top; width: 0px; height: 0px; overflow: hidden;"}
+          %iframe{allow: "encrypted-media", allowfullscreen: "true", allowtransparency: "true", frameborder: "0", height: "1000px", name: "f2b1591b1b517fc", scrolling: "no", src: "https://www.facebook.com/v2.5/plugins/save.php?app_id=466308336793848&channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D44%23cb%3Df2ff81f412fba44%26domain%3Ditem.mercari.com%26origin%3Dhttps%253A%252F%252Fitem.mercari.com%252Ff1358d9311a614%26relation%3Dparent.parent&container_width=700&locale=ja_JP&sdk=joey&uri=product%3A%2F%2F113299479059860%2Fm91592311337", style: "border: none; visibility: visible; width: 0px; height: 0px;", title: "fb:save Facebook Social Plugin", width: "1000px"}
     %ul.social-media-box
       %li
-        %a.share-btn{"data-window-name" => "facebook_window", :href => "http://www.facebook.com/share.php?u=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F", :target => "_blank"}
+        -# 下記コメント今後参考用
+        -# %a.share-btn{"data-window-name": "facebook_window", href: "http://www.facebook.com/share.php?u=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F"}
+        = link_to '#' do
           %i.fab.fa-facebook-square
       %li
-        %a.share-btn{"data-window-name" => "twitter_window", :href => "http://twitter.com/share?count=horizontal&original_referer=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F&text=FENDI%20%E3%83%95%E3%82%A7%E3%83%B3%E3%83%87%E3%82%A3%2F%E9%95%B7%E2%80%A6%20%28%C2%A55%2C800%29%20https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F%20%E3%83%95%E3%83%AA%E3%83%9E%E3%82%A2%E3%83%97%E3%83%AA%E3%80%8C%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%E3%80%8D%E3%81%A7%E8%B2%A9%E5%A3%B2%E4%B8%AD%E2%99%AA%20%23%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%20%40mercari_jp%E3%81%95%E3%82%93%E3%81%8B%E3%82%89", :target => "_blank"}
+        -# 下記コメント今後参考用
+        -# %a.share-btn{"data-window-name": "twitter_window", href: "http://twitter.com/share?count=horizontal&original_referer=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F&text=FENDI%20%E3%83%95%E3%82%A7%E3%83%B3%E3%83%87%E3%82%A3%2F%E9%95%B7%E2%80%A6%20%28%C2%A55%2C800%29%20https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F%20%E3%83%95%E3%83%AA%E3%83%9E%E3%82%A2%E3%83%97%E3%83%AA%E3%80%8C%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%E3%80%8D%E3%81%A7%E8%B2%A9%E5%A3%B2%E4%B8%AD%E2%99%AA%20%23%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%20%40mercari_jp%E3%81%95%E3%82%93%E3%81%8B%E3%82%89"}
+        = link_to '#' do
           %i.fab.fa-twitter-square
       %li.social-hidden-item
-        %a{:href => "http://line.me/R/msg/text/?FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224%20%7C%20%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%20%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%A7%E3%81%8B%E3%82%93%E3%81%9F%E3%82%93%20%E3%83%95%E3%83%AA%E3%83%9E%E3%82%A2%E3%83%97%E3%83%AA%0D%0Ahttps://item.mercari.com/jp/m91592311337/", :target => "_blank"}
+        -# 下記コメント今後参考用
+        -# %a{:href => "http://line.me/R/msg/text/?FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224%20%7C%20%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%20%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%A7%E3%81%8B%E3%82%93%E3%81%9F%E3%82%93%20%E3%83%95%E3%83%AA%E3%83%9E%E3%82%A2%E3%83%97%E3%83%AA%0D%0Ahttps://item.mercari.com/jp/m91592311337/"}
+        = link_to '#' do
           %i.fab.fa-line
       %li
-        %a.share-btn{"data-window-name" => "pinterest_window", :href => "http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F&media=https%3A%2F%2Fstatic.mercdn.net%2Fitem%2Fdetail%2Forig%2Fphotos%2Fm91592311337_1.jpg%3F1567487513&description=%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%E5%95%86%E5%93%81%3A%20FENDI%20%E3%83%95%E3%82%A7%E3%83%B3%E3%83%87%E3%82%A3%2F%E9%95%B7%E8%B2%A1%E5%B8%83%2F%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%2F%E3%83%AC%E3%82%B6%E3%83%BC%2F%E3%82%B0%E3%83%AC%E3%83%BC%E7%B3%BB%2F%E3%81%82224%20%23%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA", :target => "_blank"}
+        -# 下記コメント今後参考用
+        -# %a.share-btn{"data-window-name": "pinterest_window", href: "http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm91592311337%2F&media=https%3A%2F%2Fstatic.mercdn.net%2Fitem%2Fdetail%2Forig%2Fphotos%2Fm91592311337_1.jpg%3F1567487513&description=%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%E5%95%86%E5%93%81%3A%20FENDI%20%E3%83%95%E3%82%A7%E3%83%B3%E3%83%87%E3%82%A3%2F%E9%95%B7%E8%B2%A1%E5%B8%83%2F%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%2F%E3%83%AC%E3%82%B6%E3%83%BC%2F%E3%82%B0%E3%83%AC%E3%83%BC%E7%B3%BB%2F%E3%81%82224%20%23%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA"}
+        = link_to '#' do
           %i.fab.fa-pinterest
   .items-in-user-profile
     %section.items-box-container.clearfix.related-item-column.items-in-user-profile
       %h2.items-box-head
-        %a{href: "#"} ブランド多数出品中！さんのその他の出品
+        = link_to 'ブランド多数出品中！さんのその他の出品', '#' 
       .items-box-content.clearfix
         %section.items-box
-          %a{href: "#"}
+          = link_to '#' do
             %figure.items-box-photo
-              %img.lazyloaded{:alt => "【新品未使用】ルイヴィトン/手帳カバー/アジェンダPM/モノグラム/う037", "data-src" => "https://static.mercdn.net/thumb/photos/m41030575093_1.jpg?1570668701", :src => "https://static.mercdn.net/thumb/photos/m41030575093_1.jpg?1570668701"}/
+              = image_tag 'https://static.mercdn.net/thumb/photos/m41030575093_1.jpg?1570668701', alt: "【新品未使用】ルイヴィトン/手帳カバー/アジェンダPM/モノグラム/う037", "data-src": "https://static.mercdn.net/thumb/photos/m41030575093_1.jpg?1570668701", class: 'lazyloaded'
             .items-box-body
               %h3.items-box-name.font-2 【新品未使用】ルイヴィトン/手帳カバー/アジェンダPM/モノグラム/う037
               .items-box-num
                 .items-box-price.font-5 ¥23,000
+        -# ↓ここからは後々削除する。最終的にデータを拾って一覧とする
         %section.items-box
           %a{href: ""}
             %figure.items-box-photo
-              %img.lazyloaded{:alt => "CELINEセリーヌ/キーホルダー/馬車ロゴ/チャーム/ゴールド/う036", "data-src" => "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579", :src => "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579"}/
+              %img.lazyloaded{:alt => "CELINEセリーヌ/キーホルダー/馬車ロゴ/チャーム/ゴールド/う036", "data-src" => "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579", src: "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579"}/
               %figcaption
                 .item-sold-out-badge
                   %div 
@@ -200,7 +181,7 @@
         %section.items-box
           %a{href: "#"}
             %figure.items-box-photo
-              %img.lazyloaded{:alt => "【未使用保管】ロエベ/ベルト/ユニセックス/レザー/ゴールドブラック/う035", "data-src" => "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830", :src => "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830"}/
+              %img.lazyloaded{:alt => "【未使用保管】ロエベ/ベルト/ユニセックス/レザー/ゴールドブラック/う035", "data-src" => "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830", src: "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830"}/
             .items-box-body
               %h3.items-box-name.font-2 【未使用保管】ロエベ/ベルト/ユニセックス/レザー/ゴールドブラック/う035
               .items-box-num
@@ -208,7 +189,7 @@
         %section.items-box
           %a{href: "#"}
             %figure.items-box-photo
-              %img.lazyloaded{:alt => "【未使用保管】フェンディ/折財布/Wホック/ネイビー/ストライプ/う034", "data-src" => "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273", :src => "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273"}/
+              %img.lazyloaded{:alt => "【未使用保管】フェンディ/折財布/Wホック/ネイビー/ストライプ/う034", "data-src" => "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273", src: "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273"}/
             .items-box-body
               %h3.items-box-name.font-2 【未使用保管】フェンディ/折財布/Wホック/ネイビー/ストライプ/う034
               .items-box-num
@@ -216,7 +197,7 @@
         %section.items-box
           %a{href: "#"}
             %figure.items-box-photo
-              %img.lazyloaded{:alt => "【良品】グッチ/トートバッグ/シェリーライン/GG/キャンバス/う033", "data-src" => "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560", :src => "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560"}/
+              %img.lazyloaded{:alt => "【良品】グッチ/トートバッグ/シェリーライン/GG/キャンバス/う033", "data-src" => "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560", src: "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560"}/
             .items-box-body
               %h3.items-box-name.font-2 【良品】グッチ/トートバッグ/シェリーライン/GG/キャンバス/う033
               .items-box-num
@@ -227,7 +208,7 @@
         %section.items-box
           %a{href: "#"}
             %figure.items-box-photo
-              %img.lazyloaded{:alt => "ハンティングワールド/セカンドバッグ/クラッチ/ビジネス/カーキ/う032", "data-src" => "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985", :src => "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985"}/
+              %img.lazyloaded{:alt => "ハンティングワールド/セカンドバッグ/クラッチ/ビジネス/カーキ/う032", "data-src" => "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985", src: "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985"}/
             .items-box-body
               %h3.items-box-name.font-2 ハンティングワールド/セカンドバッグ/クラッチ/ビジネス/カーキ/う032
               .items-box-num
@@ -240,7 +221,7 @@
         %section.items-box
           %a{href: "#"}
             %figure.items-box-photo
-              %img.is-higher-width.lazyloaded{:alt => "値下げ決行！早い者勝ち！FENDI　財布　未使用", "data-src" => "https://static.mercdn.net/thumb/photos/m27987016160_1.jpg?1570117841", :src => "https://static.mercdn.net/thumb/photos/m27987016160_1.jpg?1570117841"}/
+              %img.is-higher-width.lazyloaded{:alt => "値下げ決行！早い者勝ち！FENDI　財布　未使用", "data-src" => "https://static.mercdn.net/thumb/photos/m27987016160_1.jpg?1570117841", src: "https://static.mercdn.net/thumb/photos/m27987016160_1.jpg?1570117841"}/
             .items-box-body
               %h3.items-box-name.font-2 値下げ決行！早い者勝ち！FENDI　財布　未使用
               .items-box-num
@@ -251,7 +232,7 @@
         %section.items-box
           %a{href: "#"}
             %figure.items-box-photo
-              %img.lazyloaded{:alt => "FENDI 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m21976993867_1.jpg?1570665475", :src => "https://static.mercdn.net/thumb/photos/m21976993867_1.jpg?1570665475"}/
+              %img.lazyloaded{:alt => "FENDI 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m21976993867_1.jpg?1570665475", src: "https://static.mercdn.net/thumb/photos/m21976993867_1.jpg?1570665475"}/
             .items-box-body
               %h3.items-box-name.font-2 FENDI 長財布
               .items-box-num
@@ -259,7 +240,7 @@
         %section.items-box
           %a{href: "#"}
             %figure.items-box-photo
-              %img.lazyloaded{:alt => "フェンディ財布 ラウンドファスナー 正規品 ズッカ柄 長財布 箱付き 巾着袋付き", "data-src" => "https://static.mercdn.net/thumb/photos/m23662861040_1.jpg?1570440870", :src => "https://static.mercdn.net/thumb/photos/m23662861040_1.jpg?1570440870"}/
+              %img.lazyloaded{:alt => "フェンディ財布 ラウンドファスナー 正規品 ズッカ柄 長財布 箱付き 巾着袋付き", "data-src" => "https://static.mercdn.net/thumb/photos/m23662861040_1.jpg?1570440870", src: "https://static.mercdn.net/thumb/photos/m23662861040_1.jpg?1570440870"}/
             .items-box-body
               %h3.items-box-name.font-2 フェンディ財布 ラウンドファスナー 正規品 ズッカ柄 長財布 箱付き 巾着袋付き
               .items-box-num
@@ -270,7 +251,7 @@
         %section.items-box
           %a{href: "#"}
             %figure.items-box-photo
-              %img.is-higher-width.lazyloaded{:alt => "FENDI　ズッカ 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m47418822351_1.jpg?1570446406", :src => "https://static.mercdn.net/thumb/photos/m47418822351_1.jpg?1570446406"}/
+              %img.is-higher-width.lazyloaded{:alt => "FENDI　ズッカ 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m47418822351_1.jpg?1570446406", src: "https://static.mercdn.net/thumb/photos/m47418822351_1.jpg?1570446406"}/
             .items-box-body
               %h3.items-box-name.font-2 FENDI　ズッカ 長財布
               .items-box-num
@@ -278,7 +259,7 @@
         %section.items-box
           %a{href: "#"}
             %figure.items-box-photo
-              %img.is-higher-height.lazyloaded{:alt => "FENDI 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m72936775245_1.jpg?1570329729", :src => "https://static.mercdn.net/thumb/photos/m72936775245_1.jpg?1570329729"}/
+              %img.is-higher-height.lazyloaded{:alt => "FENDI 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m72936775245_1.jpg?1570329729", src: "https://static.mercdn.net/thumb/photos/m72936775245_1.jpg?1570329729"}/
             .items-box-body
               %h3.items-box-name.font-2 FENDI 長財布
               .items-box-num
@@ -286,7 +267,7 @@
         %section.items-box
           %a{href: "#"}
             %figure.items-box-photo
-              %img.lazyloaded{:alt => "FENDI 財布　カールラガーフェルド", "data-src" => "https://static.mercdn.net/thumb/photos/m82878093603_1.jpg?1569848967", :src => "https://static.mercdn.net/thumb/photos/m82878093603_1.jpg?1569848967"}/
+              %img.lazyloaded{:alt => "FENDI 財布　カールラガーフェルド", "data-src" => "https://static.mercdn.net/thumb/photos/m82878093603_1.jpg?1569848967", src: "https://static.mercdn.net/thumb/photos/m82878093603_1.jpg?1569848967"}/
             .items-box-body
               %h3.items-box-name.font-2 FENDI 財布　カールラガーフェルド
               .items-box-num
@@ -302,6 +283,7 @@
         %i.fas.fa-chevron-right
       %li{itemscope: "", itemtype: "#"}
         %span{itemprop: "title"} FENDI フェンディ/長財布/モンスター/レザー/グレー系/あ224
+  -# ここまで
   -# ここからフッダーです
   %aside.advertising
     .sc-ESoVU.bSubhH.sc-cjHlYL.bcomWS

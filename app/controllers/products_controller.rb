@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
+  require 'payjp'
   before_action :set_params, only: [:show,:buy,:edit]
+
   def index
     @product = Product.all.order("id DESC")
   end
@@ -49,6 +51,12 @@ class ProductsController < ApplicationController
     if @product.destroy 
       redirect_to action: :index
     end
+  end
+
+  def purchase
+    @product = Product.find(params[:id])
+    Payjp.api_key = "sk_test_61a80630416980fc1b6e5fe2"
+    Payjp::Charge.create(currency: 'jpy', amount: @product.price, card: params['payjp-token'])
   end
 
   private
