@@ -26,6 +26,13 @@ crumb :logout do
   parent :mypage
 end
 
+# 今後使用するかも知れないのでコメントアウト
+# crumb :show do |product|
+#   link product.name 
+# end
+# - breadcrumb :show, @product
+# = render "layouts/breadcrumbs"
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
