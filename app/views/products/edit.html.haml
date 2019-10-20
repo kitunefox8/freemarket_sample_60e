@@ -93,7 +93,7 @@
                 = f.select :shipping_days, [["---",""],["1〜2日で発送"],["2〜3日で発送"],["4〜7日で発送"]], {}, class: "select-default"
       .sell-content.clearfix
         %h3.sell-sub-head  販売価格(300〜9,999,999)    
-        %a.form-question{:href => "/jp/help_center/article/68/", :target => "_blank"} 
+        %a.form-question{href: "/jp/help_center/article/68/",target: "_blank"} 
         .sellform-box
           %ul.sell-price
             %li.formguroup
@@ -107,7 +107,7 @@
             .clearfix-bold
               .l-left 販売手数料
               
-      .modal{:role => "dialog", :tabindex => "-1"}
+      .modal{role: "dialog", tabindex: "-1"}
         .model-inner
       .sellcontent-box
         %div
@@ -115,7 +115,7 @@
             禁止されている出品、行為を必ずご確認ください。またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
         %div
           = f.submit class: "btn-default", value: "編集する"
-          %a.btn{:href => "/products/update/#{@product.id}", method: :patch}/ 
-          %a.btn-defau-gray{:href => "/products/"} 戻る
+          %a.btn{href: "/products/update/#{@product.id}", method: :patch}/ 
+          %a.btn-defau-gray{href: "/products/"} 戻る
     .overlay 
     = render 'signup/signup_footer'
