@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :set_params, only: [:show,:buy,:edit]
   def index
     @product = Product.all.order("id DESC")
   end
@@ -11,11 +12,9 @@ class ProductsController < ApplicationController
     @product.images.build
   end
 
-  def show
-    @product = Product.find(params[:id])  
+  def show 
   end
   def buy
-    @product = Product.find(params[:id])
   end
   
   def buyer
@@ -35,15 +34,45 @@ class ProductsController < ApplicationController
       render :new
     end
   end
+  def edit
+  end
+  def update
+    @product = Product.find(params[:id])  
+    if @product.update(update_params) 
+      redirect_to action: :index
+    else
+      render :new
+    end
+  end  
+  def destroy
+    @product = Product.find(params[:id])  
+    if @product.destroy 
+      redirect_to action: :index
+    end
+  end
 
   private
   def create_params
     params.require(:product).permit(
-       :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days, :saller_id, :buyer,
+      :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days, :saller_id, :buyer,
       category_attributes: [:id, :name],
       status_attributes: [:id, :name],
       brand_attributes: [:id, :name],
       images_attributes: [:id, :image_url]
     )
   end
+  def update_params
+    params.require(:product).permit(
+     :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days, :saller_id, :buyer,
+     category_attributes: [:id, :name],
+     status_attributes: [:id, :name],
+     brand_attributes: [:id, :name],
+     images_attributes: [:id, :image_url]
+   )
+  end
+
+  def set_params
+    @product = Product.find(params[:id])  
+  end
+
 end

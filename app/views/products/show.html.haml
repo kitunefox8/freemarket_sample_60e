@@ -5,8 +5,7 @@
       .mercari__head__top
         .mercari__head__logo
           %a.mercari__head__logo-image
-            =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari__head__logo-image", size: "134x36"
-            %a.style_link{:href => "/products"}
+            =link_to image_tag("https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: 'image'), '/products'
         %form.search__form{}
           %input{type: "search", class: "search__form__input"}
           %button.search-button
@@ -119,9 +118,13 @@
     -if @product.buyer == "1" 
       .item-buy-btns
         取引停止中
+      %a.item-buy-btn{href: "/products/destroy/#{@product.id}"}
+        出品を取り消す
     -else
       %a.item-buy-btn{href: "/products/buy/#{@product.id}"}
         購入画面に進む
+      %a.item-buy-btn{href: "/products/destroy/#{@product.id}"}
+        出品を取り消す
     .item-description.f14
       %p.item-description-inner
         = @product.description
