@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :set_params, only: [:show,:buy,:edit]
   def index
     @product = Product.all.order("id DESC")
   end
@@ -11,11 +12,9 @@ class ProductsController < ApplicationController
     @product.images.build
   end
 
-  def show
-    @product = Product.find(params[:id])  
+  def show 
   end
   def buy
-    @product = Product.find(params[:id])
   end
   
   def buyer
@@ -36,7 +35,6 @@ class ProductsController < ApplicationController
     end
   end
   def edit
-    @product = Product.find(params[:id])  
   end
   def update
     @product = Product.find(params[:id])  
@@ -72,4 +70,9 @@ class ProductsController < ApplicationController
      images_attributes: [:id, :image_url]
    )
   end
+
+  def set_params
+    @product = Product.find(params[:id])  
+  end
+
 end
