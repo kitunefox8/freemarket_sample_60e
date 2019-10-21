@@ -85,3 +85,4 @@ gem 'pry-rails'
 gem "gretel"
 gem 'payjp'
 gem 'jquery-rails'
+gem 'ancestry'
