@@ -20,10 +20,12 @@ class User < ApplicationRecord
           user_id: user.id
           )
       else
+        password = Devise.friendly_token[0, 20]
         user = User.create(
           nickname: auth.info.name,
           email:    auth.info.email,
-          password: Devise.friendly_token[0, 20]
+          password: password,
+          password_confirmation: password
           )
         Snscredential.create(
           uid: uid,
@@ -39,7 +41,7 @@ class User < ApplicationRecord
   has_many :tradings
   has_many :comments
   has_many :likes
-  has_many :sns_credentials
+  has_many :snscredentials, dependent: :destroy
   # has_one :creditcard, dependent: :destory
   has_one :creditcard
   accepts_nested_attributes_for :creditcard
@@ -49,7 +51,9 @@ class User < ApplicationRecord
 
   email_check = /\A[^@\s]+@[^@\s]+\z/
   validates :email,                 presence: true, uniqueness: { case_sensitive: false }, format: { with: email_check }
+  validates :email,                 presence: true
   validates :password,              presence: true, length: {minimum: 7, maximum: 128}
   validates :password_confirmation, presence: true, length: {minimum: 7, maximum: 128}
-  validates :nickname,              presence: true, length: {maximum: 20}
+  # validates :nickname,              presence: true, length: {maximum: 20}
+  validates :nickname,              presence: true
 end
