@@ -3,15 +3,24 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "products#index"
   
-  resources :products, only: [:index, :show, :new, :create] do
+  resources :products, only: [:index, :show, :new, :create,:destroy,:update,:edit] do
     collection do
-      get '/buy/:id'  => 'products#buy'
+      scope '/products' do
+       get '/buy/:id', to: 'products#buy', as: 'buy'
+      end
       get '/buyer/:id' => 'products#buyer'
+      post 'purchase/:id', to: 'products#purchase', as: 'purchase'
+      scope '/products' do
+        get '/destroy/:id', to:'products#destroy', as: 'destroy'
+      scope '/products' do
+        get '/seller/:id', to:'products#seller',as: 'product'
+      end
+      end
     end
   end
   
   resources :users, only: [:index] do
-    collection do
+    collection do 
       get 'mypage'
       get 'profile'
       get 'person'

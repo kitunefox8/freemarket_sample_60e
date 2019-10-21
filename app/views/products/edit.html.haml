@@ -1,7 +1,7 @@
 .single-container
   %header.single-header
     %h1
-      = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2296184308', alt: 'mercari', height: '70', width: '180'
+      =image_tag  "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2296184308", width:"180", height:"70",alt: "mercari"
   .single-main 
   = form_for [@product] do |f|
     %section.l-single-container#buy-item-container
@@ -65,7 +65,7 @@
                 %i.icon-arrow-bottom
       .sell-content.clearfix
         %h3.sell-sub-head  配達について    
-        = link_to '','/jp/help_center/article/68/', target: "_blank", class: 'form-question'
+        %a.form-question{href: "/jp/help_center/article/68/", target: "_blank"} 
         .sell-cotent__form-box
           .form-group
             .image-form__upload-box--header 配送料の負担
@@ -84,7 +84,7 @@
             %span.image-form__upload-box--header__require 必須
             %div
               .select-wrap
-                = f.select :shipping_area, [["---",""],["北海道"],["青森県"],["岩手県"],["宮城県"],["秋田県"],["山形県"],["福島県"],["茨城県"],["栃木県"],["群馬県"],["埼玉県"],["千葉県"],["東京都"],["神奈川県"],["新潟県"],["富山県"],["石川県"],["福井県"],["山梨県"],["長野県"],["岐阜県"],["静岡県"],["愛知県"],["三重県"],["滋賀県"],["京都府"],["大阪府"],["兵庫県"],["奈良県"],["和歌山県"],["鳥取県"],["島根県"],["広島県"],["岡山県"],["山口県"],["徳島県"],["香川県"],["愛媛県"],["高知県"],["福岡県"],["佐賀県"],["長崎県"],["熊本県"],["大分県"],["宮崎県"],["鹿児島県"],["沖縄県"],["未定"]], {}, class: "select-default"
+                = f.collection_select :shipping_area, Prefecture.all, :name, :name, {prompt: "---"}, class:  "select-default"
           .form-group
             .image-form__upload-box--header 発送までの日数
             %span.image-form__upload-box--header__require 必須
@@ -93,7 +93,7 @@
                 = f.select :shipping_days, [["---",""],["1〜2日で発送"],["2〜3日で発送"],["4〜7日で発送"]], {}, class: "select-default"
       .sell-content.clearfix
         %h3.sell-sub-head  販売価格(300〜9,999,999)    
-        = link_to '','/jp/help_center/article/68/', target: '_blank', class: 'form-question'
+        %a.form-question{href: "/jp/help_center/article/68/",target: "_blank"} 
         .sellform-box
           %ul.sell-price
             %li.formguroup
@@ -103,11 +103,9 @@
                 .l-right-sell-price-input ¥
                 = f.text_field :price, class: "input-default", placeholder: "例）300"
             .clearfix2
-              .l-left 手数料(10%)
-              .l-rigft#l-left 
+              .l-left 手数料(10%)              
             .clearfix-bold
               .l-left 販売手数料
-              .l-rigft#l-left2 
               
       .modal{role: "dialog", tabindex: "-1"}
         .model-inner
@@ -116,18 +114,8 @@
           .sellcontent-box__text
             禁止されている出品、行為を必ずご確認ください。またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
         %div
-          = f.submit class: "btn-default", value: "出品"
-          = link_to 'もどる', '#', class: 'btn-defau-gray'
+          = f.submit class: "btn-default", value: "編集する"
+          %a.btn{href: "/products/update/#{@product.id}", method: :patch}/ 
+          %a.btn-defau-gray{href: "/products/"} 戻る
     .overlay 
-    .single-footer
-      %nav
-        %ul.clearfix
-          %li
-            = link_to 'プライバシーポリシー', 'https://www.mercari.com/jp/privacy/' 
-            = link_to 'メルカリ利用規約', 'https://www.mercari.com/jp/tos/' 
-            = link_to '特定商取引に関する表記', 'https://www.mercari.com/jp/tokutei/' 
-      %p
-        = link_to '', 'https://www.mercari.com/jp/', class: 'single-footer-logo' 
-        = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2296184308', alt: 'mercari', height: '65', width: '80' 
-      %p
-        %small © 2019 Mercari
+    = render 'signup/signup_footer'
