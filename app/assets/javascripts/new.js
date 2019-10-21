@@ -1,10 +1,13 @@
 $(function(){
-  $('.input-default').on('change',function(){
-    if( $('.input-default').val()>=300){
-      var Profit = $('.input-default').val()
-      var Fee = $('.input-default').val()*0.1
+  $('.input-default').on('keyup',function(){
+    $('#l-left,#l-left2').empty();
+    
+    var Input = $('.input-default').val()
+    var Fee = $('.input-default').val()*0.1
+
+    if(Input >= 300 && Input <= 9999999){
       $('#l-left').append("¥ " + Fee);
-      $('#l-left2').append("¥ " + (Profit - Fee));
+      $('#l-left2').append("¥ " + (Input - Fee));
     }
     if( $('.input-default').val()==""){
       $('#l-left,#l-left2').empty();    
