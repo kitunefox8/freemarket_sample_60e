@@ -28,7 +28,7 @@
             -# %button.buy-form__price-btn{type: "submit"} 購入する
             -# %a.style_link{href: "/products/buyer/#{@product.id}"}
             = form_tag(action: :purchase, method: :post) do
-              %script.payjp-button{ "data-key": "#{PAYJP_PUBLIC_KEY}", src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "購入する"}
+              %script.payjp-button{ "data-key": "#{Rails.application.credentials.payjp[:PAYJP_PUBLIC_KEY]}", src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "購入する"}
       %section.buy-user-info
         .buy-user-inner
           %h3 配送先
