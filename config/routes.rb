@@ -9,12 +9,14 @@ Rails.application.routes.draw do
       get '/buyer/:id' => 'products#buyer'
       post 'purchase/:id', to: 'products#purchase', as: 'purchase'
       get '/destroy/:id'  => 'products#destroy'
-      get '/seller/:id'   => 'products#seller'
+      scope '/products' do
+        get '/seller/:id', to:'products#seller',as: 'product'
+      end
     end
   end
   
   resources :users, only: [:index] do
-    collection do
+    collection do 
       get 'mypage'
       get 'profile'
       get 'person'
