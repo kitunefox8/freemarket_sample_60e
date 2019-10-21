@@ -5,12 +5,16 @@ Rails.application.routes.draw do
   
   resources :products, only: [:index, :show, :new, :create,:destroy,:update,:edit] do
     collection do
-      get '/buy/:id'  => 'products#buy'
+      scope '/products' do
+       get '/buy/:id', to: 'products#buy', as: 'buy'
+      end
       get '/buyer/:id' => 'products#buyer'
       post 'purchase/:id', to: 'products#purchase', as: 'purchase'
-      get '/destroy/:id'  => 'products#destroy'
+      scope '/products' do
+        get '/destroy/:id', to:'products#destroy', as: 'destroy'
       scope '/products' do
         get '/seller/:id', to:'products#seller',as: 'product'
+      end
       end
     end
   end
