@@ -88,13 +88,25 @@
       %span.item-tax (税込)
       %span.item-shipping-fee 
         = @product.delivery_fee
-    -if @product.buyer == "1" 
+    -if @product.buyer == "1" &&  @product.saller_id == current_user.id
+      = link_to '購入を取り消す', product_products_url(@product.id), class: "item-buy-btn"
+    -elsif @product.buyer == "1"
       .item-buy-btns
         取引停止中
-      = link_to '購入を取り消す', product_products_url(@product.id), class:"item-buy-btn"
+    -elsif @product.buyer != "1"&& @product.saller_id == current_user.id
+      = link_to '出品を取り消す', destroy_products_path(@product.id), class: "item-buy-btn"
     -else
-      = link_to '購入画面に進む', buy_products_path(@product.id), class: "item-buy-btn" 
-      = link_to '出品を取り消す',  destroy_products_path(@product.id), class: "item-buy-btn"
+      = link_to '購入画面に進む', buy_products_path(@product.id), class: "item-buy-btn"  
+
+
+    
+    -# -if @product.buyer == "1" 
+    -#   .item-buy-btns
+    -#     取引停止中
+    -#   = link_to '購入を取り消す', product_products_url(@product.id), class:"item-buy-btn"
+    -# -else
+    -#   = link_to '購入画面に進む', buy_products_path(@product.id), class: "item-buy-btn" 
+    -#   = link_to '出品を取り消す',  destroy_products_path(@product.id), class: "item-buy-btn"
     .item-description.f14
       %p.item-description-inner
         = @product.description
