@@ -83,7 +83,7 @@ gem 'font-awesome-rails'
 gem 'active_hash'
 gem 'pry-rails'
 gem "gretel"
-gem 'omniauth'
+gem 'omniauth', '<= 1.9.0'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'payjp'
