@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
   end
 
   def purchase
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = PAYJP_PRIVATE_KEY
     Payjp::Charge.create(currency: 'jpy', amount: @product.price, card: params['payjp-token'])
     redirect_to root_path
   end
