@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get '/buyer/:id' => 'products#buyer'
       post 'purchase/:id', to: 'products#purchase', as: 'purchase'
       get '/destroy/:id'  => 'products#destroy'
+      get '/seller/:id'   => 'products#seller'
     end
   end
   
