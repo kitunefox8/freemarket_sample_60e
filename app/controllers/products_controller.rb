@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   require 'payjp'
-  before_action :set_params, only: [:show, :buy, :edit, :update, :destroy, :buyer, :purchase]
+  before_action :set_params, only: [:show, :buy, :edit, :update, :destroy, :buyer, :purchase,:seller]
   after_action :buyer, only: [:purchase]
 
   def index
@@ -55,6 +55,14 @@ class ProductsController < ApplicationController
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(currency: 'jpy', amount: @product.price, card: params['payjp-token'])
     redirect_to root_path
+  end
+  
+  def seller
+    if @product.update(buyer: 0)
+       redirect_to action: :index
+    else
+      redirect_to action: :new
+    end
   end
 
   private

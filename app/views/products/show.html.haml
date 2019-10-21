@@ -91,12 +91,10 @@
     -if @product.buyer == "1" 
       .item-buy-btns
         取引停止中
-      %a.item-buy-btn{href: "/products/destroy/#{@product.id}"}
-        出品を取り消す
+      = link_to '購入を取り消す', product_products_url(@product.id), class:"item-buy-btn"
     -else
-      = link_to '購入画面に進む', "/products/buy/#{@product.id}", class: "item-buy-btn" 
-      %a.item-buy-btn{href: "/products/destroy/#{@product.id}"}
-        出品を取り消す
+      = link_to '購入画面に進む', buy_products_path(@product.id), class: "item-buy-btn" 
+      = link_to '出品を取り消す',  destroy_products_path(@product.id), class: "item-buy-btn"
     .item-description.f14
       %p.item-description-inner
         = @product.description
