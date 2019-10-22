@@ -41,7 +41,7 @@
           %div
             .select-wrap
               -# = f.select :category_id, @category_list, {}, class: "select-default"
-              = f.select :category_id, @category_list, { include_blank: true, selected: "---" }, class: "select-default"
+              = f.select :category_id, @category_list, {prompt: "---"}, class: "select-default"
             %i.icon-arrow-bottom
 
           .form-group.form-suggest-container
