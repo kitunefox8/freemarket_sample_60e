@@ -39,10 +39,9 @@
             .image-form__upload-box--header カテゴリー
             %span.image-form__upload-box--header__require 必須
             %div
-            = f.fields_for :category do |c|
-              .select-wrap
-                = c.select :name,[["---",""],["レディース"],["メンズ"],["ベビー・キッズ"],["インテリア・住まい"],["本・音楽・ゲーム"],["おもちゃ・ホビー・グッズ"],["コスメ・香水・美容"],["家電・スマホ・カメラ"],["ハンドメイド"],["チケット"],["自動車・オートバイ"],["その他"]], {}, class: "select-default"
-              %i.icon-arrow-bottom
+            .select-wrap
+              = f.select :category_id, [["---",""],["レディース", "1"],["メンズ", "2"],["ベビー・キッズ", "3"],["インテリア・住まい", "3"],["本・音楽・ゲーム", "4"],["おもちゃ・ホビー・グッズ", "4"],["コスメ・香水・美容", "4"],["家電・スマホ・カメラ", "5"],["ハンドメイド", "6"],["チケット", "7"],["自動車・オートバイ", "7"],["その他", "8"]], {}, class: "select-default"
+            %i.icon-arrow-bottom
 
           .form-group.form-suggest-container
             %label
