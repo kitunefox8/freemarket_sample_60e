@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.all.order("id DESC")
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def new

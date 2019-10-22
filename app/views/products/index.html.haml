@@ -1,7 +1,8 @@
 .wrapper#__next
   = render 'shared/header'
-
   .main__container
+    -# - @parents.each do |parent|
+    -#   =parent.name
     .main__container__sliders
       .main__container__slider
         .main__container__slider__image
@@ -78,5 +79,5 @@
                   
                   -if product.buyer == "1"
                     .items-box_photo__sold
-                      .items-box_photo__sold__inner
+                      .items-box_photo__sold__inner 
                         SOLD
