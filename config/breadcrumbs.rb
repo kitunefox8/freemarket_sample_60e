@@ -26,6 +26,10 @@ crumb :logout do
   parent :mypage
 end
 
+crumb :index do
+  link "カテゴリ一覧", categories_path
+end
+
 # 今後使用するかも知れないのでコメントアウト
 # crumb :show do |product|
 #   link product.name 
