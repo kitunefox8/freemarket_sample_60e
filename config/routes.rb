@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :categories, only: [:index, :show]
   
   resources :users, only: [:index] do
     collection do 
