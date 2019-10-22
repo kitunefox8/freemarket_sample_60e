@@ -38,9 +38,10 @@
           .form-group
             .image-form__upload-box--header カテゴリー
             %span.image-form__upload-box--header__require 必須
-            %div
+          %div
             .select-wrap
-              = f.select :category_id, [["---",""],["レディース", "1"],["メンズ", "2"],["ベビー・キッズ", "3"],["インテリア・住まい", "3"],["本・音楽・ゲーム", "4"],["おもちゃ・ホビー・グッズ", "4"],["コスメ・香水・美容", "4"],["家電・スマホ・カメラ", "5"],["ハンドメイド", "6"],["チケット", "7"],["自動車・オートバイ", "7"],["その他", "8"]], {}, class: "select-default"
+              -# = f.select :category_id, @category_list, {}, class: "select-default"
+              = f.select :category_id, @category_list, { include_blank: true, selected: "---" }, class: "select-default"
             %i.icon-arrow-bottom
 
           .form-group.form-suggest-container
@@ -55,7 +56,7 @@
                 %ul.sell-brand-suggest.form-suggest-list
 
           .form-gorup
-            .image-form__upload-box--header  カテゴリー
+            .image-form__upload-box--header 商品の状態
             %span.image-form__upload-box--header__require 必須
             %div
             = f.fields_for :status do |s|

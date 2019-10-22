@@ -10,10 +10,10 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.build_category
     @product.build_status
     @product.build_brand
     @product.images.build
+    @category_list = Category.all.where(ancestry: nil).map{|i| [i.name, i.id]}
   end
 
   def show 
@@ -27,7 +27,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-    binding.pry
     @product = Product.new(create_params)
     if @product.save
       redirect_to action: :index
