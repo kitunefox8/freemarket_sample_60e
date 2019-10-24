@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       scope '/products' do
        get '/shipping/:id', to: 'products#shipping', as: 'shipping'
+      end
       scope '/products' do
        get '/buy/:id', to: 'products#buy', as: 'buy'
       end
@@ -14,11 +15,11 @@ Rails.application.routes.draw do
       post 'purchase/:id', to: 'products#purchase', as: 'purchase'
       scope '/products' do
         get '/destroy/:id', to:'products#destroy', as: 'destroy'
+      end
       scope '/products' do
         get '/seller/:id', to:'products#seller',as: 'product'
       end
-      end
-      end
+      
     end
   end
 
@@ -28,23 +29,23 @@ Rails.application.routes.draw do
     collection do 
       scope '/users' do
        get '/:id/seller', to: 'users#seller', as: 'seller'
+      end
       scope '/users' do
        get '/:id/buy', to: 'users#buy',as: 'buy'
+      end
       scope '/users' do
        get  '/:id/sell', to: 'users#sell', as: 'sell'
+      end
       scope '/users' do
        get  '/:id/sold', to: 'users#sold', as: 'sold'
+      end
       scope '/users' do
        get '/:id/negotiation',to: 'users#negotiation', as: 'negotiation'
+      end
       get 'profile'
       get 'person'
       get 'creditcard'
       get 'logout'
-    end
-  end
-  end
-  end
-  end
   end
     member do
       get  'mypage' 
