@@ -10,10 +10,25 @@
           = fa_icon 'search', class: 'icon-search'
     .mercari__head__bottom
       .mercari__head__bottom__categorys
-        .mercari__head__bottom__category
-          = link_to '#', class: 'mercari__category' do
+        .mercari__head__bottom__category.drop-down-menu
+          = link_to categories_path, class: 'mercari__category' do
             = fa_icon 'list', class: 'icon-list'
             .list-text カテゴリーから探す
+          .drop-down-menu
+            %ul.categories
+              - @categories.each do |category|
+                %li.category-list
+                  = link_to "#{category.name}", category_path(category.id), class: "list-text"
+                  %ul.children
+                    - category.children.each do |child|
+                      %li.child-list
+                        = link_to "#{child.name}", category_path(child.id), class: "list-text"
+                        %ul.grandchildren
+                          - child.children.each do |grandchild|
+                            %li.grandchild-list
+                              = link_to "#{grandchild.name}", category_path(grandchild.id), class: "list-text"
+                      
+                                    
         .mercari__head__bottom__brand
           = link_to '#', class: 'mercari__brand' do
             = fa_icon 'tag', class: 'icon-tag'
@@ -30,7 +45,7 @@
             = link_to '#', class: 'link-none' do
               = fa_icon 'check', class: 'icon'
               .nav-text やることリスト
-            = link_to  mypage_users_path, class: 'link-none' do
+            = link_to  mypage_user_path(current_user), class: 'link-none' do
               = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: 'user-icon'
               .nav-text マイページ 
         - else 

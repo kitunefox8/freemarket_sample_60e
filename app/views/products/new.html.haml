@@ -38,10 +38,12 @@
           .form-group
             .image-form__upload-box--header カテゴリー
             %span.image-form__upload-box--header__require 必須
-            %div
-              .select-wrap
-              = f.select :category_id, [["---",""],["レディース", "1"],["メンズ", "2"],["ベビー・キッズ", "3"],["インテリア・住まい", "4"],["本・音楽・ゲーム", "5"],["おもちゃ・ホビー・グッズ", "6"],["コスメ・香水・美容", "7"],["家電・スマホ・カメラ", "8"],["スポーツ・レジャー", "9"],["ハンドメイド", "10"],["チケット", "11"],["自動車・オートバイ", "12"],["その他", "13"]], {}, class: "select-default"
-              %i.icon-arrow-bottom
+
+          %div
+            .select-wrap
+              -# = f.select :category_id, @category_list, {}, class: "select-default"
+              = f.select :category_id, @category_list, {prompt: "---"}, class: "select-default"
+            %i.icon-arrow-bottom
 
           .form-group.form-suggest-container
             %label
@@ -55,7 +57,7 @@
                 %ul.sell-brand-suggest.form-suggest-list
 
           .form-gorup
-            .image-form__upload-box--header  カテゴリー
+            .image-form__upload-box--header 商品の状態
             %span.image-form__upload-box--header__require 必須
             %div
             = f.fields_for :status do |s|

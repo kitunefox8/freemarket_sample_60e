@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   require 'payjp'
   before_action :set_params, only: [:show, :buy, :edit, :update, :destroy, :buyer, :purchase,:seller]
   after_action :buyer, only: [:purchase]
+  include CommonActions
+  before_action :set_categories
 
   def index
     @product = Product.all.order("id DESC")
@@ -12,12 +14,22 @@ class ProductsController < ApplicationController
     @interi = Product.all.where(category_id:'4').order("id DESC").limit(10)
     @book = Product.all.where(category_id:'5').order("id DESC").limit(10)
   end
+ 
+  def  shipping
+    @product = Product.find(params[:id])  
+   if @product.update(buyer: 2)
+     redirect_to action: :index
+  else
+    redirect_to action: :new
+  end
+ end
 
   def new
     @product = Product.new
     @product.build_status
     @product.build_brand
     @product.images.build
+    @category_list = Category.all.where(ancestry: nil).map{|i| [i.name, i.id]}
   end
 
   def show 
@@ -27,7 +39,7 @@ class ProductsController < ApplicationController
   end
   
   def buyer
-    @product.update(buyer: 1)
+    @product.update(buyer: 1, buyer_id: current_user.id)
   end
 
   def create
@@ -78,11 +90,11 @@ class ProductsController < ApplicationController
       brand_attributes: [:id, :name],
       images_attributes: [:id, :image_url]
     )
-    .merge(saller_id: current_user.id)
+    .merge(saller_id: current_user.id,user_id: current_user.id, buyer: 0)
   end
   def update_params
     params.require(:product).permit(
-     :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days, :buyer, :category_id,
+     :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days,:buyer, :category_id,
      status_attributes: [:id, :name],
      brand_attributes: [:id, :name],
      images_attributes: [:id, :image_url]

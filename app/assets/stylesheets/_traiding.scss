@@ -1,0 +1,127 @@
+.mypage{
+  width: 1020px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin: 0 auto;
+  display: flex;
+
+&__main{
+      width: 700px;
+      margin-left: 40px;
+  &__side{
+    margin-left: 40px;
+    .mypage-list{
+      width: 280px;
+      list-style: none;
+      .mypage-single-active{
+        height: 48px;
+        background-color: $white3;
+        position: relative;
+        border-bottom: 1px solid;
+        border-color: $white4;
+        .link-non{
+          text-decoration: none;
+          .list-text{
+            padding-left: 15px;
+            line-height: 48px;
+            font-weight: 600;
+            color: $black;
+          }
+          .icon-right{
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+
+  .mypage-tabs{
+    height: 75px;
+    line-height: 75px; 
+    .section-tabs{
+      display: flex;
+      font-weight: 600;
+      text-align: center;
+      .actives{
+        width: 50%;
+        background: $white; 
+        border-top: 2px solid $red;
+        .link-non{
+          text-decoration: none;
+          color: $black;
+        }
+      }
+      .non-active{
+        width: 50%;
+        border-color: $white3;
+        .link-non{
+          text-decoration: none;
+          color: $black;
+        }
+      }
+    }
+  }
+        .link-non{
+          text-decoration: none;
+          color: $black;
+        }
+      .non-active{
+        width: 50%;
+        border-color: $white3;
+        .link-non{
+          text-decoration: none;
+          color: $black;
+        }
+      }
+
+      .mypage-content{
+        background: $white; 
+        .content-area{
+          .content-field{
+            border-bottom: 1px solid;
+            border-color: $white3;
+            position: relative;
+            .link-non{
+              text-decoration: none;
+              display: flex;
+              padding: 16px;
+              color: $black;
+              .content-image{
+                .mini-mercari-image{
+                  width: 50px;
+                  height: 50px;
+                }
+              }
+              .content-text{
+                padding: 0 15px;
+                .top-text{
+                  font-size: 14px;
+                }
+                .bottom-text{
+                  font-size: 14px;
+                  .icon-time{
+                    font-size: 20px;
+                    margin-right: 7px;
+                  }
+                  .time{
+                    font-size: 14px;
+                  }
+                }
+              }
+              .content-arrow{
+                .icon-right{
+                  position: absolute;
+                  top: 35px;
+                  right: 20px;
+                }  
+              }
+            }          
+          }
+        }
+      }
+    }
+  } 
+  

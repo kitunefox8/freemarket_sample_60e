@@ -1,0 +1,35 @@
+= render 'shared/header'
+- breadcrumb :index
+= render "layouts/breadcrumbs"
+
+.category-index
+  .view-pc
+    .category-top-text
+      カテゴリー一覧
+    .category-list
+      - @categories.each do |category|
+        .category-list-btn
+          = link_to category_path(category.id), class: 'list-style' do
+            .list-name 
+              = category.name
+    .category-list-box
+      .category-list-box-white
+        - @categories.each do |catergory|
+          .category-list-title
+            .title-name
+              = catergory.name
+          .category-list-inner-box
+            - catergory.children.each do |child|
+              .category-list-child-title
+                .child-name
+                  = child.name
+              .category-list-grandchild-box
+                .category-list-grandchild-title
+                  - child.children.each do |grandchild|
+                    .grandchild-btn
+                      = link_to category_path(grandchild.id), class: 'grandchild-link' do
+                        .grandchild-name
+                          = grandchild.name
+        
+
+= render 'shared/footer'  

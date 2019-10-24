@@ -1,5 +1,5 @@
 .wrapper#__next
-  = render 'shared/header'
+  = render "shared/header"
   .main__container
     .main__container__sliders
       .main__container__slider
@@ -17,6 +17,7 @@
           %ul.popular__category__lists__unordered
           - @categories.each do |category|
             %li.popular__category__list
+
               = link_to '#', class: "category" do
                 = category[1]
       - @categories.each do |category|
@@ -98,6 +99,7 @@
                           .items-box_photo__sold__inner
                             SOLD
 
+
       .popular__brands
         %h2.popular__brand 人気のブランド
         .popular__brand__lists
@@ -124,9 +126,17 @@
                   .name
                     = product.name
                   .price
-                    = product.price
+
+                    = product.price            
+
                   -if product.buyer == "1"
                     .items-box_photo__sold
                       .items-box_photo__sold__inner 
                         SOLD
+
+                  -elsif product.buyer == "2" 
+                    .items-box_photo__sold
+                      .items-box_photo__sold__inner
+                        SOLD
+
   = render 'shared/footer'

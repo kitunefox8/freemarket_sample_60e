@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_083657) do
+ActiveRecord::Schema.define(version: 2019_10_24_034348) do
 
   create_table "brandgroups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2019_10_20_083657) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "product_id"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
     t.index ["product_id"], name: "index_categories_on_product_id"
   end
 
@@ -118,6 +120,8 @@ ActiveRecord::Schema.define(version: 2019_10_20_083657) do
     t.string "delivery_fee"
     t.string "shipping_area"
     t.string "shipping_days"
+    t.integer "user_id"
+    t.integer "buyer_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

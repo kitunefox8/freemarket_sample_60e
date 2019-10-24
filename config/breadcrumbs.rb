@@ -3,7 +3,7 @@ crumb :root do
 end
 
 crumb :mypage do
-  link "マイページ", mypage_users_path
+  link "マイページ", mypage_user_path(current_user)
 end
 
 crumb :profile do
@@ -24,6 +24,10 @@ end
 crumb :logout do
   link "ログアウト", logout_users_path
   parent :mypage
+end
+
+crumb :index do
+  link "カテゴリ一覧", categories_path
 end
 
 # 今後使用するかも知れないのでコメントアウト
