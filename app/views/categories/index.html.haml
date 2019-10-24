@@ -7,14 +7,14 @@
     .category-top-text
       カテゴリー一覧
     .category-list
-      - @catergories.each do |category|
+      - @categories.each do |category|
         .category-list-btn
           = link_to category_path(category.id), class: 'list-style' do
             .list-name 
               = category.name
     .category-list-box
       .category-list-box-white
-        - @catergories.each do |catergory|
+        - @categories.each do |catergory|
           .category-list-title
             .title-name
               = catergory.name
