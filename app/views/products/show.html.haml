@@ -104,10 +104,10 @@
     
     -elsif  @product.saller_id  == current_user.id and @product.buyer != "1" and @product.buyer != "2"
       = link_to '出品を取り消す', destroy_products_path(@product.id), class: "item-buy-btn"
-      = link_to '商品情報を編集する', "/products/#{@product.id}/edit", class: "item-buy-btn"
+      = link_to '商品情報を編集する', edit_product_path(@product.id), class: "item-buy-btn"
   
     -elsif @product.buyer == "1" and @product.saller_id == current_user.id 
-      = link_to '発送する',  "/products/shipping/#{@product.id}", class: "item-buy-btn"
+      = link_to '発送する', shipping_products_path(@product.id), class: "item-buy-btn"
       
    
     -elsif  @product.saller_id  != current_user.id and @product.buyer == "1" and @product.buyer_id != current_user.id

@@ -42,7 +42,11 @@
                     =product.name
                   .price
                     =product.price
-                  -if product.buyer == "1" and product.buyer == "2"
+                  -if product.buyer == "1" 
+                    .items-box_photo__sold
+                      .items-box_photo__sold__inner
+                        SOLD
+                  -elsif product.buyer == "2" 
                     .items-box_photo__sold
                       .items-box_photo__sold__inner
                         SOLD
@@ -79,4 +83,8 @@
                   -if product.buyer == "1"
                     .items-box_photo__sold
                       .items-box_photo__sold__inner 
+                        SOLD
+                  -elsif product.buyer == "2" 
+                    .items-box_photo__sold
+                      .items-box_photo__sold__inner
                         SOLD

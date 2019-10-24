@@ -10,12 +10,12 @@
           %li.actives
             = link_to '購入リスト', '#', class: 'link-non'
           %li.non-active
-            = link_to '取引済みリスト',"/users/#{current_user.id}/sold" , class: 'link-non' 
+            = link_to '取引済みリスト', sold_users_path(current_user) , class: 'link-non' 
       .mypage-content
         %ul.content-area
           - @product.each do |product|
             %li.content-field
-              = link_to "/products/#{product.id}", class: 'link-non' do
+              = link_to product_path(product.id), class: 'link-non' do
                 .content-image
                   = image_tag "#{product.images[0].image_url}", class: 'mini-mercari-image'
                 .content-text

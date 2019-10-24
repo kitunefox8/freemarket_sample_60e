@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show, :new, :create,:destroy,:update,:edit] do
     collection do
       scope '/products' do
+       get '/shipping/:id', to: 'products#shipping', as: 'shipping'
+      scope '/products' do
        get '/buy/:id', to: 'products#buy', as: 'buy'
       end
       get '/buyer/:id' => 'products#buyer'
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
         get '/seller/:id', to:'products#seller',as: 'product'
       end
       end
+      end
     end
   end
 
@@ -23,16 +26,26 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index] do
     collection do 
-      get '/:id/seller' => 'users#seller'
-      get '/:id/buy' => 'users#buy'
-      get  '/:id/sell' => 'users#sell'
-      get  '/:id/sold' => 'users#sold'
-      get '/:id/negotiation' => 'users#negotiation'
+      scope '/users' do
+       get '/:id/seller', to: 'users#seller', as: 'seller'
+      scope '/users' do
+       get '/:id/buy', to: 'users#buy',as: 'buy'
+      scope '/users' do
+       get  '/:id/sell', to: 'users#sell', as: 'sell'
+      scope '/users' do
+       get  '/:id/sold', to: 'users#sold', as: 'sold'
+      scope '/users' do
+       get '/:id/negotiation',to: 'users#negotiation', as: 'negotiation'
       get 'profile'
       get 'person'
       get 'creditcard'
       get 'logout'
     end
+  end
+  end
+  end
+  end
+  end
     member do
       get  'mypage' 
     end

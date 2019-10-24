@@ -26,27 +26,27 @@
           出品する
         = fa_icon 'chevron-right', class: 'icon-right'
     %li.mypage-single-white
-      = link_to "/users/#{current_user.id}/seller", class: 'link-non' do
+      = link_to seller_users_path(current_user), class: 'link-non' do
         .list-text
           出品した商品 - 出品中
         = fa_icon 'chevron-right', class: 'icon-right'
     %li.mypage-single-white
-      = link_to "/users/#{current_user.id}/negotiation", class: 'link-non' do
+      = link_to negotiation_users_path(current_user), class: 'link-non' do
         .list-text
           出品した商品 - 取引中
         = fa_icon 'chevron-right', class: 'icon-right'
     %li.mypage-single-white
-      = link_to "/users/#{current_user.id}/sell", class: 'link-non' do
+      = link_to sell_users_path(current_user), class: 'link-non' do
         .list-text
           出品した商品 - 売却済
         = fa_icon 'chevron-right', class: 'icon-right'
     %li.mypage-single-white
-      = link_to "/users/#{current_user.id}/buy", class: 'link-non' do
+      = link_to buy_users_path(current_user), class: 'link-non' do
         .list-text
           購入した商品 - 取引中
         = fa_icon 'chevron-right', class: 'icon-right'
     %li.mypage-single-white
-      = link_to "/users/#{current_user.id}/sold", class: 'link-non' do
+      = link_to sold_users_path(current_user), class: 'link-non' do
         .list-text
           購入した商品 -過去の取引
         = fa_icon 'chevron-right', class: 'icon-right'
