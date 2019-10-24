@@ -88,15 +88,45 @@
       %span.item-tax (税込)
       %span.item-shipping-fee 
         = @product.delivery_fee
-    -if @product.buyer == "1" &&  @product.saller_id == current_user.id
+    -if @product.saller_id != current_user.id and @product.buyer == "1" and @product.buyer_id == current_user.id
       = link_to '購入を取り消す', product_products_url(@product.id), class: "item-buy-btn"
-    -elsif @product.buyer == "1"
+
+    -elsif @product.buyer == "2" and @product.buyer_id == current_user.id and @product.saller_id != current_user.id 
+      .item-buy-btns
+        取引成立
+    
+    -elsif @product.buyer == "2" and @product.buyer_id != current_user.id and @product.saller_id == current_user.id 
+      .item-buy-btns
+        商品発送中
+
+    -elsif@product.saller_id != current_user.id and @product.buyer != "1" and @product.buyer != "2"
+      =link_to '購入画面に進む', buy_products_path(@product.id), class: "item-buy-btn"  
+    
+    -elsif  @product.saller_id  == current_user.id and @product.buyer != "1" and @product.buyer != "2"
+      = link_to '出品を取り消す', destroy_products_path(@product.id), class: "item-buy-btn"
+      = link_to '商品情報を編集する', "/products/#{@product.id}/edit", class: "item-buy-btn"
+  
+    -elsif @product.buyer == "1" and @product.saller_id == current_user.id 
+      = link_to '発送する',  "/products/shipping/#{@product.id}", class: "item-buy-btn"
+      
+   
+    -elsif  @product.saller_id  != current_user.id and @product.buyer == "1" and @product.buyer_id != current_user.id
       .item-buy-btns
         取引停止中
-    -elsif @product.buyer != "1"&& @product.saller_id == current_user.id
-      = link_to '出品を取り消す', destroy_products_path(@product.id), class: "item-buy-btn"
-    -else
-      = link_to '購入画面に進む', buy_products_path(@product.id), class: "item-buy-btn"  
+    
+    -elsif  @product.saller_id  != current_user.id and @product.buyer == "2" and @product.buyer_id != current_user.id
+      .item-buy-btns
+        取引停止中
+
+    -# -if @product.buyer == "1" &&  @product.saller_id == current_user.id
+    -#   = link_to '購入を取り消す', product_products_url(@product.id), class: "item-buy-btn"
+    -# -elsif @product.buyer == "1"
+    -#   .item-buy-btns
+    -#     取引停止中
+    -# -elsif @product.buyer != "1"&& @product.saller_id == current_user.id
+    -#   = link_to '出品を取り消す', destroy_products_path(@product.id), class: "item-buy-btn"
+    -# -else
+    -#   = link_to '購入画面に進む', buy_products_path(@product.id), class: "item-buy-btn"  
     .item-description.f14
       %p.item-description-inner
         = @product.description
