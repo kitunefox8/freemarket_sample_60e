@@ -1,4 +1,4 @@
 class UsersController < ApplicationController
-  def index
-  end
+  include CommonActions
+  before_action :set_categories
 end
