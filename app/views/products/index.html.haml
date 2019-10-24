@@ -15,12 +15,12 @@
         %h2.popular__category 人気のカテゴリー
         .popular__category__lists
           %ul.popular__category__lists__unordered
-          - @categories.each do |category|
+          - @category_5.each do |category|
             %li.popular__category__list
 
               = link_to '#', class: "category" do
                 = category[1]
-      - @categories.each do |category|
+      - @category_5.each do |category|
         .new__product
           .ladies
             .ladies__new{name: "scroll-1"}
