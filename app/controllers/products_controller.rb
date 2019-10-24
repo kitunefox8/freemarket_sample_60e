@@ -7,6 +7,15 @@ class ProductsController < ApplicationController
     @product = Product.all.order("id DESC")
     @parents = Category.all.order("id ASC").limit(13)
   end
+ 
+  def  shipping
+    @product = Product.find(params[:id])  
+   if @product.update(buyer: 2)
+     redirect_to action: :index
+  else
+    redirect_to action: :new
+  end
+ end
 
   def new
     @product = Product.new
