@@ -1,51 +1,102 @@
 .wrapper#__next
   = render 'shared/header'
   .main__container
-    -# - @parents.each do |parent|
-    -#   =parent.name
     .main__container__sliders
       .main__container__slider
         .main__container__slider__image
-        .slider-control-centerleft{:style => "position:absolute;top:50%;left:0;transform:translateY(-50%);-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%)"}
+        .slider-control-centerleft
           .eoeUvk
-        .slider-control-centerright{:style => "position:absolute;top:50%;right:0;transform:translateY(-50%);-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%)"}
+        .slider-control-centerright
           .sc-VJcYb.sc-LKuAh.dkZuVW.sc-hmXxxW.cwGzbB
-        .slider-control-bottomcenter{:style => "position:absolute;bottom:0;left:50%;transform:translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%)"}
+        .slider-control-bottomcenter
           .style_dotsIndicator__1fZnt.common_fontFamily__3-3Si.style_center__2IkR_.style_mono__3e12j.sc-iBEsjs.fJxojC
             %span.style_active__2ihlK
       .popular__categorys
         %h2.popular__category 人気のカテゴリー
         .popular__category__lists
           %ul.popular__category__lists__unordered
+          - @categories.each do |category|
             %li.popular__category__list
-              %a.category レディース
-            %li.popular__category__list
-              %a.category メンズ
-            %li.popular__category__list
-              %a.category 家電・スマホ・カメラ
-            %li.popular__category__list
-              %a.category おもちゃ・ホビー・グッズ
-      .new__product
-        .ladies
-          .ladies__new{:name => "scroll-1"}
-            %h3.style_heading.common_fontFamily__3-3Si.style_responsiveLv2__3K0hn.sc-chbbiW.kHlukY 新着アイテム
-            %a.more_view{:href => "#"} もっと見る
-          .ladies__items
-            .ladies__item
-              - @product.each do |product|
-                .product
-                  %a.style_link{:href => "/products/#{product.id}"}
-                    = image_tag product.images[0].image_url.url
-                    -# %img{alt: "image", src: product.images[0].image_url}
-                  -# =image_tag "#{product.images.first.image_url}"
-                  .name
-                    =product.name
-                  .price
-                    =product.price
-                  -if product.buyer == "1" 
-                    .items-box_photo__sold
-                      .items-box_photo__sold__inner
-                        SOLD
+              = link_to '#', class: "category" do
+                = category[1]
+      - @categories.each do |category|
+        .new__product
+          .ladies
+            .ladies__new{name: "scroll-1"}
+              %h3.style_heading.common_fontFamily__3-3Si.style_responsiveLv2__3K0hn.sc-chbbiW.kHlukY
+                = "#{category[1]} 新着アイテム"
+              = link_to "もっと見る", "#", class: "more_view"
+            .ladies__items
+              .ladies__item              
+                - @ladies.each do |product|
+                  - if product.category_id == category[0]                   
+                    .product
+                      =link_to product_path(product.id) do
+                        = image_tag product.images[0].image_url.url
+                      .name
+                        =product.name
+                      .price
+                        =product.price                        
+                      -if product.buyer == "1" 
+                        .items-box_photo__sold
+                          .items-box_photo__sold__inner
+                            SOLD
+
+                - @mans.each do |product|
+                  - if product.category_id == category[0]                   
+                    .product
+                      =link_to product_path(product.id) do
+                        = image_tag product.images[0].image_url.url
+                      .name
+                        =product.name
+                      .price
+                        =product.price                        
+                      -if product.buyer == "1" 
+                        .items-box_photo__sold
+                          .items-box_photo__sold__inner
+                            SOLD
+                    
+                - @kids.each do |product|
+                  - if product.category_id == category[0]                  
+                    .product
+                      =link_to product_path(product.id) do
+                        = image_tag product.images[0].image_url.url
+                      .name
+                        =product.name
+                      .price
+                        =product.price                        
+                      -if product.buyer == "1" 
+                        .items-box_photo__sold
+                          .items-box_photo__sold__inner
+                            SOLD
+
+                - @interi.each do |product|
+                  - if product.category_id == category[0]                   
+                    .product
+                      =link_to product_path(product.id) do
+                        = image_tag product.images[0].image_url.url
+                      .name
+                        =product.name
+                      .price
+                        =product.price                        
+                      -if product.buyer == "1" 
+                        .items-box_photo__sold
+                          .items-box_photo__sold__inner
+                            SOLD
+
+                - @book.each do |product|
+                  - if product.category_id == category[0]                   
+                    .product
+                      =link_to product_path(product.id) do
+                        = image_tag product.images[0].image_url.url
+                      .name
+                        =product.name
+                      .price
+                        =product.price                        
+                      -if product.buyer == "1" 
+                        .items-box_photo__sold
+                          .items-box_photo__sold__inner
+                            SOLD
 
       .popular__brands
         %h2.popular__brand 人気のブランド
@@ -61,23 +112,21 @@
               %a.category ナイキ
       .new__product
         .chanel
-          .chanel__new{:name => "scroll-658"}
+          .chanel__new{name: "scroll-658"}
             %h3.style_heading.common_fontFamily__3-3Si.style_responsiveLv2__3K0hn.sc-chbbiW.kHlukY シャネル新着アイテム
-            %a.more_view{:href => "/jp/brand/658/"} もっと見る
+            = link_to "もっと見る", "#", class: "more_view"
           .chanel__items
             .chanel__item
               - @product.each do |product|
                 .product
-                  %a.style_link{:href => "/products/#{product.id}"}
+                  =link_to product_path(product.id) do
                     = image_tag product.images[0].image_url.url
-                    -# %img{alt: "image", src: product.images[0].image_url}
-                  -# =image_tag "#{product.images.first.image_url}"
                   .name
                     = product.name
                   .price
                     = product.price
-                  
                   -if product.buyer == "1"
                     .items-box_photo__sold
                       .items-box_photo__sold__inner 
                         SOLD
+  = render 'shared/footer'
