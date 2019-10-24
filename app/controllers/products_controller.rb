@@ -5,12 +5,16 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.all.order("id DESC")
-    @parents = Category.all.order("id ASC").limit(13)
+    @categories = Category.all.where(ancestry: nil).limit(5).map{|i| [i.id, i.name]}
+    @ladies = Product.all.where(category_id:'1').order("id DESC").limit(10)
+    @mans = Product.all.where(category_id:'2').order("id DESC").limit(10)
+    @kids = Product.all.where(category_id:'3').order("id DESC").limit(10)
+    @interi = Product.all.where(category_id:'4').order("id DESC").limit(10)
+    @book = Product.all.where(category_id:'5').order("id DESC").limit(10)
   end
 
   def new
     @product = Product.new
-    @product.build_category
     @product.build_status
     @product.build_brand
     @product.images.build
@@ -69,8 +73,7 @@ class ProductsController < ApplicationController
   private
   def create_params
     params.require(:product).permit(
-      :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days,:buyer,
-      category_attributes: [:id, :name],
+      :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days, :buyer, :category_id,
       status_attributes: [:id, :name],
       brand_attributes: [:id, :name],
       images_attributes: [:id, :image_url]
@@ -79,8 +82,7 @@ class ProductsController < ApplicationController
   end
   def update_params
     params.require(:product).permit(
-     :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days,:buyer,
-     category_attributes: [:id, :name],
+     :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days, :buyer, :category_id,
      status_attributes: [:id, :name],
      brand_attributes: [:id, :name],
      images_attributes: [:id, :image_url]
@@ -88,7 +90,7 @@ class ProductsController < ApplicationController
   end
 
   def set_params
-    @product = Product.find(params[:id])  
+    @product = Product.find(params[:id]) 
   end
 
 end
