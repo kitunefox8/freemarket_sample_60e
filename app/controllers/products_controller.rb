@@ -7,7 +7,12 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.all.order("id DESC")
-    @parents = Category.all.order("id ASC").limit(13)
+    @categories = Category.all.where(ancestry: nil).limit(5).map{|i| [i.id, i.name]}
+    @ladies = Product.all.where(category_id:'1').order("id DESC").limit(10)
+    @mans = Product.all.where(category_id:'2').order("id DESC").limit(10)
+    @kids = Product.all.where(category_id:'3').order("id DESC").limit(10)
+    @interi = Product.all.where(category_id:'4').order("id DESC").limit(10)
+    @book = Product.all.where(category_id:'5').order("id DESC").limit(10)
   end
  
   def  shipping
@@ -97,7 +102,7 @@ class ProductsController < ApplicationController
   end
 
   def set_params
-    @product = Product.find(params[:id])  
+    @product = Product.find(params[:id]) 
   end
 
 end
