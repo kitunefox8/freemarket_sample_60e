@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   require 'payjp'
   before_action :set_params, only: [:show, :buy, :edit, :update, :destroy, :buyer, :purchase,:seller]
   after_action :buyer, only: [:purchase]
+  include CommonActions
+  before_action :set_categories
 
   def index
     @product = Product.all.order("id DESC")
