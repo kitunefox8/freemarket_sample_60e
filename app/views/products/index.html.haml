@@ -1,8 +1,6 @@
 .wrapper#__next
-  = render 'shared/header'
+  = render "shared/header"
   .main__container
-    -# - @parents.each do |parent|
-    -#   =parent.name
     .main__container__sliders
       .main__container__slider
         .main__container__slider__image
@@ -36,8 +34,6 @@
                 .product
                   %a.style_link{:href => "/products/#{product.id}"}
                     = image_tag product.images[0].image_url.url
-                    -# %img{alt: "image", src: product.images[0].image_url}
-                  -# =image_tag "#{product.images.first.image_url}"
                   .name
                     =product.name
                   .price
@@ -73,13 +69,10 @@
                 .product
                   %a.style_link{:href => "/products/#{product.id}"}
                     = image_tag product.images[0].image_url.url
-                    -# %img{alt: "image", src: product.images[0].image_url}
-                  -# =image_tag "#{product.images.first.image_url}"
                   .name
                     = product.name
                   .price
-                    = product.price
-                  
+                    = product.price            
                   -if product.buyer == "1"
                     .items-box_photo__sold
                       .items-box_photo__sold__inner 

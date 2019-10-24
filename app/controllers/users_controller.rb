@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  include CommonActions
+  before_action :set_categories
+
    def seller
     @product = Product.where(saller_id: current_user.id).where(buyer: 0)
    end
@@ -20,5 +23,5 @@ class UsersController < ApplicationController
     def mypage
      @product = current_user.products.all
     end
-
+  
 end
