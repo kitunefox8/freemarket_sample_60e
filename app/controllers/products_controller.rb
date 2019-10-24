@@ -32,8 +32,7 @@ class ProductsController < ApplicationController
   end
   
   def buyer
-    @product.update(buyer: 1)
-    @product.update(buyer_id: current_user.id)
+    @product.update(buyer: 1, buyer_id: current_user.id)
   end
 
   def create
