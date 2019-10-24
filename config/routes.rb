@@ -23,11 +23,18 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index] do
     collection do 
-      get 'mypage'
+      get '/:id/seller' => 'users#seller'
+      get '/:id/buy' => 'users#buy'
+      get  '/:id/sell' => 'users#sell'
+      get  '/:id/sold' => 'users#sold'
+      get '/:id/negotiation' => 'users#negotiation'
       get 'profile'
       get 'person'
       get 'creditcard'
       get 'logout'
+    end
+    member do
+      get  'mypage' 
     end
   end
   resources :image_tests, only: [:index, :create]
