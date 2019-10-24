@@ -3,7 +3,7 @@ crumb :root do
 end
 
 crumb :mypage do
-  link "マイページ", mypage_users_path
+  link "マイページ", mypage_user_path(current_user)
 end
 
 crumb :profile do

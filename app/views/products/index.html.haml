@@ -42,7 +42,10 @@
                     .items-box_photo__sold
                       .items-box_photo__sold__inner
                         SOLD
-
+                  -elsif product.buyer == "2" 
+                    .items-box_photo__sold
+                      .items-box_photo__sold__inner
+                        SOLD
       .popular__brands
         %h2.popular__brand 人気のブランド
         .popular__brand__lists
@@ -73,4 +76,8 @@
                   -if product.buyer == "1"
                     .items-box_photo__sold
                       .items-box_photo__sold__inner 
+                        SOLD
+                  -elsif product.buyer == "2" 
+                    .items-box_photo__sold
+                      .items-box_photo__sold__inner
                         SOLD

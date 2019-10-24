@@ -11,4 +11,5 @@ has_one :status,  dependent: :destroy
 accepts_nested_attributes_for :status
 has_one :brand,  dependent: :destroy
 accepts_nested_attributes_for :brand
+belongs_to :user
 end

@@ -1,0 +1,28 @@
+= render 'shared/header'  
+.body
+  .mypage
+    = render 'side-bar'
+
+    .mypage__main
+      %span.count 
+      .mypage-tabs
+        %ul.section-tabs
+          %li.actives
+            = link_to '購入リスト', '#', class: 'link-non'
+          %li.non-active
+            = link_to '取引済みリスト', sold_users_path(current_user) , class: 'link-non' 
+      .mypage-content
+        %ul.content-area
+          - @product.each do |product|
+            %li.content-field
+              = link_to product_path(product.id), class: 'link-non' do
+                .content-image
+                  = image_tag "#{product.images[0].image_url}", class: 'mini-mercari-image'
+                .content-text
+                  .top-text
+                    = product.name
+                  .bottom-text
+                    = fa_icon 'clock', class: 'icon-time'
+                    %span.time 1時間前
+                
+= render 'shared/footer'   

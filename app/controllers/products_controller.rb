@@ -9,6 +9,15 @@ class ProductsController < ApplicationController
     @product = Product.all.order("id DESC")
     @parents = Category.all.order("id ASC").limit(13)
   end
+ 
+  def  shipping
+    @product = Product.find(params[:id])  
+   if @product.update(buyer: 2)
+     redirect_to action: :index
+  else
+    redirect_to action: :new
+  end
+ end
 
   def new
     @product = Product.new
@@ -25,7 +34,7 @@ class ProductsController < ApplicationController
   end
   
   def buyer
-    @product.update(buyer: 1)
+    @product.update(buyer: 1, buyer_id: current_user.id)
   end
 
   def create
@@ -76,7 +85,7 @@ class ProductsController < ApplicationController
       brand_attributes: [:id, :name],
       images_attributes: [:id, :image_url]
     )
-    .merge(saller_id: current_user.id)
+    .merge(saller_id: current_user.id,user_id: current_user.id, buyer: 0)
   end
   def update_params
     params.require(:product).permit(
