@@ -33,6 +33,7 @@ class ProductsController < ApplicationController
   end
 
   def show 
+    @images = @product.images
   end
 
   def buy
