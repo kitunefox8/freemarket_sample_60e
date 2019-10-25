@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
     @book = Product.all.where(category_id: '625').order("id DESC").limit(10)
   end
   def serach
-    redirect_to root_path if params[:keyword] == ""
+    redirect_to root_path if params[:keyword].blank?
     @product = Product.where('name LIKE(?)', "%#{params[:keyword]}%").order("id DESC").limit(10)
   end
   
