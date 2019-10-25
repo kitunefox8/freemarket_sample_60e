@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   before_action :set_categories
 
   def index
-    @product = Product.all.order("id DESC")
+    @product = Product.all.order("id DESC").limit(20)
     @category_5 = Category.all.where(ancestry: nil).limit(5).map{|i| [i.id, i.name]}
     @ladies = Product.all.where(category_id: '1').order("id DESC").limit(10)
     @mans = Product.all.where(category_id: '200').order("id DESC").limit(10)
