@@ -36,6 +36,7 @@ audio, canvas, iframe, img, svg, video {
 }
 .item-main-content {
   margin: 16px 0 0;
+  display: flex;
 }
 .clearfix:after {
   content: '';
@@ -46,7 +47,8 @@ audio, canvas, iframe, img, svg, video {
   float: left;
   min-width: 300px;
   max-width: 300px;
-  min-height: 375px;
+  min-height: 300px;
+  max-height: 300px;
   margin: 0 auto;
   background: #fafafa;
   margin-right: 20px;
@@ -55,7 +57,11 @@ audio, canvas, iframe, img, svg, video {
   width: 100%;
   height: 100%;
 }
-.items-box_photos__sold{
+.owl-item-inner{
+  position: relative;
+ }
+.items-box_photo__sold{
+  margin-right: 0;
   width: 0;
   height: 0;
   border-top: 60px solid #ea352d ;
@@ -63,9 +69,11 @@ audio, canvas, iframe, img, svg, video {
   border-bottom: 60px solid transparent;
   border-left: 60px solid #ea352d ;
   z-index:100;
-  position: relative;
-  top:-400px;
-  &__inner{
+  position: absolute;
+  top: 0;
+
+   &__inner{
+    position:absolute;
     transform: rotate(-45deg);
     font-size: 28px;
     margin:-35px 0px 0px -55px;
@@ -74,6 +82,7 @@ audio, canvas, iframe, img, svg, video {
     font-weight: 600;
   }
 }
+
 tbody {
   display: table-row-group;
   vertical-align: middle;

@@ -314,7 +314,7 @@ ul{
 .product{
   display: flex;
   position: relative;
-  height: 50%;
+  height: 200px;
   width: 18%;
   border: solid;
   border-width: 1px;
@@ -390,7 +390,7 @@ ul{
   border-bottom: 60px solid transparent;
   border-left: 60px solid #ea352d ;
   z-index:100;
-  top:-320px;
+  position: absolute;
   &__inner{
     transform: rotate(-45deg);
     font-size: 28px;
