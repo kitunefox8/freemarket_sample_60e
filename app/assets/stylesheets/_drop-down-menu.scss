@@ -1,6 +1,8 @@
 .drop-down-menu{
   position: relative;
   .categories{
+    position: absolute;
+    top: 0.1px;
     display: none;
     background-color: $white;
     .category-list{
