@@ -14,12 +14,12 @@
               = category.name
     .category-list-box
       .category-list-box-white
-        - @categories.each do |catergory|
+        - @categories.each do |category|
           .category-list-title
             .title-name
-              = catergory.name
+              = category.name
           .category-list-inner-box
-            - catergory.children.each do |child|
+            - category.children.each do |child|
               .category-list-child-title
                 .child-name
                   = child.name
