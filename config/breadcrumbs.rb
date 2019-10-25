@@ -30,6 +30,18 @@ crumb :index do
   link "カテゴリ一覧", categories_path
 end
 
+crumb :show do |category|
+  link category.name, category_path(category)
+  parent :index
+end
+
+# カテゴリー子要素パンくず
+# crumb :show do |category|
+#   link category.children.name, category_path(category)
+#   parent :show
+# end
+
+
 # 今後使用するかも知れないのでコメントアウト
 # crumb :show do |product|
 #   link product.name 

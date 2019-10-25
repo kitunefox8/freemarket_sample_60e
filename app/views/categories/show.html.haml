@@ -1,0 +1,25 @@
+= render 'shared/header'
+- breadcrumb :show, @category
+= render "layouts/breadcrumbs"
+-# カテゴリの子孫要素のパンくず条件分岐
+-# - if @category.children.empty?
+-#   - breadcrumb :show_child, @category
+-#   = render "layouts/breadcrumbs"
+-# - else 
+-#   - breadcrumb :show_grandchild, @category
+-#   = render "layouts/breadcrumbs"
+
+.category-box
+  .category-link
+    - @category.children.each do |category|
+      = link_to category_path(category.id), class: 'category-list' do
+        .list-name
+          = category.name
+    - if @category.children.empty?
+      - @category.siblings.each do |siblings|
+        = link_to category_path(siblings.id), class: 'category-list' do
+          .list-name
+            = siblings.name
+
+
+= render 'shared/footer'  

@@ -1,3 +1,4 @@
+// カテゴリーindexページ
 .category-index{
   margin: 40px;
   .view-pc{
@@ -87,6 +88,28 @@
           }
         }
       }      
+    }
+  }
+}
+// カテゴリーshowページ
+.category-box{
+  margin: 40px auto;
+  width: 1020px;
+  .category-link{
+    display: flex; 
+    flex-wrap: wrap;
+    .category-list{
+      margin: 16px 16px 0 0;
+      .list-name{
+        font-size: 14px;
+        color: $light-blue2;
+        &:hover{
+          color: $light-blue3;
+          border-bottom: 1px solid;
+          border-color: $light-blue2;
+        }
+      }
+      
     }
   }
 }
