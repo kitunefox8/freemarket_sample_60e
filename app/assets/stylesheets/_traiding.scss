@@ -78,8 +78,10 @@
       }
 
       .mypage-content{
+        min-height: 200px;
         background: $white; 
         .content-area{
+          width: 100%;
           .content-field{
             border-bottom: 1px solid;
             border-color: $white3;
