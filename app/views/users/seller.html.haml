@@ -8,9 +8,11 @@
       .mypage-tabs
         %ul.section-tabs
           %li.actives
-            = link_to '出品リスト', '#', class: 'link-non'
+            = link_to  '#', class: 'link-non' do
+              .text 出品リスト
           %li.non-active
-            = link_to '取引済みリスト', sell_users_path(current_user) , class: 'link-non' 
+            = link_to sell_users_path(current_user) , class: 'link-non' do
+              .text 取引済みリスト
       .mypage-content
         %ul.content-area
           - @product.each do |product|

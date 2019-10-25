@@ -14,7 +14,11 @@ class ProductsController < ApplicationController
     @interi = Product.all.where(category_id: '481').order("id DESC").limit(10)
     @book = Product.all.where(category_id: '625').order("id DESC").limit(10)
   end
- 
+  def serach
+    redirect_to root_path if params[:keyword] == ""
+    @product = Product.where('name LIKE(?)', "%#{params[:keyword]}%").order("id DESC").limit(10)
+  end
+  
   def  shipping
     @product = Product.find(params[:id])  
    if @product.update(buyer: 2)
