@@ -4,10 +4,11 @@
       .mercari__head__logo
         %a.mercari__head__logo--image
           =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", class: "mercari__head__logo-image"
-      %form.search__form
-        %input{type: "search", placeholder: '何かお探しですか？', class: "search__form__input"}
+      = form_tag serach_products_path, method: :get , class: 'search__form' do
+        %input{type: "search",name: "keyword", placeholder: '何かお探しですか？', class: "search__form__input"}
         .search-button
-          = fa_icon 'search', class: 'icon-search'
+          %button{type: "submit", class:'icon-search'}
+            = fa_icon 'search' 
     .mercari__head__bottom
       .mercari__head__bottom__categorys
         .mercari__head__bottom__category.drop-down-menu

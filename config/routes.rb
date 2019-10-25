@@ -9,6 +9,9 @@ Rails.application.routes.draw do
        get '/shipping/:id', to: 'products#shipping', as: 'shipping'
       end
       scope '/products' do
+        get '/serach/', to: 'products#serach', as:'serach'
+       end
+      scope '/products' do
        get '/buy/:id', to: 'products#buy', as: 'buy'
       end
       get '/buyer/:id' => 'products#buyer'
