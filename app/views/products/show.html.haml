@@ -12,10 +12,14 @@
               .owl-item{style: "width: 300px;"}
                 .owl-item-inner
                   %div
-                    = image_tag "#{@product.images[0].image_url}", alt: 'image', style: "opacity: 1;", class: 'owl-lazy'
-                    -if @product.buyer == "1" 
-                      .items-box_photos__sold
-                        .items-box_photos__sold__inner
+                    = image_tag "#{@product.images[0].image_url}", alt: 'image', style: "opacity: 1;", class: 'owl-lazy' 
+                    -if @product.buyer == "1"  
+                      .items-box_photo__sold
+                        .items-box_photo__sold__inner
+                          SOLD
+                    -elsif @product.buyer == "2"  
+                      .items-box_photo__sold
+                        .items-box_photo__sold__inner
                           SOLD
           .owl-nav.disabled
             .owl-prev 
