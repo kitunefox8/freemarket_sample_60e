@@ -1,8 +1,14 @@
 .display
-  = link_to '#', class: 'link-none' do 
-    .display-icon
-      .display-text 出品
-      = fa_icon 'camera', class: 'camera-icon'
+  - if user_signed_in?
+    = link_to new_product_path, class: 'link-none' do
+      .display-icon
+        .display-text 出品
+        = fa_icon 'camera', class: 'camera-icon'
+  - else
+    = link_to user_session_path, class: 'link-none' do
+      .display-icon
+        .display-text 出品
+        = fa_icon 'camera', class: 'camera-icon'
 
 .advertising
   .app-banner
