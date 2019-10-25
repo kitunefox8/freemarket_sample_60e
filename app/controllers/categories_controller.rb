@@ -1,5 +1,12 @@
 class CategoriesController < ApplicationController
+  include CommonActions
+  before_action :set_categories
+
   def index
-    @categories = Category.all.where(ancestry: nil)
   end
+
+  def show
+    @category = Category.find(params[:id])
+  end
+  
 end
