@@ -52,11 +52,20 @@ audio, canvas, iframe, img, svg, video {
   margin: 0 auto;
   background: #fafafa;
   margin-right: 20px;
+  .top-photo {
+    width: 100%;
+    height: 100%;
+  }
+  .sub-photos{
+    display: flex;
+    flex-wrap: wrap; 
+    .sub-photo{
+      width: 60px;
+      height: 60px;
+    }
+  }
 }
-.owl-lazy {
-  width: 100%;
-  height: 100%;
-}
+
 .owl-item-inner{
   position: relative;
  }
