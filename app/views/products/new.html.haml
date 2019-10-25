@@ -18,7 +18,7 @@
                 .sell-dropbox-container-clearfix__items
                 .sell-upload-drop-box 
                 = f.fields_for :images do |i|
-                  = i.file_field :image_url
+                  = i.file_field :image_url, name: "product[images_attributes][][image_url]", multiple: true
                   %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
       .sell-content
         .form-group
