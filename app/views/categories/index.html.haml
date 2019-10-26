@@ -7,15 +7,15 @@
     .category-top-text
       カテゴリー一覧
     .category-list
-      - @categories.each do |category|
+      - @categories.each_with_index do |category, i|
         .category-list-btn
-          = link_to category_path(category.id), class: 'list-style' do
+          = link_to "#category#{i}", class: 'list-style' do
             .list-name 
               = category.name
     .category-list-box
       .category-list-box-white
-        - @categories.each do |category|
-          .category-list-title
+        - @categories.each_with_index do |category, i|
+          .category-list-title{id: "category#{i}"}
             .title-name
               = category.name
           .category-list-inner-box
