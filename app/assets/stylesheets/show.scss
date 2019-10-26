@@ -158,18 +158,18 @@
   display: block;
   margin-top: 8px;
   position: relative;
-}
-.select-default {
-  position: relative;
-  z-index: 2;
-  height: 48px;
-  width: 90%;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background: 0;
-  font-size: 16px;
-  line-height: 1.5;
-  cursor: pointer;
+  .select-default {
+    position: relative;
+    z-index: 2;
+    height: 48px;
+    width: 90%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+  }
 }
 
 .sellform-box {
@@ -303,5 +303,46 @@ label {
     display: inline-block;
     font-size: 8px;
     color: black;
+  }
+}
+
+// jsonでカテゴリーボックスを追加
+#select-wrap{
+  margin-top: 8px;
+  #product_category{
+    height: 48px;
+    width: 90%;
+    border-radius: 4px;
+    border: 1px solid $gray;
+    background: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+#child-wrap{
+  margin-top: 8px;
+  #child_category{
+    position: relative;
+    z-index: 2;
+    height: 48px;
+    width: 90%;
+    border-radius: 4px;
+    border: 1px solid $gray;
+    background: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+#grandchild_wrap{
+  margin-top: 8px;
+  #grandchild_category{
+    height: 48px;
+    width: 90%;
+    border-radius: 4px;
+    border: 1px solid $gray;
+    background: 0;
+    font-size: 16px;
+    line-height: 1.5;
   }
 }
