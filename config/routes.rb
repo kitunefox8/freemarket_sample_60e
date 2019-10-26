@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   
   resources :products, only: [:index, :show, :new, :create,:destroy,:update,:edit] do
     collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+
       scope '/products' do
-       get '/shipping/:id', to: 'products#shipping', as: 'shipping'
+        get '/shipping/:id', to: 'products#shipping', as: 'shipping'
       end
       scope '/products' do
-       get '/buy/:id', to: 'products#buy', as: 'buy'
+        get '/buy/:id', to: 'products#buy', as: 'buy'
       end
       get '/buyer/:id' => 'products#buyer'
       post 'purchase/:id', to: 'products#purchase', as: 'purchase'
@@ -19,7 +22,6 @@ Rails.application.routes.draw do
       scope '/products' do
         get '/seller/:id', to:'products#seller',as: 'product'
       end
-      
     end
   end
 
