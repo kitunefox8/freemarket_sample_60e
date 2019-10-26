@@ -180,69 +180,26 @@
                   = user.name
                 .items-box-num
                   .items-box-price.font-5 
-                    = user.price
+                    = "¥" + user.price
     %section.items-box-container.clearfix.related-item-column
       %h2.items-box-head
-        %a{href: "#"}
-          フェンディの長財布 その他の商品
+        = link_to '#' do
+          =@product.category.name + "のその他の商品"
       .items-box-content.clearfix
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.is-higher-width.lazyloaded{:alt => "値下げ決行！早い者勝ち！FENDI　財布　未使用", "data-src" => "https://static.mercdn.net/thumb/photos/m27987016160_1.jpg?1570117841", src: "https://static.mercdn.net/thumb/photos/m27987016160_1.jpg?1570117841"}/
-            .items-box-body
-              %h3.items-box-name.font-2 値下げ決行！早い者勝ち！FENDI　財布　未使用
-              .items-box-num
-                .items-box-price.font-5 ¥15,200
-                .font-2
-                  %i.far.fa-heart
-                  %span 4
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "FENDI 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m21976993867_1.jpg?1570665475", src: "https://static.mercdn.net/thumb/photos/m21976993867_1.jpg?1570665475"}/
-            .items-box-body
-              %h3.items-box-name.font-2 FENDI 長財布
-              .items-box-num
-                .items-box-price.font-5 ¥6,900
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "フェンディ財布 ラウンドファスナー 正規品 ズッカ柄 長財布 箱付き 巾着袋付き", "data-src" => "https://static.mercdn.net/thumb/photos/m23662861040_1.jpg?1570440870", src: "https://static.mercdn.net/thumb/photos/m23662861040_1.jpg?1570440870"}/
-            .items-box-body
-              %h3.items-box-name.font-2 フェンディ財布 ラウンドファスナー 正規品 ズッカ柄 長財布 箱付き 巾着袋付き
-              .items-box-num
-                .items-box-price.font-5 ¥20,800
-                .font-2
-                  %i.far.fa-heart
-                  %span 5
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.is-higher-width.lazyloaded{:alt => "FENDI　ズッカ 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m47418822351_1.jpg?1570446406", src: "https://static.mercdn.net/thumb/photos/m47418822351_1.jpg?1570446406"}/
-            .items-box-body
-              %h3.items-box-name.font-2 FENDI　ズッカ 長財布
-              .items-box-num
-                .items-box-price.font-5 ¥2,790
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.is-higher-height.lazyloaded{:alt => "FENDI 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m72936775245_1.jpg?1570329729", src: "https://static.mercdn.net/thumb/photos/m72936775245_1.jpg?1570329729"}/
-            .items-box-body
-              %h3.items-box-name.font-2 FENDI 長財布
-              .items-box-num
-                .items-box-price.font-5 ¥8,000
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "FENDI 財布　カールラガーフェルド", "data-src" => "https://static.mercdn.net/thumb/photos/m82878093603_1.jpg?1569848967", src: "https://static.mercdn.net/thumb/photos/m82878093603_1.jpg?1569848967"}/
-            .items-box-body
-              %h3.items-box-name.font-2 FENDI 財布　カールラガーフェルド
-              .items-box-num
-                .items-box-price.font-5 ¥47,200
-                .font-2
-                  %i.far.fa-heart
-                  %span 3
+        -@category.each do |category|
+          %section.items-box
+            =link_to product_path(category.id) do
+              %figure.items-box-photo
+                = image_tag category.images[0].image_url.url , class: 'lazyloaded'
+              .items-box-body
+                %h3.items-box-name.font-2 
+                  = category.name
+                .items-box-num
+                  .items-box-price.font-5 
+                    = "¥" + category.price
+                  .font-2
+                    %i.far.fa-heart
+                    %span 4
   %nav.bread-crumbs.pos-bottom
     %ul
       %li{itemscope: "", itemtype: "http://data-vocabulary.org/Breadcrumb"}

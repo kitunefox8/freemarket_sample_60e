@@ -39,6 +39,7 @@ class ProductsController < ApplicationController
   def show 
     @images = @product.images
     @user = Product.where(saller_id: @product.saller_id).where.not(id: @product.id).order("id DESC").limit(9)
+    @category = Product.where(category_id: @product.category_id).where.not(id: @product.id).order("id DESC").limit(9)
   end
 
   def buy
