@@ -25,7 +25,7 @@
           %tr
             %th 出品者
             %td
-              = link_to 'ブランド多数出品中！', '#'
+              = @product.user.nickname
               %div
                 .item-user-ratings
                   %i.far.fa-smile
@@ -168,66 +168,67 @@
   .items-in-user-profile
     %section.items-box-container.clearfix.related-item-column.items-in-user-profile
       %h2.items-box-head
-        = link_to 'ブランド多数出品中！さんのその他の出品', '#' 
+        = @product.user.nickname + 'さんのその他の出品'
       .items-box-content.clearfix
-        %section.items-box
-          = link_to '#' do
-            %figure.items-box-photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m41030575093_1.jpg?1570668701', alt: "【新品未使用】ルイヴィトン/手帳カバー/アジェンダPM/モノグラム/う037", "data-src": "https://static.mercdn.net/thumb/photos/m41030575093_1.jpg?1570668701", class: 'lazyloaded'
-            .items-box-body
-              %h3.items-box-name.font-2 【新品未使用】ルイヴィトン/手帳カバー/アジェンダPM/モノグラム/う037
-              .items-box-num
-                .items-box-price.font-5 ¥23,000
+        -@user.each do |user|
+          %section.items-box
+            =link_to product_path(user.id) do
+              %figure.items-box-photo
+                = image_tag user.images[0].image_url.url , class: 'lazyloaded'
+              .items-box-body
+                %h3.items-box-name.font-2 【新品未使用】ルイヴィトン/手帳カバー/アジェンダPM/モノグラム/う037
+                .items-box-num
+                  .items-box-price.font-5 ¥23,000
         -# ↓ここからは後々削除する。最終的にデータを拾って一覧とする
-        %section.items-box
-          %a{href: ""}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "CELINEセリーヌ/キーホルダー/馬車ロゴ/チャーム/ゴールド/う036", "data-src" => "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579", src: "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579"}/
-              %figcaption
-                .item-sold-out-badge
-                  %div 
-            .items-box-body
-              %h3.items-box-name.font-2 CELINEセリーヌ/キーホルダー/馬車ロゴ/チャーム/ゴールド/う036
-              .items-box-num
-                .items-box-price.font-5 ¥4,800
-                .font-2
-                  %i.far.fa-heart
-                  %span 1
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "【未使用保管】ロエベ/ベルト/ユニセックス/レザー/ゴールドブラック/う035", "data-src" => "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830", src: "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830"}/
-            .items-box-body
-              %h3.items-box-name.font-2 【未使用保管】ロエベ/ベルト/ユニセックス/レザー/ゴールドブラック/う035
-              .items-box-num
-                .items-box-price.font-5 ¥32,000
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "【未使用保管】フェンディ/折財布/Wホック/ネイビー/ストライプ/う034", "data-src" => "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273", src: "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273"}/
-            .items-box-body
-              %h3.items-box-name.font-2 【未使用保管】フェンディ/折財布/Wホック/ネイビー/ストライプ/う034
-              .items-box-num
-                .items-box-price.font-5 ¥9,200
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "【良品】グッチ/トートバッグ/シェリーライン/GG/キャンバス/う033", "data-src" => "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560", src: "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560"}/
-            .items-box-body
-              %h3.items-box-name.font-2 【良品】グッチ/トートバッグ/シェリーライン/GG/キャンバス/う033
-              .items-box-num
-                .items-box-price.font-5 ¥39,800
-                .font-2
-                  %i.far.fa-heart
-                  %span 3
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "ハンティングワールド/セカンドバッグ/クラッチ/ビジネス/カーキ/う032", "data-src" => "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985", src: "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985"}/
-            .items-box-body
-              %h3.items-box-name.font-2 ハンティングワールド/セカンドバッグ/クラッチ/ビジネス/カーキ/う032
-              .items-box-num
-                .items-box-price.font-5 ¥5,600
+        -# %section.items-box
+        -#   %a{href: ""}
+        -#     %figure.items-box-photo
+        -#       %img.lazyloaded{:alt => "CELINEセリーヌ/キーホルダー/馬車ロゴ/チャーム/ゴールド/う036", "data-src" => "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579", src: "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579"}/
+        -#       %figcaption
+        -#         .item-sold-out-badge
+        -#           %div 
+        -#     .items-box-body
+        -#       %h3.items-box-name.font-2 CELINEセリーヌ/キーホルダー/馬車ロゴ/チャーム/ゴールド/う036
+        -#       .items-box-num
+        -#         .items-box-price.font-5 ¥4,800
+        -#         .font-2
+        -#           %i.far.fa-heart
+        -#           %span 1
+        -# %section.items-box
+        -#   %a{href: "#"}
+        -#     %figure.items-box-photo
+        -#       %img.lazyloaded{:alt => "【未使用保管】ロエベ/ベルト/ユニセックス/レザー/ゴールドブラック/う035", "data-src" => "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830", src: "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830"}/
+        -#     .items-box-body
+        -#       %h3.items-box-name.font-2 【未使用保管】ロエベ/ベルト/ユニセックス/レザー/ゴールドブラック/う035
+        -#       .items-box-num
+        -#         .items-box-price.font-5 ¥32,000
+        -# %section.items-box
+        -#   %a{href: "#"}
+        -#     %figure.items-box-photo
+        -#       %img.lazyloaded{:alt => "【未使用保管】フェンディ/折財布/Wホック/ネイビー/ストライプ/う034", "data-src" => "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273", src: "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273"}/
+        -#     .items-box-body
+        -#       %h3.items-box-name.font-2 【未使用保管】フェンディ/折財布/Wホック/ネイビー/ストライプ/う034
+        -#       .items-box-num
+        -#         .items-box-price.font-5 ¥9,200
+        -# %section.items-box
+        -#   %a{href: "#"}
+        -#     %figure.items-box-photo
+        -#       %img.lazyloaded{:alt => "【良品】グッチ/トートバッグ/シェリーライン/GG/キャンバス/う033", "data-src" => "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560", src: "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560"}/
+        -#     .items-box-body
+        -#       %h3.items-box-name.font-2 【良品】グッチ/トートバッグ/シェリーライン/GG/キャンバス/う033
+        -#       .items-box-num
+        -#         .items-box-price.font-5 ¥39,800
+        -#         .font-2
+        -#           %i.far.fa-heart
+        -#           %span 3
+        -# %section.items-box
+        -#   %a{href: "#"}
+        -#     %figure.items-box-photo
+        -#       %img.lazyloaded{:alt => "ハンティングワールド/セカンドバッグ/クラッチ/ビジネス/カーキ/う032", "data-src" => "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985", src: "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985"}/
+        -#     .items-box-body
+        -#       %h3.items-box-name.font-2 ハンティングワールド/セカンドバッグ/クラッチ/ビジネス/カーキ/う032
+        -#       .items-box-num
+        -#         .items-box-price.font-5 ¥5,600
     %section.items-box-container.clearfix.related-item-column
       %h2.items-box-head
         %a{href: "#"}
