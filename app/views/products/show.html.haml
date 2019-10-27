@@ -84,7 +84,7 @@
       %span.item-shipping-fee 
         = @product.delivery_fee
     - unless user_signed_in? 
-      =link_to '購入画面に進む',session0_signup_index_path, class: "item-buy-btn"  
+      =link_to 'ログイン画面に進む',user_session_path, class: "item-buy-btn"  
     - else
       - if @product.saller_id != current_user.id and @product.buyer == "1" and @product.buyer_id == current_user.id
         = link_to '購入を取り消す', product_products_url(@product.id), class: "item-buy-btn"
