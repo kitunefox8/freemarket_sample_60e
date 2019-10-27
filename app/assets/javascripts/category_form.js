@@ -29,12 +29,13 @@ $(document).on("turbolinks:load",function(){
     var parentCategory = document.getElementById('parent_category').value;
     if (parentCategory.length != 0){
       $.ajax({
-        url: 'get_category_children',
+        url: '/products/get_category_children',
         type: 'GET',
         data: { parent_id: parentCategory },
         dataType: 'json'
       })
       .done(function(children){
+        console.log(children);
         $('#child-wrap').remove();
         $('#grandchild_wrap').remove();
         var insertHTML = '';
@@ -55,10 +56,9 @@ $(document).on("turbolinks:load",function(){
 
   $('#form-group').on('change', '#child_category', function(){
     var childId = $('#child_category option:selected').data('category');
-    console.log(this);
     if (childId != "---"){ 
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: '/products/get_category_grandchildren',
         type: 'GET',
         data: { child_id: childId },
         dataType: 'json'
