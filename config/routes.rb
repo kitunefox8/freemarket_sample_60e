@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       scope '/products' do
         get '/buy/:id', to: 'products#buy', as: 'buy'
         get '/serach/', to: 'products#serach', as:'serach'
-       end
+      end
       get '/buyer/:id' => 'products#buyer'
       post 'purchase/:id', to: 'products#purchase', as: 'purchase'
       scope '/products' do
@@ -31,29 +31,30 @@ Rails.application.routes.draw do
   resources :users, only: [:index] do
     collection do 
       scope '/users' do
-       get '/:id/seller', to: 'users#seller', as: 'seller'
+        get '/:id/seller', to: 'users#seller', as: 'seller'
       end
       scope '/users' do
-       get '/:id/buy', to: 'users#buy',as: 'buy'
+        get '/:id/buy', to: 'users#buy',as: 'buy'
       end
       scope '/users' do
-       get  '/:id/sell', to: 'users#sell', as: 'sell'
+        get  '/:id/sell', to: 'users#sell', as: 'sell'
       end
       scope '/users' do
-       get  '/:id/sold', to: 'users#sold', as: 'sold'
+        get  '/:id/sold', to: 'users#sold', as: 'sold'
       end
       scope '/users' do
-       get '/:id/negotiation',to: 'users#negotiation', as: 'negotiation'
+        get '/:id/negotiation',to: 'users#negotiation', as: 'negotiation'
       end
       get 'profile'
       get 'person'
       get 'creditcard'
       get 'logout'
-  end
+    end
     member do
       get  'mypage' 
     end
   end
+  
   resources :image_tests, only: [:index, :create]
 
   resources :signup, only: [:create] do
