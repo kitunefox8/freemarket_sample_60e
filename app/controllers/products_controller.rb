@@ -65,7 +65,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(create_params)
-    if @product.images.blank? or @product.brand.blank? or @product.status.blank? 
+    if @product.images.blank? or @product.brand.blank? or @product.status.blank? or @product.category_id.blank? or @product.category_id == 0
       redirect_to action: :new
     else 
       @product.save
