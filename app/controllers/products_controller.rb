@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
   end
  end
 
-  def new
+  def new 
     @product = Product.new
     @product.build_status
     @product.build_brand
@@ -59,10 +59,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(create_params)
-    if @product.save
+    if @product.images.blank? or @product.brand.blank? or @product.status.blank? 
+      redirect_to action: :new
+    else 
+      @product.save
       redirect_to action: :index
-    else
-      render :new
     end
   end
 
