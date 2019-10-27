@@ -92,8 +92,8 @@
   }
 }
 // カテゴリーshowページ
-.category-box{
-  margin: 40px auto;
+.category-show{
+  margin: 40px auto 40px;
   width: 1020px;
   .category-link{
     display: flex; 
@@ -109,7 +109,63 @@
           border-color: $light-blue2;
         }
       }
-      
+    }
+  }
+  .category-top-text{
+    font-size: 22px;
+    font-weight: 600;
+    margin: 24px 0 8px;
+  }
+  .products-content{
+    .product-box{
+      display: flex;
+      flex-wrap: wrap;
+      .product-one{
+        margin: 0 20px 20px 0;
+        box-sizing: border-box;
+        position: relative;
+        .product-photo-size{
+          width: 180px;
+          height: 180px;
+        }
+        .product-name{
+          background-color: $white;
+          height: 58px;
+          padding: 8px 12px;
+          font-size: 14px;    
+          .product-price{
+            z-index: 1;
+            position: absolute;
+            top: 150px;
+            left: 0;
+            padding: 4px 12px 4px 8px;
+            border-radius: 0 16px 16px 0;
+            font-weight: 600;
+            color: $white;
+            background-color: $black;
+          }
+        }
+      } 
+    }
+  }
+  
+  .category-bottom{
+    margin-top: 30px;
+    .category-bottom-text{
+      height: 50px;
+      background-color: $red;
+      color: $white;
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+      line-height: 50px;
+    }
+    .category-bottom-description-area{
+      background-color: $white;
+      padding: 30px;
+      .description-text{
+        line-height: 1.5em;
+      }
     }
   }
 }
