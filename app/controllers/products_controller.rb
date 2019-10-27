@@ -7,13 +7,19 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.all.order("id DESC").limit(20)
-    @category_5 = Category.all.where(ancestry: nil).limit(5).map{|i| [i.id, i.name]}
-    @ladies = Product.all.where(category_id: '1').order("id DESC").limit(10)
-    @mans = Product.all.where(category_id: '200').order("id DESC").limit(10)
-    @kids = Product.all.where(category_id: '346').order("id DESC").limit(10)
-    @interi = Product.all.where(category_id: '481').order("id DESC").limit(10)
-    @book = Product.all.where(category_id: '625').order("id DESC").limit(10)
+    @category = Category.all.where(ancestry: nil).limit(5).map{ |i| i.id }
+    @product_category_ladies = Product.where(category_id: [Category.find(1).descendant_ids]).order('id Desc').limit(10)
+    @category_ladies = Category.find(1)
+    @product_category_mens = Product.where(category_id: [Category.find(200).descendant_ids]).order('id Desc').limit(10)
+    @category_mens = Category.find(200)
+    @product_category_kids = Product.where(category_id: [Category.find(346).descendant_ids]).order('id Desc').limit(10)
+    @category_kids = Category.find(346)
+    @product_category_interior = Product.where(category_id: [Category.find(481).descendant_ids]).order('id Desc').limit(10)
+    @category_interior = Category.find(481)
+    @product_category_toy = Product.where(category_id: [Category.find(625).descendant_ids]).order('id Desc').limit(10)
+    @category_toy = Category.find(625) 
   end
+
   def serach
     redirect_to root_path if params[:keyword].blank?
     @product = Product.where('name LIKE(?)', "%#{params[:keyword]}%").order("id DESC").limit(10)
@@ -67,6 +73,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @category_list = Category.all.where(ancestry: nil).map{|i| [i.name, i.id]}
   end
 
   def update
