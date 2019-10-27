@@ -1,4 +1,4 @@
-$(function(){
+$(document).on("turbolinks:load",function(){
   $('.input-default').on('keyup',function(){
     $('#l-left,#l-left2').empty();
     
