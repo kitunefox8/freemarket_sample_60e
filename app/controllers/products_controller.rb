@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.all.order("id DESC").limit(20)
-    @category = Category.all.where(ancestry: nil).limit(5).map{ |i| i.id }
+    @category = Category.all.where(ancestry: nil).limit(5).map{ |i| [i.id, i.name] }
     @product_category_ladies = Product.where(category_id: [Category.find(1).descendant_ids]).order('id Desc').limit(10)
     @category_ladies = Category.find(1)
     @product_category_mens = Product.where(category_id: [Category.find(200).descendant_ids]).order('id Desc').limit(10)
