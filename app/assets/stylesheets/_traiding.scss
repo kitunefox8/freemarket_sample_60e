@@ -108,12 +108,67 @@
                     font-size: 20px;
                     margin-right: 7px;
                   }
-                  .time{
+                  .negotiation{
+                    font-size: 14px;
+                    background:red;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                    color: #fff;
+                    font-size: 12px;
+                    vertical-align: top;
+                    display: inline;
                     font-size: 14px;
                   }
+                  .sold{
+                    font-size: 14px;
+                    background:gray;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                    color: #fff;
+                    font-size: 12px;
+                    vertical-align: top;
+                    display: inline;
+                    font-size: 14px;
+
+                  }
+                  .sell{
+                    font-size: 14px;
+                    background:gray;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                    color: #fff;
+                    font-size: 12px;
+                    vertical-align: top;
+                    display: inline;
+                    font-size: 14px;
+
+                  }
+                  .buy{
+                    font-size: 14px;
+                    background:red;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                    color: #fff;
+                    font-size: 12px;
+                    vertical-align: top;
+                    display: inline;
+                    font-size: 14px;
+                  }
+                  .seller{
+                    font-size: 14px;
+                    background:blue;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                    color: #fff;
+                    font-size: 12px;
+                    vertical-align: top;
+                    display: inline;
+                    font-size: 14px;
+                  }
+
                 }
               }
-              .content-arrow{
+              negotiationcontent-arrow{
                 .icon-right{
                   position: absolute;
                   top: 35px;
