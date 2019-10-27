@@ -14,7 +14,11 @@ class ProductsController < ApplicationController
     @interi = Product.all.where(category_id: '481').order("id DESC").limit(10)
     @book = Product.all.where(category_id: '625').order("id DESC").limit(10)
   end
- 
+  def serach
+    redirect_to root_path if params[:keyword].blank?
+    @product = Product.where('name LIKE(?)', "%#{params[:keyword]}%").order("id DESC").limit(10)
+  end
+  
   def  shipping
     @product = Product.find(params[:id])  
    if @product.update(buyer: 2)
@@ -42,6 +46,8 @@ class ProductsController < ApplicationController
 
   def show 
     @images = @product.images
+    @user = Product.where(saller_id: @product.saller_id).where.not(id: @product.id).order("id DESC").limit(9)
+    @category = Product.where(category_id: @product.category_id).where.not(id: @product.id).order("id DESC").limit(9)
   end
 
   def buy

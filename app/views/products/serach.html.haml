@@ -1,0 +1,28 @@
+.wrapper#__next
+  = render 'shared/header'
+  .main__container
+    .main__container__sliders
+      .new__product
+        .ladies
+          .ladies__new{:name => "scroll-1"}
+            %h3.style_heading.common_fontFamily__3-3Si.style_responsiveLv2__3K0hn.sc-chbbiW.kHlukY 検索アイテム一覧
+            %a.more_view{:href => "#"} もっと見る
+          .ladies__items
+            .ladies__item
+              - @product.each do |product|
+                .product
+                  %a.style_link{:href => "/products/#{product.id}"}
+                    = image_tag product.images[0].image_url.url
+                  .name
+                    =product.name
+                  .price
+                    =product.price
+                  -if product.buyer == "1" 
+                    .items-box_photo__sold
+                      .items-box_photo__sold__inner
+                        SOLD
+                  -elsif product.buyer == "2" 
+                    .items-box_photo__sold
+                      .items-box_photo__sold__inner
+                        SOLD
+  = render 'shared/footer'

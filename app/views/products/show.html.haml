@@ -25,7 +25,7 @@
           %tr
             %th 出品者
             %td
-              = link_to 'ブランド多数出品中！', '#'
+              = @product.user.nickname
               %div
                 .item-user-ratings
                   %i.far.fa-smile
@@ -168,128 +168,38 @@
   .items-in-user-profile
     %section.items-box-container.clearfix.related-item-column.items-in-user-profile
       %h2.items-box-head
-        = link_to 'ブランド多数出品中！さんのその他の出品', '#' 
+        = @product.user.nickname + 'さんのその他の出品'
       .items-box-content.clearfix
-        %section.items-box
-          = link_to '#' do
-            %figure.items-box-photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m41030575093_1.jpg?1570668701', alt: "【新品未使用】ルイヴィトン/手帳カバー/アジェンダPM/モノグラム/う037", "data-src": "https://static.mercdn.net/thumb/photos/m41030575093_1.jpg?1570668701", class: 'lazyloaded'
-            .items-box-body
-              %h3.items-box-name.font-2 【新品未使用】ルイヴィトン/手帳カバー/アジェンダPM/モノグラム/う037
-              .items-box-num
-                .items-box-price.font-5 ¥23,000
-        -# ↓ここからは後々削除する。最終的にデータを拾って一覧とする
-        %section.items-box
-          %a{href: ""}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "CELINEセリーヌ/キーホルダー/馬車ロゴ/チャーム/ゴールド/う036", "data-src" => "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579", src: "https://static.mercdn.net/thumb/photos/m19417479967_1.jpg?1570609579"}/
-              %figcaption
-                .item-sold-out-badge
-                  %div 
-            .items-box-body
-              %h3.items-box-name.font-2 CELINEセリーヌ/キーホルダー/馬車ロゴ/チャーム/ゴールド/う036
-              .items-box-num
-                .items-box-price.font-5 ¥4,800
-                .font-2
-                  %i.far.fa-heart
-                  %span 1
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "【未使用保管】ロエベ/ベルト/ユニセックス/レザー/ゴールドブラック/う035", "data-src" => "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830", src: "https://static.mercdn.net/thumb/photos/m68032664677_1.jpg?1570608830"}/
-            .items-box-body
-              %h3.items-box-name.font-2 【未使用保管】ロエベ/ベルト/ユニセックス/レザー/ゴールドブラック/う035
-              .items-box-num
-                .items-box-price.font-5 ¥32,000
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "【未使用保管】フェンディ/折財布/Wホック/ネイビー/ストライプ/う034", "data-src" => "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273", src: "https://static.mercdn.net/thumb/photos/m22094303411_1.jpg?1570608273"}/
-            .items-box-body
-              %h3.items-box-name.font-2 【未使用保管】フェンディ/折財布/Wホック/ネイビー/ストライプ/う034
-              .items-box-num
-                .items-box-price.font-5 ¥9,200
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "【良品】グッチ/トートバッグ/シェリーライン/GG/キャンバス/う033", "data-src" => "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560", src: "https://static.mercdn.net/thumb/photos/m78064382180_1.jpg?1570607560"}/
-            .items-box-body
-              %h3.items-box-name.font-2 【良品】グッチ/トートバッグ/シェリーライン/GG/キャンバス/う033
-              .items-box-num
-                .items-box-price.font-5 ¥39,800
-                .font-2
-                  %i.far.fa-heart
-                  %span 3
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "ハンティングワールド/セカンドバッグ/クラッチ/ビジネス/カーキ/う032", "data-src" => "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985", src: "https://static.mercdn.net/thumb/photos/m21234796370_1.jpg?1570606985"}/
-            .items-box-body
-              %h3.items-box-name.font-2 ハンティングワールド/セカンドバッグ/クラッチ/ビジネス/カーキ/う032
-              .items-box-num
-                .items-box-price.font-5 ¥5,600
+        -@user.each do |user|
+          %section.items-box
+            =link_to product_path(user.id) do
+              %figure.items-box-photo
+                = image_tag user.images[0].image_url.url , class: 'lazyloaded'
+              .items-box-body
+                %h3.items-box-name.font-2 
+                  = user.name
+                .items-box-num
+                  .items-box-price.font-5 
+                    = "¥" + user.price
     %section.items-box-container.clearfix.related-item-column
       %h2.items-box-head
-        %a{href: "#"}
-          フェンディの長財布 その他の商品
+        = link_to '#' do
+          =@product.category.name + "のその他の商品"
       .items-box-content.clearfix
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.is-higher-width.lazyloaded{:alt => "値下げ決行！早い者勝ち！FENDI　財布　未使用", "data-src" => "https://static.mercdn.net/thumb/photos/m27987016160_1.jpg?1570117841", src: "https://static.mercdn.net/thumb/photos/m27987016160_1.jpg?1570117841"}/
-            .items-box-body
-              %h3.items-box-name.font-2 値下げ決行！早い者勝ち！FENDI　財布　未使用
-              .items-box-num
-                .items-box-price.font-5 ¥15,200
-                .font-2
-                  %i.far.fa-heart
-                  %span 4
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "FENDI 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m21976993867_1.jpg?1570665475", src: "https://static.mercdn.net/thumb/photos/m21976993867_1.jpg?1570665475"}/
-            .items-box-body
-              %h3.items-box-name.font-2 FENDI 長財布
-              .items-box-num
-                .items-box-price.font-5 ¥6,900
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "フェンディ財布 ラウンドファスナー 正規品 ズッカ柄 長財布 箱付き 巾着袋付き", "data-src" => "https://static.mercdn.net/thumb/photos/m23662861040_1.jpg?1570440870", src: "https://static.mercdn.net/thumb/photos/m23662861040_1.jpg?1570440870"}/
-            .items-box-body
-              %h3.items-box-name.font-2 フェンディ財布 ラウンドファスナー 正規品 ズッカ柄 長財布 箱付き 巾着袋付き
-              .items-box-num
-                .items-box-price.font-5 ¥20,800
-                .font-2
-                  %i.far.fa-heart
-                  %span 5
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.is-higher-width.lazyloaded{:alt => "FENDI　ズッカ 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m47418822351_1.jpg?1570446406", src: "https://static.mercdn.net/thumb/photos/m47418822351_1.jpg?1570446406"}/
-            .items-box-body
-              %h3.items-box-name.font-2 FENDI　ズッカ 長財布
-              .items-box-num
-                .items-box-price.font-5 ¥2,790
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.is-higher-height.lazyloaded{:alt => "FENDI 長財布", "data-src" => "https://static.mercdn.net/thumb/photos/m72936775245_1.jpg?1570329729", src: "https://static.mercdn.net/thumb/photos/m72936775245_1.jpg?1570329729"}/
-            .items-box-body
-              %h3.items-box-name.font-2 FENDI 長財布
-              .items-box-num
-                .items-box-price.font-5 ¥8,000
-        %section.items-box
-          %a{href: "#"}
-            %figure.items-box-photo
-              %img.lazyloaded{:alt => "FENDI 財布　カールラガーフェルド", "data-src" => "https://static.mercdn.net/thumb/photos/m82878093603_1.jpg?1569848967", src: "https://static.mercdn.net/thumb/photos/m82878093603_1.jpg?1569848967"}/
-            .items-box-body
-              %h3.items-box-name.font-2 FENDI 財布　カールラガーフェルド
-              .items-box-num
-                .items-box-price.font-5 ¥47,200
-                .font-2
-                  %i.far.fa-heart
-                  %span 3
+        -@category.each do |category|
+          %section.items-box
+            =link_to product_path(category.id) do
+              %figure.items-box-photo
+                = image_tag category.images[0].image_url.url , class: 'lazyloaded'
+              .items-box-body
+                %h3.items-box-name.font-2 
+                  = category.name
+                .items-box-num
+                  .items-box-price.font-5 
+                    = "¥" + category.price
+                  .font-2
+                    %i.far.fa-heart
+                    %span 4
   %nav.bread-crumbs.pos-bottom
     %ul
       %li{itemscope: "", itemtype: "http://data-vocabulary.org/Breadcrumb"}

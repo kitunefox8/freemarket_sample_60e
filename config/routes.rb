@@ -13,7 +13,8 @@ Rails.application.routes.draw do
       end
       scope '/products' do
         get '/buy/:id', to: 'products#buy', as: 'buy'
-      end
+        get '/serach/', to: 'products#serach', as:'serach'
+       end
       get '/buyer/:id' => 'products#buyer'
       post 'purchase/:id', to: 'products#purchase', as: 'purchase'
       scope '/products' do
