@@ -290,6 +290,7 @@ ul{
 }
 
 .ladies, .mans, .chanel, .LouisVuitton{
+  min-height: 200px;
   &__new{
   margin-bottom: 16px;
   align-items: flex-end;
