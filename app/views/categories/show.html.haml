@@ -1,13 +1,7 @@
 = render 'shared/header'
-- breadcrumb :show, @category
+- breadcrumb :categories
+- breadcrumb :grand_child_category, @category
 = render "layouts/breadcrumbs"
--# カテゴリの子孫要素のパンくず条件分岐
--# - if @category.children.empty?
--#   - breadcrumb :show_child, @category
--#   = render "layouts/breadcrumbs"
--# - else 
--#   - breadcrumb :show_grandchild, @category
--#   = render "layouts/breadcrumbs"
 
 .category-show
   .category-link
@@ -32,6 +26,9 @@
             = product.name
             .product-price
               = "¥ #{product.price}"
+
+  .category-show-contents__content__pagination
+    = paginate(@products)
 
   .category-bottom
     .category-bottom-text
