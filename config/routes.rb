@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show, :new, :create,:destroy,:update,:edit] do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren', defaults: { format: 'json' }
-
+      get 'get_category_grandchildren', defaults: { format: 'json' }      
       scope '/products' do
         get '/shipping/:id', to: 'products#shipping', as: 'shipping'
       end
