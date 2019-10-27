@@ -8,16 +8,16 @@ class ProductsController < ApplicationController
   def index
     @product = Product.all.order("id DESC").limit(20)
     @category = Category.all.where(ancestry: nil).limit(5).map{ |i| [i.id, i.name] }
-    # @product_category_ladies = Product.where(category_id: [Category.find(1).descendant_ids]).order('id Desc').limit(10)
-    # @category_ladies = Category.find(1)
-    # @product_category_mens = Product.where(category_id: [Category.find(200).descendant_ids]).order('id Desc').limit(10)
-    # @category_mens = Category.find(200)
-    # @product_category_kids = Product.where(category_id: [Category.find(346).descendant_ids]).order('id Desc').limit(10)
-    # @category_kids = Category.find(346)
-    # @product_category_interior = Product.where(category_id: [Category.find(481).descendant_ids]).order('id Desc').limit(10)
-    # @category_interior = Category.find(481)
-    # @product_category_toy = Product.where(category_id: [Category.find(625).descendant_ids]).order('id Desc').limit(10)
-    # @category_toy = Category.find(625) 
+    @product_category_ladies = Product.where(category_id: [Category.find(1).descendant_ids]).order('id Desc').limit(10)
+    @category_ladies = Category.find(1)
+    @product_category_mens = Product.where(category_id: [Category.find(200).descendant_ids]).order('id Desc').limit(10)
+    @category_mens = Category.find(200)
+    @product_category_kids = Product.where(category_id: [Category.find(346).descendant_ids]).order('id Desc').limit(10)
+    @category_kids = Category.find(346)
+    @product_category_interior = Product.where(category_id: [Category.find(481).descendant_ids]).order('id Desc').limit(10)
+    @category_interior = Category.find(481)
+    @product_category_toy = Product.where(category_id: [Category.find(625).descendant_ids]).order('id Desc').limit(10)
+    @category_toy = Category.find(625) 
   end
 
   def serach
