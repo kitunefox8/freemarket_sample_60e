@@ -42,6 +42,10 @@
                         .items-box_photo__sold
                           .items-box_photo__sold__inner
                             SOLD
+                      -elsif product.buyer == "2" 
+                        .items-box_photo__sold
+                          .items-box_photo__sold__inner
+                            SOLD
 
                 - @mans.each do |product|
                   - if product.category_id == category[0]                   
@@ -52,10 +56,7 @@
                         =product.name
                       .price
                         =product.price                        
-                      -if product.buyer == "1" 
-                        .items-box_photo__sold
-                          .items-box_photo__sold__inner
-                            SOLD
+                      
                     
                 - @kids.each do |product|
                   - if product.category_id == category[0]                  
@@ -70,7 +71,10 @@
                         .items-box_photo__sold
                           .items-box_photo__sold__inner
                             SOLD
-
+                      -elsif product.buyer == "2" 
+                        .items-box_photo__sold
+                          .items-box_photo__sold__inner
+                            SOLD
                 - @interi.each do |product|
                   - if product.category_id == category[0]                   
                     .product
@@ -81,6 +85,10 @@
                       .price
                         =product.price                        
                       -if product.buyer == "1" 
+                        .items-box_photo__sold
+                          .items-box_photo__sold__inner
+                            SOLD
+                      -elsif product.buyer == "2" 
                         .items-box_photo__sold
                           .items-box_photo__sold__inner
                             SOLD
@@ -95,6 +103,10 @@
                       .price
                         =product.price                        
                       -if product.buyer == "1" 
+                        .items-box_photo__sold
+                          .items-box_photo__sold__inner
+                            SOLD
+                      -elsif product.buyer == "2" 
                         .items-box_photo__sold
                           .items-box_photo__sold__inner
                             SOLD
