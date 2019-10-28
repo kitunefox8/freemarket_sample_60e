@@ -54,6 +54,8 @@ class ProductsController < ApplicationController
     @images = @product.images
     @user = Product.where(saller_id: @product.saller_id).where.not(id: @product.id).order("id DESC").limit(9)
     @category = Product.where(category_id: @product.category_id).where.not(id: @product.id).order("id DESC").limit(9)
+    @message = Comment.new 
+    @comment = @product.comments.includes(:user)
   end
 
   def buy
