@@ -6,7 +6,7 @@ $(document).on("turbolinks:load",function(){
         find_img = $(this).parent().find('img'),
         filereader = new FileReader(),
         view_box = $(this).parent('.view_box,.post_box'),
-        size = $('.img').length,
+        count = $('.img').length,
         new_input = $(`<div class="post_box"><input name="product[images_attributes][][image_url]" class="sell-upload-drop-box" type="file" id="post_img_last" accept="image/*"></div>`);
 
     input_area.prepend(new_input);
@@ -29,7 +29,7 @@ $(document).on("turbolinks:load",function(){
         img_del(view_box);
       }
       filereader.readAsDataURL(fileprop);
-        if(size >= 9){
+        if(count >= 9){
           $('.post_box').css({
             'display':'none',
           });
@@ -41,7 +41,7 @@ $(document).on("turbolinks:load",function(){
     target.find("a.img_del").on('click',function(){
 
       var self = $(this),
-          size = $('.img').length,
+          count = $('.img').length,
           parentBox = self.parent().parent().parent(),
           parentBox2 = self.parent().parent().parent('.view_box');
       if(window.confirm('画像を削除します。\nよろしいですか？')){
@@ -50,7 +50,7 @@ $(document).on("turbolinks:load",function(){
           parentBox.find('.img_view').remove();
           parentBox2.remove();
         } , 0);
-        if(size <= 10){
+        if(count <= 10){
           $('.post_box').css({
             'display':'',
           });
