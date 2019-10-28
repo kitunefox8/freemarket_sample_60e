@@ -1,7 +1,6 @@
-$(document).on("turbolinks:load",function(){
-  var input_area = $('.upload__box');
-
+$(document).on('ready page:load',function(){
   $(document).on('change', '#post_img,#post_img_last', function(){
+    var input_area = $('.upload__box');
     var fileprop = $(this).prop('files')[0],
         find_img = $(this).parent().find('img'),
         filereader = new FileReader(),
@@ -39,11 +38,11 @@ $(document).on("turbolinks:load",function(){
 
   function img_del(target){
     target.find("a.img_del").on('click',function(){
-
       var self = $(this),
           count = $('.img').length,
           parentBox = self.parent().parent().parent(),
           parentBox2 = self.parent().parent().parent('.view_box');
+
       if(window.confirm('画像を削除します。\nよろしいですか？')){
         setTimeout(function(){
           parentBox.find('input[type=file]').val('');
@@ -60,19 +59,21 @@ $(document).on("turbolinks:load",function(){
     });
   }
 
-  $('.input-default').on('keyup',function(){
-    $('#l-left,#l-left2').empty();
-    
-    var Input = $('.input-default').val()
-    var Fee = Math.floor($('.input-default').val()*0.1)
+  $(document).on("turbolinks:load", function(){ 
+    $('.input-default').on('keyup',function(){
+      $('#l-left,#l-left2').empty();
+      
+      var Input = $('.input-default').val()
+      var Fee = Math.floor($('.input-default').val()*0.1)
 
-    if(Input >= 300 && Input <= 9999999){
-      $('#l-left').append("¥ " + Fee);
-      $('#l-left2').append("¥ " + (Input - Fee));
-    }
-    if( $('.input-default').val()==""){
-      $('#l-left,#l-left2').empty();    
-    }
-    return false
+      if(Input >= 300 && Input <= 9999999){
+        $('#l-left').append("¥ " + Fee);
+        $('#l-left2').append("¥ " + (Input - Fee));
+      }
+      if( $('.input-default').val()==""){
+        $('#l-left,#l-left2').empty();    
+      }
+      return false
+    });
   });
 });
