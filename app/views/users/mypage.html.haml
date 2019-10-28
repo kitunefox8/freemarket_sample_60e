@@ -101,7 +101,7 @@
           %li.content-field2
             = link_to '一覧を見る', '#', class: 'content-submit'
 
-      -unless @product.blank?
+      -if @product.present?
         .mypage-tab
           %ul.section-tab
             %li.active
