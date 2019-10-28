@@ -194,6 +194,127 @@ tbody {
   -webkit-transition: all ease-out .3s;
   transition: all ease-out .3s;
 }
+// ここからコメント
+.message-content {
+  padding: 24px 7.5%;
+  background: #fff;
+}
+.message-items {
+  margin: 0;
+}
+.message-user {
+  float: left;
+  position: relative;
+  top: -20px;
+  display: inline-block;
+  color: #333;
+}
+.message-user figure>div {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.message-user img {
+  width: 100%;
+}
+.message-user figcaption {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 56px;
+  max-width: 100%;
+  min-width: 214px;
+  height: 1.2em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.message-body {
+  float: right;
+  position: relative;
+  width: calc(100% - 56px);
+  padding: 16px;
+  background: #eef0f4;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+.message-icons {
+  margin: 8px 0 0;
+}
+.message-body .icon-balloon {
+  position: absolute;
+  top: 8px;
+  left: -9px;
+  color: #eef0f4;
+}
+.icon-balloon:before {
+  content: '\e009';
+}
+.message-icons time {
+  display: block;
+  color: #aaa;
+}
+.message-user figcaption {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 56px;
+  max-width: 100%;
+  min-width: 214px;
+  height: 1.2em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.message-body {
+  float: right;
+  position: relative;
+  // width: calc(100% - 56px);
+  width: 600px;
+  padding: 16px;
+  background: #eef0f4;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+.message-form p {
+  padding: 8px;
+  font-size: 14px;
+  background: #fff6de;
+}
+.textarea-default {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 104px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.message-submit {
+  width: 100%;
+  margin: 8px 0 0;
+  font-size: 0;
+  text-align: center;
+}
+.btn-gray {
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+}
+.message-submit span {
+  font-size: 14px;
+  vertical-align: middle;
+}
+.item-detail-message {
+  width: 700px;
+  background: #fff;
+  margin: 40px auto 0;
+  padding: 24px 30px 55px 30px;
+}
+// ここまで
 .item-button-report {
   margin: 0 0 0 8px;
   color: #333;
@@ -202,10 +323,6 @@ tbody {
 .item-button-right {
   margin: 8px 0 0;
   float: right;
-}
-.item-detail-message {
-  width: 700px;
-  margin: 8px auto;
 }
 .nav-item-link-prev-next {
   margin: 24px auto 0;
