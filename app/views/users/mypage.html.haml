@@ -107,7 +107,7 @@
             %li.active
               = link_to '取引中','#', class: 'link-non'
             %li.non-active
-              = link_to '過去の取引', '#', class: 'link-non'
+              = link_to '取引済みリスト', sold_users_path(current_user) , class: 'link-non' 
         .mypage-content
           %ul.content-area
             - @product.each do |product|
