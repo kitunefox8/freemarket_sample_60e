@@ -101,17 +101,37 @@
           %li.content-field2
             = link_to '一覧を見る', '#', class: 'content-submit'
 
-      .mypage-section-trading
-        .section-top
-          購入した商品
+      -if @product.present?
         .mypage-tab
           %ul.section-tab
             %li.active
               = link_to '取引中','#', class: 'link-non'
             %li.non-active
-              = link_to '過去の取引', '#', class: 'link-non'
-        .content-area
-          .content-area-text
-            取引中の商品がありません
+              = link_to '取引済みリスト', sold_users_path(current_user) , class: 'link-non' 
+        .mypage-content
+          %ul.content-area
+            - @product.each do |product|
+              %li.content-field
+                = link_to product_path(product.id), class: 'link-non' do
+                  .content-image
+                    = image_tag "#{product.images[0].image_url}", class: 'mini-mercari-image'
+                  .content-text
+                    .top-text
+                      = product.name
+                    .bottom-text
+                      %span.buy 取引中
+      -else
+        .mypage-section-trading
+          .section-top
+            購入した商品
+          .mypage-tab
+            %ul.section-tab
+              %li.active
+                = link_to '取引中','#', class: 'link-non'
+              %li.non-active
+                = link_to '過去の取引', '#', class: 'link-non'
+          .content-area
+            .content-area-text
+              取引中の商品がありません
 
 = render 'shared/footer'   

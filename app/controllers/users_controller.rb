@@ -21,7 +21,8 @@ class UsersController < ApplicationController
     end
  
     def mypage
-     @product = current_user.products.all
+     @products = current_user.products
+     @product = Product.where(buyer_id: current_user.id,buyer: 1)
     end
   
 end
