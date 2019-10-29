@@ -59,8 +59,11 @@ class ProductsController < ApplicationController
   end
    
   def city
-    @product.update(profile_id: current_user.id)
+   if @product.update(profile_id: current_user.id)
     redirect_to buy_products_path(@product.id)
+   else 
+      redirect_to action: :index
+   end
   end
 
   def buy
