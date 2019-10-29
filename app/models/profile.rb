@@ -1,5 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user, optional: true
+  has_many :products
 
   tel_check = /\A\d{11}\z/
   zipcode_check = /\A\d{3}[-]\d{4}\z/

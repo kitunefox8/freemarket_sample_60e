@@ -11,6 +11,9 @@ Rails.application.routes.draw do
         get '/shipping/:id', to: 'products#shipping', as: 'shipping'
       end
       scope '/products' do
+        get '/city/:id', to: 'products#city', as:'city'
+      end
+      scope '/products' do
         get '/buy/:id', to: 'products#buy', as: 'buy'
         get '/serach/', to: 'products#serach', as:'serach'
       end

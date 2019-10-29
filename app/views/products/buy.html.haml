@@ -33,8 +33,12 @@
         .buy-user-inner
           %h3 配送先
           .buy-user-inner__address 〒207-0013
-          .buy-user-inner__address-prefectures 東京都 東大和市向原 6-1-5-1001
-          .buy-user-inner__address-name 笹尾 豊樹
+          .buy-user-inner__address-prefectures
+            = @product.profile.prefecture + @product.profile.city
+            %br
+              = @product.profile.district
+          .buy-user-inner__address-name 
+            = @product.profile.first_name + @product.profile.last_name
           .buy-user-inner__text
             .buy-user-inner__text--fix 変更する
       %section.buy-user-paymethood
