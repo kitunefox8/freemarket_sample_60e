@@ -133,6 +133,7 @@
           %span あんしん・あんぜんへの取り組み
 -if user_signed_in? 
   .item-detail-message
+
     .message-container
       %ul.message-items
         -@comment.each do |comment|
@@ -148,6 +149,7 @@
         %form.message-form
           = f.text_area :comment, class: "textarea-default", type: "text"
           = f.submit  class: "btn-default", value: "コメントする"
+
   .item-social-media-box
     .text-center
       .fb-save.fb_iframe_widget{"data-uri": "product://113299479059860/m91592311337", "fb-iframe-plugin-query": "app_id=466308336793848&container_width=700&locale=ja_JP&sdk=joey&uri=product%3A%2F%2F113299479059860%2Fm91592311337", "fb-xfbml-state": "rendered"}

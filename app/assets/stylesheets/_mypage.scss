@@ -14,7 +14,7 @@
         list-style: none;
         .mypage-single-active{
           height: 48px;
-          background-color: $white3;
+          background-color: $white;
           position: relative;
           border-bottom: 1px solid;
           border-color: $white4;
@@ -33,8 +33,10 @@
               color: $black;
             }
           }
+          &:hover{
+            background-color: $red;
+          }
         }
-
         .mypage-single-white{
           height: 48px;
           background-color: $white;
@@ -56,6 +58,9 @@
               right: 20px;
               color: $black;
             }
+          }
+          &:hover{
+            background-color: $white4;
           }
         }
         .mypage-head-text{
@@ -127,6 +132,9 @@
             .link-non{
               text-decoration: none;
               color: $black;
+            }
+            &:hover{
+              background-color: $red;
             }
           }
         }

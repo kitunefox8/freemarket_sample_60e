@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "products#index"
   
-  resources :products, only: [:index, :show, :new, :create,:destroy,:update,:edit] do
+  resources :products, only: [:index, :show, :new, :create, :destroy, :update, :edit] do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }      
@@ -54,8 +54,6 @@ Rails.application.routes.draw do
       get  'mypage' 
     end
   end
-  
-  resources :image_tests, only: [:index, :create]
 
   resources :signup, only: [:create] do
     collection do
@@ -67,5 +65,10 @@ Rails.application.routes.draw do
       get 'session5'
     end
   end
+
+  resources :creditcards, only: [:edit, :update] 
+  resources :profiles, only: [:edit, :update]
+
+  resources :image_tests, only: [:index, :create]
   
 end
