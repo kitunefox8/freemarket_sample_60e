@@ -131,66 +131,25 @@
         = link_to '#' do
           %i.fas.fa-lock
           %span あんしん・あんぜんへの取り組み
+-if user_signed_in? 
   .item-detail-message
 
-    -# ここから
     .message-container
-      .message-content
-        %ul.message-items
-          %li.clearfix
-            .message-user
-              %figure
-                %div
-                  
-                %figcaption.bold
-                  Taichi Suwa
+      %ul.message-items
+        -@comment.each do |comment|
+          %li.clearfixs
+            %div
+              %figcaption.bold
+                = comment.user.nickname + "さん"
             .message-body
-              .message-body-text こちらレディースじゃありませんか？
-              .message-icons.clearfix
-                %time.message-icon-left
-                  %i.icon-time
-                  %span 4 時間前
-                .message-icon-right
-                  %form{:action => "https://www.mercari.com/jp/comment/report/m49117720218/2373891752/", :method => "POST"}
-                    %button{:type => "submit"}
-                      %i.icon-flag
-                    %input{:name => "redirect_url_key", :type => "hidden", :value => "item_detail"}/
-              %i.icon-balloon
-      .message-content
-        %form.message-form{:action => "https://www.mercari.com/jp/comment/add/", :method => "POST"}
-          %input{:name => "__csrf_value", :type => "hidden", :value => "e68b766110514a9a4a97c6257222be02835cc13170781c500494e65ae9f098ff744165f714b0a58d4cb1b0d86324f572da1999f54850ecf55bc0c1ec93cdd9e23"}/
-          %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %input{:name => "item_id", :type => "hidden", :value => "m49117720218"}/
-          %input{:name => "redirect_url_key", :type => "hidden", :value => "item_detail"}/
-          %textarea.textarea-default{:name => "body", :type => "text", :value => ""}
-          %button.message-submit.btn-default.btn-gray{:type => "submit"}
-            %span コメントする
-      -# %aside.modal{"data-close" => "modal", "data-modal" => "delete-comment"}
-      -#   .modal-inner.modal-banner
-      -#     .modal-body
-      -#       .modal-head.bold 確認
-      -#       %div{"data-comment" => "body"}
-      -#       %br/
-      -#       本当にこのコメントを削除してよろしいですか？
-      -#     %form{:action => "https://www.mercari.com/jp/comment/delete/", :method => "POST"}
-      -#       .clearfix
-      -#         .modal-btn.modal-btn-cancel{"data-close" => "modal"} キャンセル
-      -#         %button.modal-btn.modal-btn-submit{:type => "submit"}
-      -#           削除する
-      -#       %input{:name => "item_id", :type => "hidden", :value => "m49117720218"}/
-      -#       %input{:name => "comment_id", :type => "hidden", :value => ""}/
-      -#       %input{:name => "redirect_url_key", :type => "hidden", :value => "item_detail"}/
-      -#       %input{:name => "__csrf_value", :type => "hidden", :value => "e68b766110514a9a4a97c6257222be02835cc13170781c500494e65ae9f098ff744165f714b0a58d4cb1b0d86324f572da1999f54850ecf55bc0c1ec93cdd9e23"}/
+              .message-body-text 
+                = comment.comment
+    .message-content
+      = form_for [@message], url: product_comments_path(@product.id) do |f|
+        %form.message-form
+          = f.text_area :comment, class: "textarea-default", type: "text"
+          = f.submit  class: "btn-default", value: "コメントする"
 
-  %ul.nav-item-link-prev-next.clearfix
-    %li.nav-item-link-prev
-      = link_to '#' do
-        %i.fas.fa-chevron-left
-        アメジスト 原石
-    %li.nav-item-link-next
-      = link_to '#' do
-        ワコーズ スーパーハード 新品・未使用
-        %i.fas.fa-chevron-right
   .item-social-media-box
     .text-center
       .fb-save.fb_iframe_widget{"data-uri": "product://113299479059860/m91592311337", "fb-iframe-plugin-query": "app_id=466308336793848&container_width=700&locale=ja_JP&sdk=joey&uri=product%3A%2F%2F113299479059860%2Fm91592311337", "fb-xfbml-state": "rendered"}
