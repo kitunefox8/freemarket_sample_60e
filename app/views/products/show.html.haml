@@ -143,30 +143,11 @@
             .message-body
               .message-body-text 
                 = comment.comment
-              -# .message-icons.clearfix
-              -#   %time.message-icon-left
-              -#     %i.icon-time
-              -#   .message-icon-right
-              -#     %form
-              -#       %button{type: "submit"}
-              -#         %i.icon-flag
-              -# %i.icon-balloon
     .message-content
       = form_for [@message], url: product_comments_path(@product.id) do |f|
         %form.message-form
           = f.text_area :comment, class: "textarea-default", type: "text"
           = f.submit  class: "btn-default", value: "コメントする"
-          -# %button.message-submit.btn-default{type: "submit"}
-          -#   %span コメントする
-  -# %ul.nav-item-link-prev-next.clearfix
-  -#   %li.nav-item-link-prev
-  -#     = link_to '#' do
-  -#       %i.fas.fa-chevron-left
-  -#       アメジスト 原石
-  -#   %li.nav-item-link-next
-  -#     = link_to '#' do
-  -#       ワコーズ スーパーハード 新品・未使用
-  -#       %i.fas.fa-chevron-right
   .item-social-media-box
     .text-center
       .fb-save.fb_iframe_widget{"data-uri": "product://113299479059860/m91592311337", "fb-iframe-plugin-query": "app_id=466308336793848&container_width=700&locale=ja_JP&sdk=joey&uri=product%3A%2F%2F113299479059860%2Fm91592311337", "fb-xfbml-state": "rendered"}
