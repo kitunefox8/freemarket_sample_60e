@@ -336,14 +336,13 @@ tbody {
   margin: 0;
 }
 
-.clearfixs{
+// .clearfixs{
  
-  content: '';
-  display: block;
-  clear: both;
-}
+//   content: '';
+//   display: inline;
+//   clear: both;
+// }
 .message-user {
-  float: left;
   position: relative;
   top: -20px;
   display: inline-block;
@@ -357,6 +356,15 @@ tbody {
 }
 .message-user img {
   width: 100%;
+}
+.profile-image{
+  display: inline;
+  .user-icon{ 
+    border-radius: 50%;
+    height: 50px;
+    width: 50px; 
+    margin-top: 7px;
+  }
 }
 .message-user figcaption {
   overflow: hidden;
@@ -626,3 +634,5 @@ tbody {
 .bread-crumbs li:last-child {
   font-weight: 600;
 }
+
+
