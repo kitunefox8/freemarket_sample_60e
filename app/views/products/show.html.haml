@@ -132,10 +132,10 @@
           %li.clearfixs
             %div
               .profile-image
-                - if @product.user.avator.blank?
+                - if comment.user.avator.blank?
                   = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: 'user-icon'
                 - else 
-                  = image_tag "#{@product.user.avator}", class: 'user-icon'  
+                  = image_tag "#{comment.user.avator}", class: 'user-icon'  
               %figcaption.bold
                 = comment.user.nickname + "さん"
             .message-body
