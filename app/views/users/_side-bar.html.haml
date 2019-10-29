@@ -20,32 +20,32 @@
         .list-text
           いいね！一覧
         = fa_icon 'chevron-right', class: 'icon-right'
-    %li.mypage-single-white
+    %li.mypage-single-active
       = link_to new_product_path, class: 'link-non' do
         .list-text
           出品する
         = fa_icon 'chevron-right', class: 'icon-right'
-    %li.mypage-single-white
+    %li.mypage-single-active
       = link_to seller_users_path(current_user), class: 'link-non' do
         .list-text
           出品した商品 - 出品中
         = fa_icon 'chevron-right', class: 'icon-right'
-    %li.mypage-single-white
+    %li.mypage-single-active
       = link_to negotiation_users_path(current_user), class: 'link-non' do
         .list-text
           出品した商品 - 取引中
         = fa_icon 'chevron-right', class: 'icon-right'
-    %li.mypage-single-white
+    %li.mypage-single-active
       = link_to sell_users_path(current_user), class: 'link-non' do
         .list-text
           出品した商品 - 売却済
         = fa_icon 'chevron-right', class: 'icon-right'
-    %li.mypage-single-white
+    %li.mypage-single-active
       = link_to buy_users_path(current_user), class: 'link-non' do
         .list-text
           購入した商品 - 取引中
         = fa_icon 'chevron-right', class: 'icon-right'
-    %li.mypage-single-white
+    %li.mypage-single-active
       = link_to sold_users_path(current_user), class: 'link-non' do
         .list-text
           購入した商品 -過去の取引
@@ -96,7 +96,7 @@
           .list-text
             発送元・お届け先住所変更
           = fa_icon 'chevron-right', class: 'icon-right'
-      %li.mypage-single-white
+      %li.mypage-single-active
         = link_to creditcard_users_path, class: 'link-non' do
           .list-text
             支払い方法
@@ -106,8 +106,8 @@
           .list-text
             メール/パスワード
           = fa_icon 'chevron-right', class: 'icon-right'
-      %li.mypage-single-white
-        = link_to person_users_path, class: 'link-non' do
+      %li.mypage-single-active
+        = link_to edit_profile_path(current_user.profile.id), class: 'link-non' do
           .list-text
             本人情報
           = fa_icon 'chevron-right', class: 'icon-right'
@@ -116,7 +116,7 @@
           .list-text
             電話番号の確認
           = fa_icon 'chevron-right', class: 'icon-right'
-      %li.mypage-single-white
+      %li.mypage-single-active
         = link_to logout_users_path, class: 'link-non' do
           .list-text
             ログアウト

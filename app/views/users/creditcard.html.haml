@@ -14,11 +14,11 @@
           .top-text
             クレジットカード一覧
           .link-credit
-            = link_to '#' ,class: 'btn-credit' do
+            = link_to edit_creditcard_path(current_user.profile.id), class: 'btn-credit' do
               .icon
                 = fa_icon 'credit-card', class: 'icon-credit'
               .text
-                クレジットカードを追加する
+                クレジットカードを変更する
           .field-right
             = link_to '支払い方法について', '#', class: 'right-text'
             = fa_icon 'chevron-right', class: 'right-text'
