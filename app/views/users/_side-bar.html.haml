@@ -87,7 +87,7 @@
     %h3.mypage-head-text 設定 
     %ul.mypage-list
       %li.mypage-single-white
-        = link_to profile_users_path, class: 'link-non' do
+        = link_to edit_user_path(current_user), class: 'link-non' do
           .list-text
             プロフィール
           = fa_icon 'chevron-right', class: 'icon-right'

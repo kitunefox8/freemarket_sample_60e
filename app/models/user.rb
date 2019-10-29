@@ -36,6 +36,8 @@ class User < ApplicationRecord
     end
     return user
   end
+  
+  mount_uploader :avator, ImageUploader
 
   has_many :products
   has_many :tradings
@@ -50,10 +52,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
 
   email_check = /\A[^@\s]+@[^@\s]+\z/
-  validates :email,                 presence: true, uniqueness: { case_sensitive: false }, format: { with: email_check }
-  validates :email,                 presence: true
-  validates :password,              presence: true, length: {minimum: 7, maximum: 128}
-  validates :password_confirmation, presence: true, length: {minimum: 7, maximum: 128}
+  validates :email,                 presence: true, uniqueness: { case_sensitive: false }, format: { with: email_check }, on: :update
+  validates :email,                 presence: true, on: :update
+  validates :password,              presence: true, length: {minimum: 7, maximum: 128}, on: :update
+  validates :password_confirmation, presence: true, length: {minimum: 7, maximum: 128}, on: :update
   # validates :nickname,              presence: true, length: {maximum: 20}
-  validates :nickname,              presence: true
+  validates :nickname,              presence: true, on: :update
 end
