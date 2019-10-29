@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   require 'payjp'
-  before_action :set_params, only: [:show, :buy, :edit, :update, :destroy, :buyer, :purchase,:seller]
+  before_action :set_params, only: [:show, :buy, :edit, :update, :destroy, :buyer, :purchase,:seller,:city]
   after_action :buyer, only: [:purchase]
   include CommonActions
   before_action :set_categories
@@ -56,6 +56,14 @@ class ProductsController < ApplicationController
     @category = Product.where(category_id: @product.category_id).where.not(id: @product.id).order("id DESC").limit(9)
     @message = Comment.new 
     @comment = @product.comments.includes(:user)
+  end
+   
+  def city
+   if @product.update(profile_id: current_user.id)
+    redirect_to buy_products_path(@product.id)
+   else 
+      redirect_to action: :index
+   end
   end
 
   def buy

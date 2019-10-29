@@ -90,7 +90,7 @@
           商品発送中
 
       - elsif@product.saller_id != current_user.id and @product.buyer != "1" and @product.buyer != "2"
-        =link_to '購入画面に進む', buy_products_path(@product.id), class: "item-buy-btn"  
+        =link_to '購入画面に進む', city_products_path(@product.id), class: "item-buy-btn"  
       
       - elsif  @product.saller_id  == current_user.id and @product.buyer != "1" and @product.buyer != "2"
         = link_to '出品を取り消す', destroy_products_path(@product.id), class: "item-buy-btn"
