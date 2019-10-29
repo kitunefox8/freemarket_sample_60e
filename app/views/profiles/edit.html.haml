@@ -1,0 +1,70 @@
+= render 'shared/header'
+- breadcrumb :person
+= render "layouts/breadcrumbs"
+
+.body
+  .mypage
+    = render 'users/side-bar'
+
+    .mypage__main
+      .mypage-section-person
+        .top-text-person
+          本人情報確認
+        .form
+          = form_for @profile, url: profile_path(current_user.profile.id), method: :patch do |f|
+            .upper-text
+              .upper-text__top
+                お客さまの本人情報をご登録ください。
+                %br
+                登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+              .upper-text__bottom
+                = link_to '本人確認書類のアップロードについて', '#', class: 'bottom-text'
+                = fa_icon 'chevron-right', class: 'icon-right'
+            .field
+              %label.first-text お名前
+              .second-text
+                = "#{current_user.profile.first_name} #{current_user.profile.last_name}"
+            .field
+              %label.first-text お名前カナ
+              .second-text
+                = "#{current_user.profile.first_name} #{current_user.profile.last_name}"
+            .field
+              %label.first-text 生年月日
+              .second-text
+                = "#{current_user.profile.birth_year}/#{current_user.profile.birth_month}/#{current_user.profile.birth_day}"
+            .field
+              %label.first-text 郵便番号
+              %span.top-gray-text 任意
+              %br/
+              = f.text_field :zipcode, placeholder: '例）123-4567', class: 'textarea'
+            .field
+              .field
+                %label.top-text 都道府県
+                %span.top-red-text 必須
+                %br/
+                .prefectures-selecter
+                  -# = fa_icon 'chevron-down', class: 'icon-bottom'
+                  = f.collection_select :prefecture, Prefecture.all, :name, :name, {prompt: "---"}, class: 'select-prefecture'
+            .field
+              %label.first-text 市区町村
+              %span.top-gray-text 任意
+              %br/
+              = f.text_field :city, placeholder: '例）横浜市緑区', class: 'textarea'
+            .field
+              %label.first-text 番地
+              %span.top-gray-text 任意
+              %br/
+              = f.text_field :district, placeholder: '例）青山1-1-1', class: 'textarea'
+            .field
+              %label.first-text 建物名
+              %span.top-gray-text 任意
+              %br/
+              = f.text_field :building, placeholder: '例）柳ビル103', class: 'textarea'
+            .field
+              = f.submit '変更する', class: 'form-submit'
+          
+            .field-right
+              = link_to '本人情報の登録について', '#', class: 'right-text'
+              = fa_icon 'chevron-right', class: 'right-text'
+
+= render 'shared/footer'
