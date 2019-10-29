@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_24_034348) do
+ActiveRecord::Schema.define(version: 2019_10_29_054040) do
 
   create_table "brandgroups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_034348) do
     t.string "shipping_days"
     t.integer "user_id"
     t.integer "buyer_id"
+    t.integer "profile_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
