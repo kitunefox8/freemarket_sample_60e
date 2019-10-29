@@ -1,4 +1,7 @@
-= render 'shared/header'  
+= render 'shared/header'
+- breadcrumb :negotiation
+= render "layouts/breadcrumbs"
+
 .body
   .mypage
     = render 'side-bar'
@@ -24,5 +27,6 @@
                   .bottom-text
                     %span.negotiation 取引中
                 .content-arrow
-                  = fa_icon 'chevron-right', class: 'icon-right'        
+                  = fa_icon 'chevron-right', class: 'icon-right'
+                       
 = render 'shared/footer'   

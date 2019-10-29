@@ -47,8 +47,12 @@
               = fa_icon 'check', class: 'icon'
               .nav-text やることリスト
             = link_to  mypage_user_path(current_user), class: 'link-none' do
-              = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: 'user-icon'
-              .nav-text マイページ 
+              - if current_user.avator.blank?
+                = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: 'user-icon'
+              - else
+                = image_tag "#{current_user.avator}", class: 'user-icon'
+              .nav-text マイページ
+
         - else 
           .mercari__head__bottom__new
             = link_to '新規会員登録', session0_signup_index_path, class: 'mercari__head__bottom__signup'

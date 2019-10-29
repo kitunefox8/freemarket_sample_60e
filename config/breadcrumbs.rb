@@ -26,6 +26,31 @@ crumb :logout do
   parent :mypage
 end
 
+crumb :seller do
+  link "出品した商品 - 出品中", seller_users_path(current_user)
+  parent :mypage
+end
+
+crumb :negotiation do
+  link "出品した商品 - 取引中", negotiation_users_path(current_user)
+  parent :mypage
+end
+
+crumb :sell do
+  link "出品した商品 - 売却済", sell_users_path(current_user) 
+  parent :mypage
+end
+
+crumb :buy do
+  link "購入した商品 - 取引中", buy_users_path(current_user)
+  parent :mypage
+end
+
+crumb :sold do
+  link "購入した商品 -過去の取引", sold_users_path(current_user)
+  parent :mypage
+end
+
 crumb :categories do
   link "カテゴリ一覧", categories_path
 end
