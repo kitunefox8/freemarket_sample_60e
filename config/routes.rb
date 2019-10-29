@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
   
-  resources :users, only: [:index] do
+  resources :users, only: [:index, :edit, :update] do
     collection do 
       scope '/users' do
         get '/:id/seller', to: 'users#seller', as: 'seller'
@@ -45,7 +45,10 @@ Rails.application.routes.draw do
       scope '/users' do
         get '/:id/negotiation',to: 'users#negotiation', as: 'negotiation'
       end
-      get 'profile'
+      # scope '/users' do
+      #   get '/:id/profile', to: 'users#profile', as: 'profile'
+      #   patch ':id/profile_update', to: 'users#profile_update', as: 'profile'
+      # end
       get 'person'
       get 'creditcard'
       get 'logout'

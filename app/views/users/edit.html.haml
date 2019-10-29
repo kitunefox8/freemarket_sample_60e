@@ -1,0 +1,30 @@
+= render 'shared/header'
+- breadcrumb :profile
+= render "layouts/breadcrumbs"
+
+.body
+  .mypage
+    = render 'side-bar'
+
+    .mypage__main
+      .mypage-section-profile
+        .top-text
+          プロフィール
+        .form
+          = form_for @user, url: user_path(current_user.id), method: :patch do |f|
+            .form-top
+              .profile-image
+                = f.label :avator do
+                  - if @user.avator.blank?
+                    = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: 'user-icon'
+                  - else 
+                    = image_tag "#{@user.avator}", class: 'user-icon'  
+                  = f.file_field :avator, class: 'hidden'
+
+                = f.text_field :callout, placeholder: '例）AYAセール中', class: 'textarea'
+                
+            .form-bottom
+              = f.text_area :self_introduction, placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪', class: 'textarea-profile'
+              = f.submit '変更する', class: 'form-submit'
+
+= render 'shared/footer'
