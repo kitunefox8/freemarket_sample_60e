@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create
-      @comment = Comment.new(comment: comment_params[:comment], product_id: comment_params[:product_id], user_id: current_user.id)
+      @comment = Comment.new(comment_params)
     if @comment.comment.present?
       @comment.save
       redirect_to product_path(@comment.product.id)
@@ -11,6 +11,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:comment).merge(product_id:params[:product_id])
+    params.require(:comment).permit(:comment).merge(product_id:params[:product_id],user_id: current_user.id)
   end
 end
