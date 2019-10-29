@@ -19,6 +19,7 @@
             .title-name
               = category.name
           .category-list-inner-box
+            = link_to 'すべて', category_path(category.id), class: 'all-name'
             - category.children.each do |child|
               .category-list-child-title
                 .child-name
