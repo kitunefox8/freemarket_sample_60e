@@ -1,12 +1,8 @@
 class CommentsController < ApplicationController
   def create
-      @comment = Comment.new(comment_params)
-    if @comment.comment.present?
-      @comment.save
-      redirect_to product_path(@comment.product.id)
-    else
-      redirect_to product_path(@comment.product.id)
-    end
+    @comment = Comment.new(comment_params)
+    @comment.save
+    redirect_to product_path(@comment.product.id)
   end
 
   private
