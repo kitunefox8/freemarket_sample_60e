@@ -30,7 +30,7 @@
             .ladies__item              
               - @product_category_ladies.each do |product|
                 .product
-                  =link_to product_path(product.id) do
+                  =link_to product_path(product.id), class: "style_link" do
                     = image_tag product.images[0].image_url.url
                   .name
                     = product.name
@@ -54,7 +54,7 @@
             .ladies__item              
               - @product_category_mens.each do |product|
                 .product
-                  =link_to product_path(product.id) do
+                  =link_to product_path(product.id), class: "style_link" do
                     = image_tag product.images[0].image_url.url
                   .name
                     = product.name
@@ -78,7 +78,7 @@
             .ladies__item              
               - @product_category_kids.each do |product|
                 .product
-                  =link_to product_path(product.id) do
+                  =link_to product_path(product.id), class: "style_link" do
                     = image_tag product.images[0].image_url.url
                   .name
                     = product.name
@@ -102,7 +102,7 @@
             .ladies__item              
               - @product_category_interior.each do |product|
                 .product
-                  =link_to product_path(product.id) do
+                  =link_to product_path(product.id), class: "style_link" do
                     = image_tag product.images[0].image_url.url
                   .name
                     =product.name
@@ -126,7 +126,7 @@
             .ladies__item              
               - @product_category_toy.each do |product|
                 .product
-                  =link_to product_path(product.id) do
+                  =link_to product_path(product.id), class: "style_link" do
                     = image_tag product.images[0].image_url.url
                   .name
                     = product.name
@@ -153,7 +153,7 @@
             .chanel__item
               - @product.each do |product|
                 .product
-                  =link_to product_path(product.id) do
+                  =link_to product_path(product.id), class: "style_link" do
                     = image_tag product.images[0].image_url.url
                   .name
                     = product.name
