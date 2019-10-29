@@ -10,13 +10,18 @@
       .mypage-section-user
         = link_to '#', class: 'link-non' do
           .section-image
-            = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: 'user-icon'
-          .user-name メルカリ
+            - if current_user.avator.blank?
+              = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: 'user-icon'
+            - else
+              = image_tag "#{current_user.avator}", class: 'user-icon'
+          .user-name
+            = current_user.nickname
           .mypage-number 
             .evaluation 評価
             %span.count 0
             .evaluation 出品数
-            %span.count 0
+            %span.count
+              = current_user.products.count
       .mypage-tab
         %ul.section-tab
           %li.active
