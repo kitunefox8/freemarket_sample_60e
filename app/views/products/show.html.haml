@@ -71,7 +71,7 @@
               = @product.shipping_days
     .item-price-box.text-center
       %span.item-price.bold 
-        = "¥ " + @product.price
+        = "¥ " + @product.price.to_i.to_s(:delimited)
       %span.item-tax (税込)
       %span.item-shipping-fee 
         = @product.delivery_fee
@@ -188,7 +188,7 @@
                   = user.name
                 .items-box-num
                   .items-box-price.font-5 
-                    = "¥" + user.price
+                    = "¥" + user.price.to_i.to_s(:delimited)
     %section.items-box-container.clearfix.related-item-column
       %h2.items-box-head
         = link_to '#' do
@@ -204,7 +204,7 @@
                   = category.name
                 .items-box-num
                   .items-box-price.font-5 
-                    = "¥" + category.price
+                    = "¥" + category.price.to_i.to_s(:delimited)
                   .font-2
                     %i.far.fa-heart
                     %span 4
