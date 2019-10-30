@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   require 'payjp'
-  before_action :set_params, only: [:show, :buy, :edit, :update, :destroy, :buyer, :purchase,:seller,:city]
+  before_action :set_params, only: [:show, :buy, :edit, :update, :destroy, :buyer, :purchase, :seller, :city]
   after_action :buyer, only: [:purchase]
   include CommonActions
   before_action :set_categories
