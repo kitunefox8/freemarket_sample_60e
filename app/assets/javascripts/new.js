@@ -62,13 +62,17 @@ $(document).on('ready page:load',function(){
   $(document).on("turbolinks:load", function(){ 
     $('.input-default').on('keyup',function(){
       $('#l-left,#l-left2').empty();
-      
-      var Input = $('.input-default').val()
-      var Fee = Math.floor($('.input-default').val()*0.1)
+      var Input = $('.input-default').val();
+      var Fee = Math.floor($('.input-default').val()*0.1),
+          Total = Input - Fee
 
       if(Input >= 300 && Input <= 9999999){
+        var Fee = String(Fee),
+            Total = String(Total);
+        while(Fee != (Fee = Fee.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
+        while(Total != (Total = Total.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
         $('#l-left').append("¥ " + Fee);
-        $('#l-left2').append("¥ " + (Input - Fee));
+        $('#l-left2').append("¥ " + Total);
       }
       if( $('.input-default').val()==""){
         $('#l-left,#l-left2').empty();    
