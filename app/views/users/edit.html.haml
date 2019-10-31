@@ -11,14 +11,18 @@
         .top-text
           プロフィール
         .form
+          .avator-text 
+            アイコンをクリックしてアバター画像を登録
           = form_for @user, url: user_path(current_user.id), method: :patch do |f|
             .form-top
               .profile-image
                 = f.label :avator do
                   - if @user.avator.blank?
                     = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: 'user-icon'
+                    .preview
                   - else 
-                    = image_tag "#{@user.avator}", class: 'user-icon'  
+                    = image_tag "#{@user.avator}", class: 'user-icon'
+                    .preview
                   = f.file_field :avator, class: 'hidden'
 
                 = f.text_field :callout, placeholder: '例）AYAセール中', class: 'textarea'

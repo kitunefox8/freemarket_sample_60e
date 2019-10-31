@@ -239,7 +239,11 @@
         font-weight: 600;
         }
         .form{
-          // padding: 40px;
+          .avator-text{
+            text-align: center;
+            font-weight: 600;
+            color: $red;
+          }
           .form-top{
             max-height: 200px;
             background: url('https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?39195692;');
@@ -253,11 +257,20 @@
                 height: 60px;
                 width: 60px; 
                 position: absolute;
-                top: 60px;
+                top: 50px;
                 left: 150px;
               }
               .hidden{
                 display: none;
+              }
+              .preview{
+                border-radius: 50%;
+                height: 70px;
+                width: 70px; 
+                position: absolute;
+                top: 25px;
+                left: 70px;
+                z-index: 1;
               }
               .textarea{
                 padding: 10px 15px 10px;
