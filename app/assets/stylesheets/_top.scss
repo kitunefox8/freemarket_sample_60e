@@ -380,11 +380,12 @@ ul{
   left: 0;
   padding: 3px 3px;
   height: 10%;
-  font-size: 20px;
-  background-color: gainsboro;
+  font-size: 17px;
+  color: white;
+  background-color: rgba(46, 46, 51, 0.7);
   border: solid;
   border-width: 1px;
-  border-color: gainsboro;
+  border-color: rgba(46, 46, 51, 0.7);
   border-radius: 10px;
 }
 .price:before{
