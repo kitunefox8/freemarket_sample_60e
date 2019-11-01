@@ -19,6 +19,18 @@
       width: 160px;
       height: 160px;
       padding-top: 15px;
+      transition: 1s;
+      -webkit-transition: 1s;
+      &:hover{
+        background-color: $white;
+        transform: scale(1.5);
+        .display-text{
+          color: $red;
+          } 
+          .camera-icon{
+            color: $red;
+          }
+      }
       .display-text{
       color: $white;
       font-size: 30px;
@@ -29,6 +41,7 @@
       }
     }
   }
+  
 }
 .advertising {
   color: $white;
