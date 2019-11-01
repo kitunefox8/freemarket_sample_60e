@@ -1,0 +1,18 @@
+= render 'shared/header'
+- breadcrumb :standby
+= render "layouts/breadcrumbs"
+
+.body
+  .mypage
+    = render 'side-bar'
+
+    .mypage__main
+      .mypage-section-logout
+        .standby-text
+          現在準備中のサービスです　今しばらくお待ちください
+        .link-logout
+          = link_to mypage_user_path(current_user), class: 'btn-logout' do
+            .text
+              マイページトップに戻る
+
+= render 'shared/footer'
