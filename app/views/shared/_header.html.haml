@@ -5,7 +5,7 @@
         = link_to root_path do
           = image_tag asset_path("Mercari_logo320.svg.png"), class: "mercari__head__logo-image", size: "134x36"
       = form_tag serach_products_path, method: :get , class: 'search__form' do
-        %input{type: "search",name: "keyword", placeholder: '何かお探しですか？', class: "search__form__input"}
+        %input{type: "search",name: "keyword", placeholder: '何かお探しですか？商品名を入力して下さい！', class: "search__form__input"}
         .search-button
           %button{type: "submit", class:'icon-search'}
             = fa_icon 'search' 
@@ -15,6 +15,7 @@
           = link_to categories_path, class: 'mercari__category' do
             = fa_icon 'list', class: 'icon-list'
             .list-text カテゴリーから探す
+              
           .drop-down-menu
             %ul.categories
               - @categories.each do |category|
@@ -34,18 +35,25 @@
           = link_to '#', class: 'mercari__brand' do
             = fa_icon 'tag', class: 'icon-tag'
             .tag-text ブランドから探す
+          #overlay
+            #modalWindow
+              .modal-message-box
+                現在サービス準備中です
+                %br/
+                今しばらくお待ちください
+              %button#modal-close-btn 閉じる
       .mercari__head__bottom__register
         - if user_signed_in?
           .mercari-current-user-nav
-            = link_to '#', class: 'link-none' do
-              = fa_icon 'heart', class: 'icon'
-              .nav-text いいね！一覧
-            = link_to '#', class: 'link-none' do
-              = fa_icon 'bell', class: 'icon'
-              .nav-text お知らせ
-            = link_to '#', class: 'link-none' do
-              = fa_icon 'check', class: 'icon'
-              .nav-text やることリスト
+            = link_to standby_users_path, class: 'link-none' do
+              = fa_icon 'product-hunt', class: 'icon'
+              .nav-text 所持ポイント
+            = link_to seller_users_path(current_user), class: 'link-none' do
+              = fa_icon 'hand-pointer', class: 'icon'
+              .nav-text 出品中リスト
+            = link_to buy_users_path(current_user), class: 'link-none' do
+              = fa_icon 'shopping-cart', class: 'icon'
+              .nav-text 購入中リスト
             = link_to  mypage_user_path(current_user), class: 'link-none' do
               - if current_user.avator.blank?
                 = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: 'user-icon'
