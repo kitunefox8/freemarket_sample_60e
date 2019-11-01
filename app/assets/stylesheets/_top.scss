@@ -86,10 +86,7 @@ ul{
   top: 0px;
   width: 40px;
   -webkit-appearance: none;
-  // border-width: initial;
   border-style: none;
-  // border-color: initial;
-  // border-image: initial;
   border-radius: 0px 4px 4px 0px;
   padding: 0px;
 }
@@ -121,8 +118,6 @@ ul{
 .mercari__category{
   font-size: 16px;
   line-height: 36px;
-  // display: block;
-  // font-weight: 600;
 }
 .mercari__brand{
   font-size: 16px;
@@ -282,6 +277,9 @@ ul{
   font-weight: 600;
   border-radius: 15px;
   padding: 8px 16px;
+  &:hover{
+    background-color: $gray;
+  }
 }
 
 .new__product{
@@ -317,13 +315,20 @@ ul{
   position: relative;
   height: 200px;
   width: 18%;
-  border: solid;
   border-width: 1px;
   cursor: pointer;
   margin: 0 0 5px 5px;
-  .product,img{
-    width: 100%;
-    height: 80%;
+  transition: 1s;
+  -webkit-transition: 1s;
+  &:hover{
+    background-color: $white;
+    transform: scale(1.5);
+    z-index: 1;
+    border: 1px solid $light-blue2;
+    .product,img{
+      width: 100%;
+      height: 80%;
+    }
   }
 }
 .product:before{
@@ -355,8 +360,12 @@ ul{
   position: absolute;
   bottom: 0;
   left: 0;
-  font-size: 13px;
   overflow:scroll;
+  background-color: $white;
+  height: 58px;
+  padding: 8px 12px;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 .name:before{
   content: "";
@@ -367,10 +376,10 @@ ul{
 .price{
   position: absolute;
   bottom: 25%;
+  top: 110px;
   left: 0;
   padding: 3px 3px;
   height: 10%;
-  // width: 40%;
   font-size: 20px;
   background-color: gainsboro;
   border: solid;
