@@ -478,6 +478,11 @@
       .mypage-section-logout{
         background-color: $white;
         padding: 40px;
+        .standby-text{
+          text-align: center;
+          font-weight: 600;
+          font-size: 15px;
+        }
         .link-logout{
           margin: 0 auto;
           height: 48px;
