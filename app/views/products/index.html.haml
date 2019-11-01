@@ -17,7 +17,7 @@
           %ul.popular__category__lists__unordered
           - @category.each do |category|
             %li.popular__category__list
-              = link_to '#', class: "category" do
+              = link_to category_path(category[0]), class: "category" do
                 = category[1]
 
       .new__product
@@ -25,7 +25,7 @@
           .ladies__new{name: "scroll-1"}
             %h3.style_heading.common_fontFamily__3-3Si.style_responsiveLv2__3K0hn.sc-chbbiW.kHlukY
               = "#{@category_ladies.name} 新着アイテム"
-            = link_to "もっと見る", "#", class: "more_view"
+            = link_to "もっと見る", category_path(1), class: "more_view"
           .ladies__items
             .ladies__item              
               - @product_category_ladies.each do |product|
@@ -49,7 +49,7 @@
           .ladies__new{name: "scroll-1"}
             %h3.style_heading.common_fontFamily__3-3Si.style_responsiveLv2__3K0hn.sc-chbbiW.kHlukY
               = "#{@category_mens.name} 新着アイテム"
-            = link_to "もっと見る", "#", class: "more_view"
+            = link_to "もっと見る", category_path(200), class: "more_view"
           .ladies__items
             .ladies__item              
               - @product_category_mens.each do |product|
@@ -73,7 +73,7 @@
           .ladies__new{name: "scroll-1"}
             %h3.style_heading.common_fontFamily__3-3Si.style_responsiveLv2__3K0hn.sc-chbbiW.kHlukY
               = "#{@category_kids.name} 新着アイテム"
-            = link_to "もっと見る", "#", class: "more_view"
+            = link_to "もっと見る", category_path(346), class: "more_view"
           .ladies__items
             .ladies__item              
               - @product_category_kids.each do |product|
@@ -97,7 +97,7 @@
           .ladies__new{name: "scroll-1"}
             %h3.style_heading.common_fontFamily__3-3Si.style_responsiveLv2__3K0hn.sc-chbbiW.kHlukY
               = "#{@category_interior.name} 新着アイテム"
-            = link_to "もっと見る", "#", class: "more_view"
+            = link_to "もっと見る", category_path(481), class: "more_view"
           .ladies__items
             .ladies__item              
               - @product_category_interior.each do |product|
@@ -121,7 +121,7 @@
           .ladies__new{name: "scroll-1"}
             %h3.style_heading.common_fontFamily__3-3Si.style_responsiveLv2__3K0hn.sc-chbbiW.kHlukY
               = "#{@category_toy.name} 新着アイテム"
-            = link_to "もっと見る", "#", class: "more_view"
+            = link_to "もっと見る", category_path(625), class: "more_view"
           .ladies__items
             .ladies__item              
               - @product_category_toy.each do |product|
