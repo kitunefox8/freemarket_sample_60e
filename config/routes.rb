@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       get 'person'
       get 'creditcard'
       get 'logout'
+      get 'standby'
     end
     member do
       get  'mypage' 
