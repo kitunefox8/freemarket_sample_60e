@@ -6,6 +6,11 @@ crumb :mypage do
   link "マイページ", mypage_user_path(current_user)
 end
 
+crumb :product do |product|
+  link product.name, product_path(product.id)
+  parent :root
+end
+
 crumb :profile do
   link "プロフィール", edit_user_path(current_user)
   parent :mypage
@@ -23,6 +28,11 @@ end
 
 crumb :logout do
   link "ログアウト", logout_users_path
+  parent :mypage
+end
+
+crumb :standby do
+  link "マイページトップに戻る", standby_users_path
   parent :mypage
 end
 
