@@ -13,25 +13,53 @@
             新規会員登録
     .new-signin-main__body
       .link-button-facebook
-        = link_to user_facebook_omniauth_authorize_path, class: 'btn-facebook' do
-          .icon
-            = fa_icon 'facebook-square', class: 'icon-facebook'
-          .text
-            facebookでログイン
+        - if Rails.env.development?
+          = link_to user_facebook_omniauth_authorize_path, class: 'btn-facebook' do
+            .icon
+              = fa_icon 'facebook-square', class: 'icon-facebook'
+            .text
+              facebookでログイン
+        - else
+          = link_to '#', class: 'btn-facebook' do
+            .icon
+              = fa_icon 'facebook-square', class: 'icon-facebook'
+            .text
+              facebookでログイン
+          #overlay
+            #modalWindow
+              .modal-message-box
+                現在サービス準備中です
+                %br/
+                今しばらくお待ちください
+              %button#modal-close-btn 閉じる
+
       .link-button-google
-        = link_to user_google_oauth2_omniauth_authorize_path, class: 'btn-google' do
-          .icon
-            = image_tag "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/b1/d4/24/b1d424eb-a4a3-e3b8-99f7-0f80598bab5a/logo_gsa_ios_color-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-6.png/246x0w.jpg", class: 'icon-google'
-          .text
-            Googleでログイン
+        - if Rails.env.development?
+          = link_to user_google_oauth2_omniauth_authorize_path, class: 'btn-google' do
+            .icon
+              = image_tag "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/b1/d4/24/b1d424eb-a4a3-e3b8-99f7-0f80598bab5a/logo_gsa_ios_color-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-6.png/246x0w.jpg", class: 'icon-google'
+            .text
+              Googleでログイン
+        - else
+          = link_to '#', class: 'btn-google' do
+            .icon
+              = image_tag "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/b1/d4/24/b1d424eb-a4a3-e3b8-99f7-0f80598bab5a/logo_gsa_ios_color-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-6.png/246x0w.jpg", class: 'icon-google'
+            .text
+              Googleでログイン
+          #overlay
+            #modalWindow
+              .modal-message-box
+                現在サービス準備中です
+                %br/
+                今しばらくお待ちください
+              %button#modal-close-btn 閉じる
 
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
           = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレス', class: 'textarea'
         .field
           = f.password_field :password, autocomplete: "current-password", placeholder: 'パスワード', class: 'textarea'
-        .field
-          %iframe{frameborder: "0", height: "78", name: "a-21tyd9lqm57e", role: "presentation", sandbox: "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox", scrolling: "no", src: "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc&co=aHR0cHM6Ly93d3cubWVyY2FyaS5jb206NDQz&hl=ja&v=Zy-zVXWdnDW6AUZkKlojAKGe&size=normal&cb=kv38vat485h7", width: "304"}
+      
         .field
           = f.submit "ログイン", class: 'form-submit'
 
