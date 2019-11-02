@@ -44,14 +44,14 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
   has_many :snscredentials, dependent: :destroy
-  # has_one :creditcard, dependent: :destory
   has_one :creditcard
   accepts_nested_attributes_for :creditcard
-  # has_one :profile, dependent: :destory
   has_one :profile
   accepts_nested_attributes_for :profile
 
   email_check = /\A[^@\s]+@[^@\s]+\z/
+  email_check =                 /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  password_check =              /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates :email,                 presence: true, uniqueness: { case_sensitive: false }, format: { with: email_check }, on: :create
   validates :password,              presence: true, length: {minimum: 7, maximum: 128}, on: :create
   validates :password_confirmation, presence: true, length: {minimum: 7, maximum: 128}, on: :create
