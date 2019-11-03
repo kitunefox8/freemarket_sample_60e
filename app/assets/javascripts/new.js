@@ -25,7 +25,7 @@ $(document).on('ready page:load',function(){
       view_box.append(img);
       filereader.onload = function() {
         view_box.find('img').attr('src', filereader.result);
-        img_del(view_box);
+        img_del(view_box);      
       }
       filereader.readAsDataURL(fileprop);
         if(count >= 9){
