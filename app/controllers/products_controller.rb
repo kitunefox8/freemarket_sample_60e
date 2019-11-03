@@ -129,7 +129,6 @@ class ProductsController < ApplicationController
      :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days,:buyer, :category_id,
      status_attributes: [:id, :name],
      brand_attributes: [:id, :name],
-     images_attributes: [:id, :image_url]
    )
   end
 
