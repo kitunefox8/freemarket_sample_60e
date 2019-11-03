@@ -13,14 +13,9 @@
               .image-form
                 .image-form__upload-box--header 出品画像 
                 %span.image-form__upload-box--header__require 必須
-                %p 最大10枚までアップロード出来ます。
-                %pre.visible-pc ↓□内でドラッグアンドドロップまたはクリックしてファイルをアップロード
-              .sell-dropbox-container-clearfix
-                .sell-dropbox-container-clearfix__items
-                  .upload__box
-                    .post_box
-                      = f.fields_for :images do |i|
-                        = i.file_field :image_url, name: "product[images_attributes][][image_url]", class: "sell-upload-drop-box", id: "post_img_last"
+                %p 
+                %pre.visible-pc ※画像を編集したい際はお手数ですが一度出品を取り消し、再度出品し直してください。
+              
       .sell-content
         .form-group
           .image-form__upload-box--header 商品名
