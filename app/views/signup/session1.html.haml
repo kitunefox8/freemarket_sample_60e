@@ -45,14 +45,18 @@
             %span.top-red-text 必須
             %br/
             = f.text_field :email, placeholder: '例）PC携帯どちらでも可', class: 'textarea'
-          .field 
+          .field
             %label.top-text パスワード
             %span.top-red-text 必須
+            %br/
+            %label.alert-text 半角英数７文字以上で登録して下さい
             %br/
             = f.text_field :password, placeholder: '例）7文字以上', class: 'textarea'
           .field 
             %label.top-text パスワード(確認)
             %span.top-red-text 必須
+            %br/
+            %label.alert-text 半角英数７文字以上で登録して下さい
             %br/
             = f.text_field :password_confirmation, placeholder: '例）7文字以上', class: 'textarea'
 
@@ -69,8 +73,10 @@
                 = o.text_field :first_name, placeholder: '例）山田', class: 'textarea-mini'
                 = o.text_field :last_name, placeholder: '例）綾', class: 'textarea-mini'
             .field
-              %label.top-text お名前（全角）
+              %label.top-text お名前（カナ）
               %span.top-red-text 必須
+              %br/
+              %label.alert-text カタカナで登録して下さい
               %br/
               .field-mini
                 = o.text_field :first_kana, placeholder: '例）ヤマダ', class: 'textarea-mini'
