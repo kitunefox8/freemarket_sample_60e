@@ -54,6 +54,7 @@ class SignupController < ApplicationController
       sign_in User.find(session[:id])
       redirect_to root_path
     else
+      flash[:alert] = '新規会員登録に失敗しました、お手数ですが再度ご登録下さい'
       redirect_to session0_signup_index_path
     end
   end

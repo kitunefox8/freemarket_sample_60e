@@ -86,6 +86,10 @@
           background-color: $red;
           padding: 3px;
         }
+        .alert-text{
+          font-weight: bold;
+          color: $red;
+        }
         .textarea{
           width: 310px;
           border-radius: 3px;

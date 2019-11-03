@@ -4,7 +4,6 @@ class Profile < ApplicationRecord
 
   kana_check = /\A[ァ-ヶー－]+\z/
   tel_check = /(070|080|090)\d{8}|(070|080|090)-\d{4}-\d{4}|(０７０|０８０|０９０)[０-９]{8}|(０７０|０８０|０９０)-[０-９]{4}-[０-９]{4}/
-  # tel_check = /\A\d{11}\z/
   zipcode_check = /\A\d{3}[-]\d{4}\z/
   validates :first_name, presence: true
   validates :last_name, presence: true
