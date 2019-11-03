@@ -88,8 +88,10 @@ class ProductsController < ApplicationController
   end
 
   def update
+    if
     @product.update(update_params) 
     redirect_to action: :index
+    end
   end
 
   def destroy
