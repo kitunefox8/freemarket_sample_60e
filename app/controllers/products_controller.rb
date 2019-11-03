@@ -127,10 +127,9 @@ class ProductsController < ApplicationController
   end
   def update_params
     params.require(:product).permit(
-      :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days,:buyer, :category_id,
-      status_attributes: [:id, :name],
-      brand_attributes: [:id, :name],
-      images_attributes: [:id, :image_url]
+     :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days,:buyer, :category_id,
+     status_attributes: [:id, :name],
+     brand_attributes: [:id, :name]
    )
   end
 
