@@ -3,7 +3,7 @@
     %h1
       =image_tag  "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2296184308", width:"180", height:"70",alt: "mercari"
   .single-main 
-  = form_for [@product] do |f|
+  = form_for @product, url: product_path(@product.id), method: :patch do |f|
     %section.l-single-container#buy-item-container
       .sell-container
         .data-reactroot
@@ -114,7 +114,6 @@
             禁止されている出品、行為を必ずご確認ください。またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
         %div
           = f.submit class: "btn-default", value: "編集する"
-          %a.btn{href: "/products/update/#{@product.id}", method: :patch}/ 
-          %a.btn-defau-gray{href: "/products/"} 戻る
+          
     .overlay 
     = render 'signup/signup_footer'
