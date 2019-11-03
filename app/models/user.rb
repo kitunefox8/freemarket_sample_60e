@@ -50,11 +50,9 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
 
   email_check = /\A[^@\s]+@[^@\s]+\z/
-  email_check =                 /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  password_check =              /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
+  password_check = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates :email,                 presence: true, uniqueness: { case_sensitive: false }, format: { with: email_check }, on: :create
-  validates :password,              presence: true, length: {minimum: 7, maximum: 128}, on: :create
-  validates :password_confirmation, presence: true, length: {minimum: 7, maximum: 128}, on: :create
-  # validates :nickname,              presence: true, length: {maximum: 20}
+  validates :password,              presence: true, length: {minimum: 7, maximum: 128}, format: { with: password_check }, on: :create
+  validates :password_confirmation, presence: true, length: {minimum: 7, maximum: 128}, format: { with: password_check }, on: :create
   validates :nickname,              presence: true, on: :create
 end

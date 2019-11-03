@@ -39,6 +39,8 @@
             .field
               %label.top-text 電話番号
               %br/
+              %label.alert-text 全角半角対応、ハイフンなしで登録して下さい
+              %br/
               = o.text_field :tel, placeholder: '例）携帯番号の入力', size: "40", class: 'textarea'
               
             .field

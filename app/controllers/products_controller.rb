@@ -88,9 +88,10 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if
-    @product.update(update_params) 
-    redirect_to action: :index
+    if @product.update!(update_params)
+      redirect_to root_path
+    else
+      render :edit
     end
   end
 
@@ -128,7 +129,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(
      :name, :price, :delivery, :description, :exposition, :delivery_fee, :shipping_area, :shipping_days,:buyer, :category_id,
      status_attributes: [:id, :name],
-     brand_attributes: [:id, :name],
+     brand_attributes: [:id, :name]
    )
   end
 
