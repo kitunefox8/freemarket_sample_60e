@@ -75,7 +75,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(create_params)
-    if @product.images.blank? or @product.brand.blank? or @product.status.blank? or @product.category_id.blank? or @product.category_id == 0
+    if @product.images.blank? or @product.brand.blank? or @product.status.blank? or @product.category_id.blank? or @product.category_id == 0 or @product.price.to_i <= 300
       redirect_to action: :new
     else 
       @product.save
@@ -88,10 +88,11 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.update(update_params) 
-      redirect_to action: :index
+    @product.update(update_params) 
+    if @product.images.blank? or @product.brand.blank? or @product.status.blank? or @product.category_id.blank? or @product.category_id == 0 or @product.price.to_i <= 300
+    redirect_to action: :index
     else
-      render :new
+    render :new
     end
   end
 
