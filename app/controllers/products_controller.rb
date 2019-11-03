@@ -90,9 +90,9 @@ class ProductsController < ApplicationController
   def update
     @product.update(update_params) 
     if @product.images.blank? or @product.brand.blank? or @product.status.blank? or @product.category_id.blank? or @product.category_id == 0 or @product.price.to_i <= 300
-    redirect_to action: :index
+      render :new  
     else
-    render :new
+      redirect_to action: :index
     end
   end
 
