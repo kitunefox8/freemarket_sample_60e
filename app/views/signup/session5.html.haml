@@ -40,6 +40,8 @@
               %label.top-text カード番号
               %span.top-red-text 必須
               %br/
+              %label.alert-text 半角数字で登録して下さい
+              %br/
               = c.text_field :credit_number, placeholder: '例）半角数字のみ', class: 'textarea'
               %ul.signup-card-list
                 %li
@@ -75,6 +77,8 @@
             .field
               %label.top-text セキュリティカード
               %span.top-red-text 必須
+              %br/
+              %label.alert-text 半角数字3文字もしくは4文字で登録して下さい
               %br/
               = c.text_field :security_number, placeholder: '例）カード背面４桁もしくは3桁の番号', class: 'textarea'
               
