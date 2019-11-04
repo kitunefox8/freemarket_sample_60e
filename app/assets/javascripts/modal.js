@@ -1,4 +1,4 @@
-$(document).on("turbolinks:load", function(){
+$(function(){
   $('.mercari__brand').on('click', function() {
     $('#overlay').fadeIn();
     document.getElementById('modal-close-btn').onclick = function () {
@@ -7,7 +7,7 @@ $(document).on("turbolinks:load", function(){
   });
 });
 
-$(document).on("turbolinks:load", function(){
+$(function(){
   $('.btn-facebook').on('click', function() {
     $('#overlay').fadeIn();
     document.getElementById('modal-close-btn').onclick = function () {
@@ -16,7 +16,7 @@ $(document).on("turbolinks:load", function(){
   });
 });
 
-$(document).on("turbolinks:load", function(){
+$(function(){
   $('.btn-google').on('click', function() {
     $('#overlay').fadeIn();
     document.getElementById('modal-close-btn').onclick = function () {
@@ -25,7 +25,7 @@ $(document).on("turbolinks:load", function(){
   });
 });
 
-$(document).on("turbolinks:load", function(){
+$(function(){
   $('.btn-mail').on('click', function() {
     $('#overlay').fadeIn();
     document.getElementById('modal-close-btn').onclick = function () {
