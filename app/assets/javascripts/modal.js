@@ -7,7 +7,7 @@ $(function(){
   });
 });
 
-$(function(){
+$(document).on("turbolinks:load", function(){
   $('.btn-facebook').on('click', function() {
     $('#overlay').fadeIn();
     document.getElementById('modal-close-btn').onclick = function () {
@@ -16,7 +16,7 @@ $(function(){
   });
 });
 
-$(function(){
+$(document).on("turbolinks:load", function(){
   $('.btn-google').on('click', function() {
     $('#overlay').fadeIn();
     document.getElementById('modal-close-btn').onclick = function () {
@@ -25,7 +25,7 @@ $(function(){
   });
 });
 
-$(function(){
+$(document).on("turbolinks:load", function(){
   $('.btn-mail').on('click', function() {
     $('#overlay').fadeIn();
     document.getElementById('modal-close-btn').onclick = function () {
