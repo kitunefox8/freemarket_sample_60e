@@ -49,7 +49,7 @@ class SignupController < ApplicationController
   end
 
   def create
-    if @user.save! && @profile.save! && @creditcard.save!
+    if @user.save && @profile.save && @creditcard.save
       session[:id] = @user.id
       sign_in User.find(session[:id])
       redirect_to root_path
