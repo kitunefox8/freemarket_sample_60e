@@ -13,8 +13,8 @@ CarrierWave.configure do |config|
       aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key],
       region: 'ap-northeast-1'
     }
-    config.fog_directory  = 'mercari-team60e-image'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/mercari-team60e-image'
+    config.fog_directory  = 'vinland5'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/vinland5'
   else
     config.storage :file
     config.enable_processing = false if Rails.env.test?
